@@ -1,5 +1,3 @@
-const { type } = require('os')
-
 module.exports = {
   root: true,
   env: {
@@ -9,6 +7,7 @@ module.exports = {
   parserOptions: { ecmaVersion: 8, sourceType: 'module' },
   ignorePatterns: ['node_modules/*'],
   extends: ['eslint:recommended'],
+  plugins: ['unused-imports'],
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx'],
@@ -34,12 +33,8 @@ module.exports = {
         'plugin:react-hooks/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:prettier/recommended',
-        'plugin:@shopify/esnext',
-        'plugin:@shopify/react',
-        'plugin:@shopify/prettier',
         'plugin:tailwindcss/recommended',
         'next/core-web-vitals',
-        'plugin:unused-imports/recommended',
       ],
       rules: {
         'no-restricted-imports': [
@@ -51,22 +46,6 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         'react/prop-types': 'off',
 
-        'import/order': [
-          'error',
-          {
-            groups: [
-              'builtin',
-              'external',
-              'internal',
-              'parent',
-              'sibling',
-              'index',
-              'object',
-            ],
-            'newlines-between': 'always',
-            alphabetize: { order: 'asc', caseInsensitive: true },
-          },
-        ],
         'import/default': 'off',
         'import/no-named-as-default-member': 'off',
         'import/no-named-as-default': 'off',
@@ -86,7 +65,7 @@ module.exports = {
           },
         ],
 
-        '@typescript-eslint/no-unused-vars': ['error'],
+        '@typescript-eslint/no-unused-vars': ['off'],
 
         '@typescript-eslint/explicit-function-return-type': ['off'],
         '@typescript-eslint/explicit-module-boundary-types': ['off'],

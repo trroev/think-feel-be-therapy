@@ -20,10 +20,10 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={cn('bg-background min-h-screen antialiased', inter.className)}>
+      <body className={cn('min-h-screen bg-background antialiased', inter.className)}>
         <div className="flex min-h-screen flex-col">
           {/* SITEHEADER */}
-          <main className="flex flex-1">{children}</main>
+          <main className="flex-1">{children}</main>
           {/* SITEFOOTER */}
         </div>
       </body>

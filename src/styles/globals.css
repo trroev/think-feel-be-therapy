@@ -20,4 +20,28 @@
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
+
+  h1 {
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply scroll-m-20 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight md:text-3xl lg:text-4xl;
+  }
+
+  h4 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight md:text-2xl lg:text-3xl;
+  }
+
+  h5 {
+    @apply scroll-m-20 text-lg font-semibold tracking-tight md:text-xl lg:text-2xl;
+  }
+
+  h6 {
+    @apply scroll-m-20 text-base font-semibold tracking-tight md:text-lg lg:text-xl;
+  }
 }

@@ -1,4 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+const withBuilderDevTools = require('@builder.io/dev-tools/next')()
 
-export default nextConfig;
+/** @type {import('next').NextConfig} */
+const nextConfig = withBuilderDevTools({
+  reactStrictMode: true,
+})
+
+export default nextConfig

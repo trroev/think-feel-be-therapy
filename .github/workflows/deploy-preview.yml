@@ -26,21 +26,24 @@ jobs:
       - name: Slugify
         uses: rlespinasse/github-slug-action@v4.4.1
 
+      - name: Install pnpm (if necessary)
+        run: which pnpm || npm install -g pnpm
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 20.11.1
-          cache: 'npm'
+          cache: 'pnpm'
 
       - name: Pull Vercel Environment Information
         run: |
-          npx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+          pnpm dlx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
         run: |
-          npx vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          pnpm dlx vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         run: |
-          npx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > domain.txt
-          npx vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }} set `cat domain.txt` ${{ env.GITHUB_REF_SLUG_URL }}.think-feel-be-therapy.vercel.app
+          pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > domain.txt
+          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }} set `cat domain.txt` ${{ env.GITHUB_REF_SLUG_URL }}.think-feel-be-therapy.vercel.app

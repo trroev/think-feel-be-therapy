@@ -31,13 +31,11 @@ export default async function Page(props: PageProps) {
     )
   }
   return (
-    <div className="container relative flex h-screen flex-col items-center justify-center">
-      <Content
-        content={content}
-        apiKey={BUILDER_API_KEY}
-        model={'page'}
-        customComponents={BuilderComponents}
-      />
-    </div>
+    <Content
+      content={content}
+      apiKey={BUILDER_API_KEY}
+      model={'page'}
+      customComponents={BuilderComponents}
+    />
   )
 }

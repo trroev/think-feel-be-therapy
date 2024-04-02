@@ -5,10 +5,10 @@ import { type RegisteredComponent } from '@builder.io/sdk-react'
 
 export const BuilderComponents: RegisteredComponent[] = [
   {
-    component: dynamic(() => import('@/components').then((mod) => mod.Accordion), {
+    component: dynamic(() => import('@/components').then((mod) => mod.FAQ), {
       ssr: false,
     }),
-    name: 'Accordion',
+    name: 'FAQs',
     inputs: [
       {
         name: 'items',
@@ -21,12 +21,12 @@ export const BuilderComponents: RegisteredComponent[] = [
           },
           {
             name: 'trigger',
-            type: 'string',
+            type: 'longText',
             required: true,
           },
           {
             name: 'content',
-            type: 'string',
+            type: 'longText',
             required: true,
           },
         ],

@@ -1,9 +1,11 @@
 import * as React from 'react'
-import { Metadata } from 'next'
+import { type Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { builder } from '@builder.io/sdk'
 
 import '@/styles/globals.css'
 
+import { BUILDER_API_KEY } from '@/config'
 import { cn } from '@/lib'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,7 +20,12 @@ type RootLayoutProps = Readonly<{
   children: React.ReactNode
 }>
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  builder.init(BUILDER_API_KEY)
+
+  const navigationData = await builder.getAll('navigation')
+  console.log('NAVIGATION DATA:', navigationData)
+
   return (
     <html lang="en">
       <body className={cn('min-h-screen bg-background antialiased', inter.className)}>

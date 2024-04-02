@@ -1,4 +1,4 @@
-import { Accordion, Button } from '@/components'
+import { FAQ } from '@/components'
 
 const items = [
   {
@@ -24,12 +24,10 @@ const items = [
 ]
 
 export default function TestPage() {
-  const buttonText = 'This is the Button Text'
   return (
     <div className="container relative flex h-screen flex-col items-center justify-center gap-8">
       <h1>Test Page</h1>
-      <Accordion items={items} type="multiple" />
-      <Button variant="link" size="lg" buttonText={buttonText} />
+      <FAQ items={items} type="multiple" />
     </div>
   )
 }

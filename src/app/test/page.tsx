@@ -1,4 +1,4 @@
-import { FAQ } from '@/components'
+import { FAQ, LGBTQAffirming, MentalHealthMatch, PsychologyToday } from '@/components'
 
 const items = [
   {
@@ -28,6 +28,11 @@ export default function TestPage() {
     <div className="container relative flex h-screen flex-col items-center justify-center gap-8">
       <h1>Test Page</h1>
       <FAQ items={items} type="multiple" />
+      <div className="flex items-center space-x-10">
+        <LGBTQAffirming className="h-20" />
+        <MentalHealthMatch className="h-20" />
+        <PsychologyToday className="h-20" />
+      </div>
     </div>
   )
 }

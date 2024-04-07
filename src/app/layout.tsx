@@ -5,6 +5,7 @@ import { builder } from '@builder.io/sdk'
 
 import '@/styles/globals.css'
 
+import { SiteHeader } from '@/components'
 import { BUILDER_API_KEY } from '@/config'
 import { cn } from '@/lib'
 
@@ -23,14 +24,17 @@ type RootLayoutProps = Readonly<{
 export default async function RootLayout({ children }: RootLayoutProps) {
   builder.init(BUILDER_API_KEY)
 
-  const navigationData = await builder.getAll('navigation')
-  console.log('NAVIGATION DATA:', navigationData)
+  const navigationDataModel = await builder.getAll('navigation')
+  const navigationData = navigationDataModel.map((item) => ({
+    data: item.data,
+    id: item.id,
+  }))
 
   return (
     <html lang="en">
       <body className={cn('min-h-screen bg-background antialiased', inter.className)}>
         <div className="flex min-h-screen flex-col">
-          {/* SITEHEADER */}
+          <SiteHeader navigationData={navigationData} />
           <main className="flex-1">{children}</main>
           {/* SITEFOOTER */}
         </div>

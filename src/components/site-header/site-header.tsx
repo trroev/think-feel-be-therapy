@@ -1,5 +1,7 @@
-import { Cookie, HamburgerMenu, MainNav } from '@/components'
+import { Cookie, MainNav } from '@/components'
 import { type NavigationData } from '@/types'
+
+import { MobileNav } from '../navigation/mobile-nav'
 
 interface SiteHeaderProps extends NavigationData {}
 
@@ -11,9 +13,7 @@ export const SiteHeader = ({ navigationData }: SiteHeaderProps) => {
           <span className="sr-only">Think.Feel.Be. Therapy logo</span>
         </Cookie>
         <MainNav navigationData={navigationData} />
-        <button className="md:hidden">
-          <HamburgerMenu className="inline-block size-6 md:hidden" />
-        </button>
+        <MobileNav navigationData={navigationData} />
       </div>
     </header>
   )

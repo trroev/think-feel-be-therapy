@@ -1,7 +1,5 @@
-import { Cookie, MainNav } from '@/components'
+import { Cookie, MainNav, MobileNav } from '@/components'
 import { type NavigationData } from '@/types'
-
-import { MobileNav } from '../navigation/mobile-nav'
 
 interface SiteHeaderProps extends NavigationData {}
 

@@ -29,9 +29,14 @@ const FormSchema = z.object({
     message: 'Please enter your full name',
   }),
   pronouns: z.string().optional(),
-  email: z.string().email().min(1, {
-    message: 'Please enter your email address',
-  }),
+  email: z
+    .string()
+    .email({
+      message: 'Please enter a valid email address',
+    })
+    .min(1, {
+      message: 'Please enter your email address',
+    }),
   phoneNumber: z.string().min(1, {
     message: 'Please enter your phone number',
   }),

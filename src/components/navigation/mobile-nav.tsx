@@ -1,9 +1,10 @@
 'use client'
 
 import * as React from 'react'
+import Image from 'next/image'
 import Link, { type LinkProps } from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Button, Cookie, HamburgerMenu, Sheet, SheetContent, SheetTrigger } from '@/components'
+import { Button, HamburgerMenu, Sheet, SheetContent, SheetTrigger } from '@/components'
 import { cn } from '@/lib'
 import { type NavigationData } from '@/types'
 
@@ -12,6 +13,7 @@ interface MobileNavProps extends NavigationData {}
 export const MobileNav = ({ navigationData }: MobileNavProps) => {
   const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
+  const logoUrl = navigationData.data.logo
   const navLinks = navigationData.data.links
 
   return (
@@ -29,7 +31,7 @@ export const MobileNav = ({ navigationData }: MobileNavProps) => {
         <div className="flex flex-col gap-10">
           <div className="w-full border-b border-border/40 p-6">
             <MobileLink href="/" className="group flex items-center gap-2" onOpenChange={setOpen}>
-              <Cookie className="size-6" />
+              <Image src={logoUrl} alt="Think.Feel.Be. Therapy logo" height={50} width={50} />
               <span className="font-bold group-hover:underline">Think.Feel.Be. Therapy</span>
             </MobileLink>
           </div>

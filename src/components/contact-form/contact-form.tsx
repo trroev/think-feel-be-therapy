@@ -2,7 +2,6 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 
 import {
   Button,
@@ -23,69 +22,18 @@ import {
   Textarea,
   toast,
 } from '../ui'
+import { ContactFormSchema, type ContactFormValues } from './contact-form-schema'
 
-const FormSchema = z.object({
-  fullName: z.string().min(1, {
-    message: 'Please enter your full name',
-  }),
-  pronouns: z.string().optional(),
-  email: z
-    .string()
-    .email({
-      message: 'Please enter a valid email address',
-    })
-    .min(1, {
-      message: 'Please enter your email address',
-    }),
-  phoneNumber: z.string().min(1, {
-    message: 'Please enter your phone number',
-  }),
-  age: z.string().optional(),
-  state: z.string().optional(),
-  reason: z.string().optional(),
-  anythingElse: z.string().optional(),
-  outOfNetworkTerm: z
-    .boolean()
-    .refine((value) => value === true, {
-      message: 'Please agree to the terms',
-    })
-    .default(false),
-  mentayaTerm: z
-    .boolean()
-    .refine((value) => value === true, {
-      message: 'Please agree to the terms',
-    })
-    .default(false),
-  feesTerm: z
-    .boolean()
-    .refine((value) => value === true, {
-      message: 'Please agree to the terms',
-    })
-    .default(false),
-  cancellationTerm: z
-    .boolean()
-    .refine((value) => value === true, {
-      message: 'Please agree to the terms',
-    })
-    .default(false),
-  acknowledgementTerm: z
-    .boolean()
-    .refine((value) => value === true, {
-      message: 'Please agree to the terms',
-    })
-    .default(false),
-})
+const FormSchema = ContactFormSchema
 
-const outOfNetworkTermDescription = `I understand that Rachael Mathiak Therapy, LLC is considered an out of network
-                  provider, which means I am responsible for the full fee at the time of the
-                  appointment.`
+const outOfNetworkTermDescription = `I understand that Rachael Mathiak Therapy, LLC is considered an out of network provider, which means I am responsible for the full fee at the time of the appointment.`
 const mentayaTermDescription = `I understand that Rachael Mathiak Therapy, LLC works with Mentaya to submit claims on my behalf for out-of-network reimbursement from my insurance, if applicable.`
 const feesTermDescription = `I am aware that the fees for service are $175 for an individual session, and $210 for couples or family therapy. `
 const cancellationTermDescription = `I understand that if I schedule an appointment, and later need to reschedule or cancel, I must do so with at least 48 hours of notice, or I will be charged the full appointment fee due to late cancellation or not showing up.`
 const acknowledgementTermDescription = `By submitting this form via this website, you acknowledge and accept the risk of sharing your health-related information via this unencrypted and electronic messaging, and wish to continue despite those risks. By checking "Agree", you agree to hold Rachael Mathiak Therapy, LLC and the website developer harmless for unauthorized use, disclosure or access of your protected health information sent via this electronic means.`
 
 export const ContactForm = () => {
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<ContactFormValues>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       fullName: '',
@@ -104,7 +52,7 @@ export const ContactForm = () => {
     },
   })
 
-  const onSubmit = (values: z.infer<typeof FormSchema>) => {
+  const onSubmit = (values: ContactFormValues) => {
     toast({
       title: 'You submitted the following values:',
       description: (

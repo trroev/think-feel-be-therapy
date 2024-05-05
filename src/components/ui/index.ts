@@ -1,5 +1,6 @@
 export * from './accordion'
 export * from './button'
+export * from './checkbox'
 export * from './svg'
 export * from './sheet'
 export * from './select'

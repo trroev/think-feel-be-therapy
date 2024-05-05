@@ -6,8 +6,10 @@ import { z } from 'zod'
 
 import {
   Button,
+  Checkbox,
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -36,7 +38,20 @@ const FormSchema = z.object({
   state: z.string().optional(),
   reason: z.string().optional(),
   anythingElse: z.string().optional(),
+  outOfNetworkTerm: z.boolean().default(false),
+  mentayaTerm: z.boolean().default(false),
+  feesTerm: z.boolean().default(false),
+  cancellationTerm: z.boolean().default(false),
+  acknowledgementTerm: z.boolean().default(false),
 })
+
+const outOfNetworkTermDescription = `I understand that Rachael Mathiak Therapy, LLC is considered an out of network
+                  provider, which means I am responsible for the full fee at the time of the
+                  appointment.`
+const mentayaTermDescription = `I understand that Rachael Mathiak Therapy, LLC works with Mentaya to submit claims on my behalf for out-of-network reimbursement from my insurance, if applicable.`
+const feesTermDescription = `I am aware that the fees for service are $175 for an individual session, and $210 for couples or family therapy. `
+const cancellationTermDescription = `I understand that if I schedule an appointment, and later need to reschedule or cancel, I must do so with at least 48 hours of notice, or I will be charged the full appointment fee due to late cancellation or not showing up.`
+const acknowledgementTermDescription = `By submitting this form via this website, you acknowledge and accept the risk of sharing your health-related information via this unencrypted and electronic messaging, and wish to continue despite those risks. By checking "Agree", you agree to hold Rachael Mathiak Therapy, LLC and the website developer harmless for unauthorized use, disclosure or access of your protected health information sent via this electronic means.`
 
 export const ContactForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -50,6 +65,11 @@ export const ContactForm = () => {
       state: '',
       reason: '',
       anythingElse: '',
+      outOfNetworkTerm: false,
+      mentayaTerm: false,
+      feesTerm: false,
+      cancellationTerm: false,
+      acknowledgementTerm: false,
     },
   })
 
@@ -169,6 +189,86 @@ export const ContactForm = () => {
               <FormControl>
                 <Textarea placeholder="Your message here..." {...field} />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="outOfNetworkTerm"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+              <FormControl>
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>Agree</FormLabel>
+                <FormDescription>{outOfNetworkTermDescription}</FormDescription>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="mentayaTerm"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+              <FormControl>
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>Agree</FormLabel>
+                <FormDescription>{mentayaTermDescription}</FormDescription>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="feesTerm"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+              <FormControl>
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>Agree</FormLabel>
+                <FormDescription>{feesTermDescription}</FormDescription>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="cancellationTerm"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+              <FormControl>
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>Agree</FormLabel>
+                <FormDescription>{cancellationTermDescription}</FormDescription>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="acknowledgementTerm"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+              <FormControl>
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>Agree</FormLabel>
+                <FormDescription>{acknowledgementTermDescription}</FormDescription>
+              </div>
               <FormMessage />
             </FormItem>
           )}

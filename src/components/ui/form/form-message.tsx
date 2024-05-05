@@ -26,3 +26,5 @@ const FormMessage = React.forwardRef<
   )
 })
 FormMessage.displayName = 'FormMessage'
+
+export { FormMessage }

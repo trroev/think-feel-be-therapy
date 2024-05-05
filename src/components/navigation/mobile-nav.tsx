@@ -12,6 +12,7 @@ interface MobileNavProps extends NavigationData {}
 export const MobileNav = ({ navigationData }: MobileNavProps) => {
   const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
+  const navLinks = navigationData.data.links
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -33,17 +34,17 @@ export const MobileNav = ({ navigationData }: MobileNavProps) => {
             </MobileLink>
           </div>
           <div className="flex flex-col space-y-4 px-6">
-            {navigationData.map((item) => (
+            {navLinks.map((link, index) => (
               <MobileLink
-                key={item.id}
-                href={item.data?.slug}
+                key={index + 3.3}
+                href={link.link}
                 className={cn(
-                  pathname === item.data?.slug && 'font-medium underline',
+                  pathname === link.link && 'font-medium underline',
                   'text-xl hover:underline'
                 )}
                 onOpenChange={setOpen}
               >
-                {item.data?.title}
+                {link.title}
               </MobileLink>
             ))}
           </div>

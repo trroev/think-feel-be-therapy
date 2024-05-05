@@ -9,20 +9,21 @@ interface MainNavProps extends NavigationData {}
 
 export const MainNav = ({ navigationData }: MainNavProps) => {
   const pathname = usePathname()
+  const navLinks = navigationData.data.links
 
   return (
     <nav className="hidden md:flex">
       <div className="flex space-x-4">
-        {navigationData.map((item) => (
+        {navLinks.map((link, index) => (
           <Link
-            key={item.id}
-            href={item.data?.slug}
+            key={index + 3.3}
+            href={link.link}
             className={cn(
-              pathname === item.data?.slug && 'font-medium underline',
+              pathname === link.link && 'font-medium underline',
               'text-xl hover:underline'
             )}
           >
-            {item.data?.title}
+            {link.title}
           </Link>
         ))}
       </div>

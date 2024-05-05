@@ -8,6 +8,7 @@ import '@/styles/globals.css'
 import { SiteHeader } from '@/components'
 import { BUILDER_API_KEY } from '@/config'
 import { cn } from '@/lib'
+import { type NavigationItems } from '@/types'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,11 +25,11 @@ type RootLayoutProps = Readonly<{
 export default async function RootLayout({ children }: RootLayoutProps) {
   builder.init(BUILDER_API_KEY)
 
-  const navigationDataModel = await builder.getAll('navigation')
-  const navigationData = navigationDataModel.map((item) => ({
-    data: item.data,
-    id: item.id,
-  }))
+  const navigationDataModel = await builder.get('navigation')
+  const navigationData: NavigationItems = {
+    data: navigationDataModel.data,
+    id: navigationDataModel.id,
+  }
 
   return (
     <html lang="en">

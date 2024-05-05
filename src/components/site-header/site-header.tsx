@@ -6,7 +6,7 @@ import { type NavigationData } from '@/types'
 interface SiteHeaderProps extends NavigationData {}
 
 export const SiteHeader = ({ navigationData }: SiteHeaderProps) => {
-  const logoUrl = navigationData.data.logo as string
+  const logoUrl = navigationData.data.logo
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

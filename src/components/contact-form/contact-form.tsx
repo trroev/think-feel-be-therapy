@@ -39,11 +39,36 @@ const FormSchema = z.object({
   state: z.string().optional(),
   reason: z.string().optional(),
   anythingElse: z.string().optional(),
-  outOfNetworkTerm: z.boolean().default(false),
-  mentayaTerm: z.boolean().default(false),
-  feesTerm: z.boolean().default(false),
-  cancellationTerm: z.boolean().default(false),
-  acknowledgementTerm: z.boolean().default(false),
+  outOfNetworkTerm: z
+    .boolean()
+    .refine((value) => value === true, {
+      message: 'Please agree to the terms',
+    })
+    .default(false),
+  mentayaTerm: z
+    .boolean()
+    .refine((value) => value === true, {
+      message: 'Please agree to the terms',
+    })
+    .default(false),
+  feesTerm: z
+    .boolean()
+    .refine((value) => value === true, {
+      message: 'Please agree to the terms',
+    })
+    .default(false),
+  cancellationTerm: z
+    .boolean()
+    .refine((value) => value === true, {
+      message: 'Please agree to the terms',
+    })
+    .default(false),
+  acknowledgementTerm: z
+    .boolean()
+    .refine((value) => value === true, {
+      message: 'Please agree to the terms',
+    })
+    .default(false),
 })
 
 const outOfNetworkTermDescription = `I understand that Rachael Mathiak Therapy, LLC is considered an out of network
@@ -212,8 +237,8 @@ export const ContactForm = () => {
               <div className="space-y-1 leading-none">
                 <FormLabel>Agree</FormLabel>
                 <FormDescription>{outOfNetworkTermDescription}</FormDescription>
+                <FormMessage />
               </div>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -228,8 +253,8 @@ export const ContactForm = () => {
               <div className="space-y-1 leading-none">
                 <FormLabel>Agree</FormLabel>
                 <FormDescription>{mentayaTermDescription}</FormDescription>
+                <FormMessage />
               </div>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -244,8 +269,8 @@ export const ContactForm = () => {
               <div className="space-y-1 leading-none">
                 <FormLabel>Agree</FormLabel>
                 <FormDescription>{feesTermDescription}</FormDescription>
+                <FormMessage />
               </div>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -260,8 +285,8 @@ export const ContactForm = () => {
               <div className="space-y-1 leading-none">
                 <FormLabel>Agree</FormLabel>
                 <FormDescription>{cancellationTermDescription}</FormDescription>
+                <FormMessage />
               </div>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -276,8 +301,8 @@ export const ContactForm = () => {
               <div className="space-y-1 leading-none">
                 <FormLabel>Agree</FormLabel>
                 <FormDescription>{acknowledgementTermDescription}</FormDescription>
+                <FormMessage />
               </div>
-              <FormMessage />
             </FormItem>
           )}
         />

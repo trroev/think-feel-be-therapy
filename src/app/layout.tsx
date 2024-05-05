@@ -5,7 +5,7 @@ import { builder } from '@builder.io/sdk'
 
 import '@/styles/globals.css'
 
-import { SiteHeader } from '@/components'
+import { SiteHeader, Toaster } from '@/components'
 import { BUILDER_API_KEY } from '@/config'
 import { cn } from '@/lib'
 import { type NavigationItems } from '@/types'
@@ -37,6 +37,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <div className="flex min-h-screen flex-col">
           <SiteHeader navigationData={navigationData} />
           <main className="flex-1">{children}</main>
+          <Toaster />
           {/* SITEFOOTER */}
         </div>
       </body>

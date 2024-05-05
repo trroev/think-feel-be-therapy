@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
   Textarea,
+  toast,
 } from '../ui'
 
 const FormSchema = z.object({
@@ -74,12 +75,19 @@ export const ContactForm = () => {
   })
 
   const onSubmit = (values: z.infer<typeof FormSchema>) => {
-    console.log(values)
+    toast({
+      title: 'You submitted the following values:',
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+        </pre>
+      ),
+    })
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="min-w-[500px] space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-[500px] space-y-8">
         <FormField
           control={form.control}
           name="fullName"

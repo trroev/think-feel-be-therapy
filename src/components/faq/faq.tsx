@@ -13,7 +13,6 @@ interface AccordionProps {
 }
 
 export const FAQ = ({ items, type = 'multiple', className }: AccordionProps) => {
-  console.log('items: ', items)
   return (
     <Accordion type={type} className={cn('w-full', className)}>
       {items.map((item, index) => (

@@ -2,24 +2,20 @@ import { ContactForm, FAQ, LGBTQAffirming, MentalHealthMatch, PsychologyToday } 
 
 const items = [
   {
-    value: '1',
-    trigger: 'Trigger 1',
-    content: 'Content 1',
+    question: 'question 1',
+    answer: 'answer 1',
   },
   {
-    value: '2',
-    trigger: 'Trigger 2',
-    content: 'Content 2',
+    question: 'question 2',
+    answer: 'answer 2',
   },
   {
-    value: '3',
-    trigger: 'Trigger 3',
-    content: 'Content 3',
+    question: 'question 3',
+    answer: 'answer 3',
   },
   {
-    value: '4',
-    trigger: 'Trigger 4',
-    content: 'Content 4',
+    question: 'question 4',
+    answer: 'answer 4',
   },
 ]
 

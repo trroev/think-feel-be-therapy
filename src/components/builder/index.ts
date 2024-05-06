@@ -14,18 +14,18 @@ export const BuilderComponents: RegisteredComponent[] = [
         name: 'items',
         type: 'list',
         subFields: [
+          // {
+          //   name: 'value',
+          //   type: 'string',
+          //   required: true,
+          // },
           {
-            name: 'value',
-            type: 'string',
-            required: true,
-          },
-          {
-            name: 'trigger',
+            name: 'question',
             type: 'longText',
             required: true,
           },
           {
-            name: 'content',
+            name: 'answer',
             type: 'longText',
             required: true,
           },

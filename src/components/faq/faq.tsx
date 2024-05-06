@@ -2,9 +2,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { cn } from '@/lib'
 
 interface AccordionItemProps {
-  value: string
-  trigger: React.ReactNode
-  content: React.ReactNode
+  question: React.ReactNode
+  answer: React.ReactNode
 }
 
 interface AccordionProps {
@@ -14,12 +13,13 @@ interface AccordionProps {
 }
 
 export const FAQ = ({ items, type = 'multiple', className }: AccordionProps) => {
+  console.log('items: ', items)
   return (
     <Accordion type={type} className={cn('w-full', className)}>
-      {items.map((item) => (
-        <AccordionItem key={item.value} value={item.value}>
-          <AccordionTrigger>{item.trigger}</AccordionTrigger>
-          <AccordionContent>{item.content}</AccordionContent>
+      {items.map((item, index) => (
+        <AccordionItem key={index + 3.3} value={`${item.question}`}>
+          <AccordionTrigger>{item.question}</AccordionTrigger>
+          <AccordionContent>{item.answer}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>

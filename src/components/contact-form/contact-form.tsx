@@ -54,6 +54,8 @@ export const ContactForm = () => {
 
   const onSubmit = (values: ContactFormValues) => {
     toast({
+      // title: 'Thank you for submitting your information!',
+      // description: 'I will be in touch with you soon.',
       title: 'You submitted the following values:',
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">

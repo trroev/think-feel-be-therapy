@@ -1,1 +1,1 @@
-export { FAQ } from './faq'
+export { FAQ, FAQRegistration } from './faq'

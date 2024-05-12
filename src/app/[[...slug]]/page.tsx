@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { BuilderComponents } from '@/components'
 import { BUILDER_API_KEY } from '@/config'
 import { Content, fetchOneEntry, isEditing, isPreviewing } from '@builder.io/sdk-react/edge'
@@ -9,18 +10,19 @@ interface PageProps {
   searchParams: Record<string, string>
 }
 
-export default async function Page(props: PageProps) {
-  const urlPath = '/' + (props.params?.slug?.join('/') || '')
+const getBuilderContent = cache(fetchOneEntry)
 
-  const content = await fetchOneEntry({
-    options: props.searchParams,
+export default async function Page({ params, searchParams }: PageProps) {
+  const urlPath = `/${params?.slug?.join('/') || ''}`
+
+  const content = await getBuilderContent({
+    options: searchParams,
     apiKey: BUILDER_API_KEY,
     model: 'page',
     userAttributes: { urlPath },
   })
 
-  const canShowContent =
-    content || isPreviewing(props.searchParams) || isEditing(props.searchParams)
+  const canShowContent = content || isPreviewing(searchParams) || isEditing(searchParams)
 
   if (!canShowContent) {
     return (

@@ -1,8 +1,5 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-
 import {
   Button,
   Checkbox,
@@ -21,7 +18,10 @@ import {
   SelectValue,
   Textarea,
   toast,
-} from '../ui'
+} from '@/components'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+
 import { ContactFormSchema, type ContactFormValues } from './contact-form-schema'
 
 const FormSchema = ContactFormSchema

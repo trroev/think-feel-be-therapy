@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react'
 
 import { Page } from '../../../payload/payload-types.js'
-import { ArchiveBlock } from '../../_blocks/ArchiveBlock'
-import { ContentBlock } from '../../_blocks/Content'
-import { MediaBlock } from '../../_blocks/MediaBlock'
 import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding'
 import { Hero } from '../hero'
 import { TextSection } from '../text-section'
@@ -13,11 +10,8 @@ import { MentayaWidget } from '../mentaya-widget'
 
 const blockComponents: { [key: string]: React.FC<any> } = {
   accordionBlock: Accordion,
-  archive: ArchiveBlock,
-  content: ContentBlock,
   ctaBlock: CTA,
   heroBlock: Hero,
-  mediaBlock: MediaBlock,
   mentayaWidgetBlock: MentayaWidget,
   textSectionBlock: TextSection,
 }

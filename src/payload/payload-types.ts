@@ -147,6 +147,7 @@ export interface HeroBlockType {
   backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
   image?: number | Media | null;
   heading?: string | null;
+  headingFontWeight?: ('thin' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold') | null;
   subheading?: string | null;
   heroTagline?: TaglineBlockType[] | null;
   id?: string | null;

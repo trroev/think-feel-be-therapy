@@ -35,6 +35,7 @@ export const HERO_BLOCK = `
     blockType
     heroBackgroundColor: backgroundColor
     heading
+    headingFontWeight
     ${IMAGE}
     subheading
     heroTagline {

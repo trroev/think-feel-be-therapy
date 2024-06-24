@@ -66,20 +66,3 @@ query Navigation {
   ${NAVIGATION}
 }
 `
-
-export const SETTINGS = `
-  Settings {
-    postsPage {
-      slug
-    }
-    projectsPage {
-      slug
-    }
-  }
-`
-
-export const SETTINGS_QUERY = `
-query Settings {
-  ${SETTINGS}
-}
-`

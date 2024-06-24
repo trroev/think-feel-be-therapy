@@ -1,8 +1,6 @@
-import { CATEGORIES } from './categories'
 import { IMAGE } from './image'
 import { LINK_FIELDS } from './link'
 import { MEDIA } from './media'
-import { META } from './meta'
 
 export const CALL_TO_ACTION = `
 ...on CallToActionBlockType {
@@ -16,20 +14,6 @@ export const CALL_TO_ACTION = `
   links {
     id
     link ${LINK_FIELDS({ disableAppearance: true })}
-  }
-}
-`
-
-export const CONTENT = `
-...on Content {
-  id
-  blockType
-  invertBackground
-  columns {
-    size
-    richText
-    enableLink
-    link ${LINK_FIELDS()}
   }
 }
 `
@@ -51,6 +35,7 @@ export const HERO_BLOCK = `
     blockType
     heroBackgroundColor: backgroundColor
     heading
+    headingFontWeight
     ${IMAGE}
     subheading
     heroTagline {
@@ -101,54 +86,5 @@ export const MENTAYA_WIDGET_BLOCK = `
   id
   blockType
   fullWidth
-}
-`
-
-export const ARCHIVE_BLOCK = `
-...on Archive {
-  id
-  blockType
-  introContent
-  populateBy
-  relationTo
-  ${CATEGORIES}
-  limit
-  selectedDocs {
-    relationTo
-    value {
-      ...on Post {
-        id
-        slug
-        title
-        ${META}
-      }
-      ...on Project {
-        id
-        slug
-        title
-        ${META}
-      }
-    }
-  }
-  populatedDocs {
-    relationTo
-    value {
-      ...on Post {
-        id
-        slug
-        title
-        ${CATEGORIES}
-        ${META}
-      }
-      ...on Project {
-        id
-        slug
-        title
-        ${CATEGORIES}
-        ${META}
-      }
-    }
-  }
-  populatedDocsTotal
 }
 `

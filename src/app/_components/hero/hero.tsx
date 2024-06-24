@@ -8,10 +8,38 @@ interface HeroProps extends HeroBlockType {
   heroBackgroundColor: HeroBlockType['backgroundColor']
 }
 
-const Hero: FC<HeroProps> = ({ heading, heroBackgroundColor, heroTagline, image, subheading }) => {
+const Hero: FC<HeroProps> = ({
+  heading,
+  headingFontWeight,
+  heroBackgroundColor,
+  heroTagline,
+  image,
+  subheading,
+}) => {
   const bgColor = `bg-${heroBackgroundColor}`
   const taglineHeading = heroTagline?.[0].staticHeading
   const wordsArray = heroTagline?.[0].words as unknown as { word: string }[]
+
+  const getHeadingFontWeight = (() => {
+    switch (headingFontWeight) {
+      case 'thin':
+        return 'font-thin'
+      case 'light':
+        return 'font-light'
+      case 'normal':
+        return 'font-normal'
+      case 'medium':
+        return 'font-medium'
+      case 'semibold':
+        return 'font-semibold'
+      case 'bold':
+        return 'font-bold'
+      case 'extrabold':
+        return 'font-extrabold'
+      default:
+        return undefined
+    }
+  })()
 
   return (
     <section
@@ -23,7 +51,7 @@ const Hero: FC<HeroProps> = ({ heading, heroBackgroundColor, heroTagline, image,
     >
       {heading && (
         <div className="container z-10 flex flex-col items-center justify-center py-4 text-background text-center md:py-6 lg:py-8">
-          <h1>{heading}</h1>
+          <h1 className={cn(getHeadingFontWeight)}>{heading}</h1>
           {subheading && <h3>{subheading}</h3>}
           {heroTagline && (
             <>

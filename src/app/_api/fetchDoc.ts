@@ -1,6 +1,9 @@
 import type { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
+import type { Config } from '../../payload/payload-types'
 import { PAGE } from '../_graphql/pages'
+import { POST } from '../_graphql/posts'
+import { PROJECT } from '../_graphql/projects'
 import { GRAPHQL_API_URL } from './shared'
 import { payloadToken } from './token'
 
@@ -9,10 +12,18 @@ const queryMap = {
     query: PAGE,
     key: 'Pages',
   },
+  posts: {
+    query: POST,
+    key: 'Posts',
+  },
+  projects: {
+    query: PROJECT,
+    key: 'Projects',
+  },
 }
 
 export const fetchDoc = async <T>(args: {
-  collection: 'pages'
+  collection: keyof Config['collections']
   slug?: string
   id?: string
   draft?: boolean

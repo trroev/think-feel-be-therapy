@@ -22,40 +22,6 @@ export const Hero: Block = {
       type: 'text',
     },
     {
-      name: 'headingFontWeight',
-      type: 'select',
-      options: [
-        {
-          label: 'Thin',
-          value: 'thin',
-        },
-        {
-          label: 'Light',
-          value: 'light',
-        },
-        {
-          label: 'Normal',
-          value: 'normal',
-        },
-        {
-          label: 'Medium',
-          value: 'medium',
-        },
-        {
-          label: 'Semi-Bold',
-          value: 'semibold',
-        },
-        {
-          label: 'Bold',
-          value: 'bold',
-        },
-        {
-          label: 'Extra-Bold',
-          value: 'extrabold',
-        },
-      ],
-    },
-    {
       name: 'subheading',
       type: 'text',
     },

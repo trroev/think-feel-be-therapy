@@ -1,6 +1,8 @@
 import {
   ACCORDION_BLOCK,
+  ARCHIVE_BLOCK,
   CALL_TO_ACTION,
+  CONTENT,
   HERO_BLOCK,
   MEDIA_BLOCK,
   MENTAYA_WIDGET_BLOCK,
@@ -31,7 +33,9 @@ export const PAGE = `
         }
         layout {
           ${ACCORDION_BLOCK}
+          ${ARCHIVE_BLOCK}
           ${CALL_TO_ACTION}
+          ${CONTENT}
           ${HERO_BLOCK}
           ${MEDIA_BLOCK}
           ${MENTAYA_WIDGET_BLOCK}

@@ -73,7 +73,7 @@ const richText: RichText = (
                 disableLabel: true,
                 overrides: {
                   admin: {
-                    condition: (_: any, data: any) => Boolean(data?.enableLink),
+                    condition: (_, data) => Boolean(data?.enableLink),
                   },
                 },
               }),

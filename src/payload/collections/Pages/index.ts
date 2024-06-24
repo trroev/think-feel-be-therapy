@@ -2,9 +2,12 @@ import type { CollectionConfig } from 'payload/types'
 
 import { admins } from '../../access/admins'
 import { adminsOrPublished } from '../../access/adminsOrPublished'
+import { Archive } from '../../blocks/ArchiveBlock'
 import { CallToAction } from '../../blocks/call-to-action'
+import { Content } from '../../blocks/Content'
 import { MediaBlock } from '../../blocks/MediaBlock'
 import { slugField } from '../../fields/slug'
+import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { revalidatePage } from './hooks/revalidatePage'
 import { pageHeader } from '../../fields/page-header'
@@ -28,6 +31,7 @@ export const Pages: CollectionConfig = {
   hooks: {
     beforeChange: [populatePublishedAt],
     afterChange: [revalidatePage],
+    afterRead: [populateArchiveBlock],
   },
   versions: {
     drafts: true,
@@ -67,7 +71,9 @@ export const Pages: CollectionConfig = {
               required: true,
               blocks: [
                 Accordion,
+                Archive,
                 CallToAction,
+                Content,
                 Hero,
                 MediaBlock,
                 MentayaWidget,

@@ -4,7 +4,7 @@ import { Montserrat } from 'next/font/google'
 
 import { cn } from '@/_lib'
 
-import '@/styles/globals.css'
+import '@/_styles/globals.css'
 
 import { badgeGroup, navData } from '@/_config'
 import { SiteFooter } from '@/_components/site-footer'

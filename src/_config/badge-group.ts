@@ -1,32 +1,28 @@
 export const badgeGroup = [
   {
     badge: {
-      alt: 'American Psychological Association',
-      src: '/images/apa-logo.png',
-    },
-    link: {
-      label: 'APA',
-      url: 'https://www.apa.org/',
+      alt: 'LGBTQ+ Affirming Therapist',
+      src: '/images/logos/LGBTQ+Affirming.png',
     },
   },
   {
     badge: {
-      alt: 'National Board for Certified Counselors',
-      src: '/images/nbcc-logo.png',
+      alt: 'Mental Health Match',
+      src: '/images/logos/mhm-badge.png',
     },
     link: {
-      label: 'NBCC',
-      url: 'https://www.nbcc.org/',
+      label: 'Mental Health Match',
+      url: 'https://mentalhealthmatch.com/therapist-profile/michigan/grand-rapids/rachael-mathiak',
     },
   },
   {
     badge: {
-      alt: 'American Counseling Association',
-      src: '/images/aca-logo.png',
+      alt: 'Psychology Today',
+      src: '/images/logos/psychology-today-badge.png',
     },
     link: {
-      label: 'ACA',
-      url: 'https://www.counseling.org',
+      label: 'Psychology Today',
+      url: 'https://www.psychologytoday.com/us/therapists/rachael-mathiak-grand-rapids-mi/1127944',
     },
   },
 ]

@@ -1,7 +1,7 @@
 export const navData = {
   logo: {
     alt: 'Think.Feel.Be. Therapy',
-    url: '/logo.svg',
+    url: '/images/logos/think-feel-be-therapy-png(2).png',
   },
   navItems: [
     { label: 'Home', link: '/' },

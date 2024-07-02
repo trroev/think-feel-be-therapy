@@ -1,0 +1,57 @@
+'use client'
+
+import { type FC } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+import { cn } from '@/_lib'
+
+import { Button, Divider } from '../ui'
+
+interface MainNavProps {
+  navigation: {
+    logo: {
+      alt: string
+      url: string
+    }
+    navItems: {
+      label: string
+      link: string
+    }[]
+  }
+}
+
+const MainNav: FC<MainNavProps> = ({ navigation }) => {
+  const pathname = usePathname()
+  const navItems = navigation.navItems
+
+  return (
+    <nav className="hidden md:flex">
+      <div className="flex items-center space-x-4">
+        {navItems.map((item) => {
+          const slug = item.link
+
+          return (
+            <Link
+              key={`${slug}-${item.label}`}
+              href={`/${slug}`}
+              className={cn(
+                pathname === `/${slug}` && 'font-medium underline',
+                'hover:underline',
+                'lg:text-xl'
+              )}
+            >
+              {item.label}
+            </Link>
+          )
+        })}
+        <Divider orientation="vertical" />
+        <Button asChild variant="secondary">
+          <Link href="https://thinkfeelbetherapy.sessionshealth.com/">Schedule a Session</Link>
+        </Button>
+      </div>
+    </nav>
+  )
+}
+
+export { MainNav }

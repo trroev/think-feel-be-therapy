@@ -1,9 +1,10 @@
 'use client'
 
 import * as React from 'react'
-import { ChevronDown } from '../svg'
-import { cn } from '@/lib'
+import { cn } from '@/_lib'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
+
+import { ChevronDown } from '../svg'
 
 const AccordionRoot = AccordionPrimitive.Root
 
@@ -24,7 +25,7 @@ const AccordionTrigger = React.forwardRef<
       ref={ref}
       className={cn(
         'flex flex-1 items-center justify-between py-4 text-left font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180',
-        className,
+        className
       )}
       {...props}
     >

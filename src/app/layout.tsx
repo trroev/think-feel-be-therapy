@@ -2,9 +2,9 @@ import { type ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 
-import '@/styles/globals.css'
+import '@/_styles/globals.css'
 
-import { cn } from '@/lib'
+import { cn } from '@/_lib'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -20,6 +20,10 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body
         className={cn('min-h-screen bg-white text-foreground antialiased', montserrat.className)}
       >

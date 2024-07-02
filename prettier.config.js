@@ -11,7 +11,6 @@ module.exports = {
     '^(next/(.*)$)|^(next$)',
     '<THIRD_PARTY_MODULES>',
     '',
-    '^types$',
     '^@/_types(.*)$',
     '^@/_config(.*)$',
     '^@/_lib(.*)$',

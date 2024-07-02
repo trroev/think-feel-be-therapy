@@ -1,8 +1,9 @@
 'use client'
 
 import * as React from 'react'
-import { cn } from '@/_lib'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
+
+import { cn } from '@/_lib'
 
 import { ChevronDown } from '../svg'
 

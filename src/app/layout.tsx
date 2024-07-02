@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
+
 import { cn } from '@/_lib'
 
 import '@/_styles/globals.css'

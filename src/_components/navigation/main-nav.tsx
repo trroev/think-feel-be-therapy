@@ -16,6 +16,7 @@ interface MainNavProps {
 const MainNav: FC<MainNavProps> = ({ navigation }) => {
   const pathname = usePathname()
   const navItems = navigation.navItems
+  console.log('nav items:', navItems)
 
   return (
     <nav className="hidden md:flex">
@@ -26,7 +27,7 @@ const MainNav: FC<MainNavProps> = ({ navigation }) => {
           return (
             <Link
               key={`${slug}-${item.label}`}
-              href={`/${slug}`}
+              href={slug}
               className={cn(
                 pathname === `/${slug}` && 'font-medium underline',
                 'hover:underline',

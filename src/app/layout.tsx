@@ -4,7 +4,11 @@ import { Montserrat } from 'next/font/google'
 
 import { cn } from '@/_lib'
 
-import '@/_styles/globals.css'
+import '@/styles/globals.css'
+
+import { badgeGroup, navData } from '@/_config'
+import { SiteFooter } from '@/_components/site-footer'
+import { SiteHeader } from '@/_components/site-header'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -27,7 +31,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={cn('min-h-screen bg-white text-foreground antialiased', montserrat.className)}
       >
-        {children}
+        <SiteHeader navigation={navData} />
+        <main className="grow">{children}</main>
+        <SiteFooter badgeGroup={badgeGroup} navigation={navData} />
       </body>
     </html>
   )

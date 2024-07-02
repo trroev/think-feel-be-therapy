@@ -1,8 +1,8 @@
 export default function IndexPage() {
   return (
-    <main>
+    <section>
       <h1>Think.Feel.Be. Therapy</h1>
       <h6>Coming soon...</h6>
-    </main>
+    </section>
   )
 }

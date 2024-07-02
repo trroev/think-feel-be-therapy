@@ -4,21 +4,13 @@ import { type FC } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { type Navigation } from '@/_types'
 import { cn } from '@/_lib'
 
 import { Button, Divider } from '../ui'
 
 interface MainNavProps {
-  navigation: {
-    logo: {
-      alt: string
-      url: string
-    }
-    navItems: {
-      label: string
-      link: string
-    }[]
-  }
+  navigation: Navigation
 }
 
 const MainNav: FC<MainNavProps> = ({ navigation }) => {

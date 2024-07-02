@@ -2,6 +2,8 @@ import { type FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { type Navigation } from '@/_types'
+
 import { Divider } from '../ui'
 
 interface Link {
@@ -10,29 +12,24 @@ interface Link {
 }
 
 interface SiteFooterProps {
-  footer: {
-    badgeGroup?:
-      | {
-          badge: {
-            alt: string
-            src: string
-          }
-          link: Link
-        }[]
-      | null
-    navItems: {
-      label: string
-      link: Link
-    }[]
-  }
+  badgeGroup?:
+    | {
+        badge: {
+          alt: string
+          src: string
+        }
+        link: Link
+      }[]
+    | null
+  navigation: Navigation
 }
 
-const SiteFooter: FC<SiteFooterProps> = ({ footer }) => {
+const SiteFooter: FC<SiteFooterProps> = ({ badgeGroup, navigation }) => {
   return (
     <footer className="bg-brandSecondary py-12">
       <div className="container flex max-w-screen-2xl flex-col gap-6">
         <div className="flex flex-1 flex-wrap items-center justify-center gap-16 py-4 lg:gap-20">
-          {footer.badgeGroup?.map((badge) => {
+          {badgeGroup?.map((badge) => {
             const badgeLink = badge.link.url
 
             return (

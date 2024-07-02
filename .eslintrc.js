@@ -7,7 +7,7 @@ module.exports = {
   parserOptions: { ecmaVersion: 8, sourceType: 'module' },
   ignorePatterns: ['node_modules/*'],
   extends: ['eslint:recommended'],
-  plugins: ['unused-imports'],
+  plugins: ['prettier', 'unused-imports'],
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx'],

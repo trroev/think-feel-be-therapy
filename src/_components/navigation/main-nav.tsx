@@ -16,7 +16,6 @@ interface MainNavProps {
 const MainNav: FC<MainNavProps> = ({ navigation }) => {
   const pathname = usePathname()
   const navItems = navigation.navItems
-  console.log('nav items:', navItems)
 
   return (
     <nav className="hidden md:flex">

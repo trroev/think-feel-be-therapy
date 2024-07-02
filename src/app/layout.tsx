@@ -21,7 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body
-        className={cn('text-foreground min-h-screen bg-white antialiased', montserrat.className)}
+        className={cn('min-h-screen bg-white text-foreground antialiased', montserrat.className)}
       >
         {children}
       </body>

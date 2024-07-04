@@ -34,32 +34,30 @@ const CTA: FC<CTAProps> = ({ body, backgroundColor, image, heading, links, subhe
         backgroundColor === 'transparent' && !image ? 'border-y border-border' : bgColor
       )}
     >
-      {heading && (
-        <div className="container z-10 flex flex-col items-center gap-8 py-4 text-background md:py-6 lg:py-8">
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <h2 className="text-center">{heading}</h2>
-              {subheading && <h5 className="text-center">{subheading}</h5>}
-            </div>
-            {body && (
-              <div className="max-w-prose">
-                <RichText content={body} />
-              </div>
-            )}
+      <div className="container z-10 flex flex-col items-center gap-8 py-4 text-background md:py-6 lg:py-8">
+        <div className="flex flex-col gap-4 md:px-12">
+          <div className="flex flex-col gap-2">
+            {heading && <h2 className="text-center">{heading}</h2>}
+            {subheading && <h5 className="text-center">{subheading}</h5>}
           </div>
-          {links && (
-            <div className="flex md:px-12">
-              {links.map((link) => {
-                return (
-                  <Link key={`${link.href}-${link.label}`} href={link.href}>
-                    <Button variant="secondary">{link.label}</Button>
-                  </Link>
-                )
-              })}
+          {body && (
+            <div className="max-w-prose">
+              <RichText content={body} />
             </div>
           )}
         </div>
-      )}
+        {links && (
+          <div className="flex md:px-12">
+            {links.map((link) => {
+              return (
+                <Link key={`${link.href}-${link.label}`} href={link.href}>
+                  <Button variant="secondary">{link.label}</Button>
+                </Link>
+              )
+            })}
+          </div>
+        )}
+      </div>
       {image && (
         <Image
           src={image.url}

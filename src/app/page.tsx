@@ -27,10 +27,10 @@ export default function IndexPage() {
         }}
         subheading="Therapy"
       />
-      <TextSection
-        richText="<p>Think. Feel. Be is a space to come make sense of the way you experience your thoughts and emotions and move to a place of more self-understanding and self-acceptance.
-Rachael is especially helpful with supporting people who are struggling with anxiety, depression, parenting stress, issues in relationships, and providing affirming care for LGBTQIA+ folks.
-</p>"
+      <CTA
+        backgroundColor="brandPrimary"
+        subheading="Think. Feel. Be is a space to come make sense of the way you experience your thoughts and emotions and move to a place of more self-understanding and self-acceptance.
+          Rachael is especially helpful with supporting people who are struggling with anxiety, depression, parenting stress, issues in relationships, and providing affirming care for LGBTQIA+ folks."
       />
       <TextSection
         heading="Our Values"

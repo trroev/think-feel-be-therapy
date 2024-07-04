@@ -59,7 +59,7 @@ const Disclaimer: FC<DisclaimerProps> = ({ heading, subheading }) => {
           <h6>Questions</h6>
           <Divider />
           <p>
-            If you have any questions about this Disclaimer, please contact us at
+            If you have any questions about this Disclaimer, please contact us at{' '}
             <a
               href="mailto:therapy@rachaelmathiak.com"
               className="font-semibold text-brandPrimary hover:underline"

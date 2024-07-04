@@ -1,5 +1,6 @@
 export * from './accordion'
 export * from './button'
+export * from './dialog'
 export * from './divider'
 export * from './sheet'
 export * from './svg'

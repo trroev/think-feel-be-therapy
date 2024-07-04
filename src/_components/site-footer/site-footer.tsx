@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { type Navigation } from '@/_types'
 
+import { TermsOfService } from '../terms-of-service'
 import { Divider } from '../ui'
 
 interface Link {
@@ -43,7 +44,10 @@ const SiteFooter: FC<SiteFooterProps> = ({ badgeGroup, navigation }) => {
         <div className="flex flex-col-reverse items-center justify-between gap-8 font-medium text-background sm:flex-row">
           <p>&copy; {new Date().getFullYear()} Think.Feel.Be. Therapy</p>
           <div className="flex items-center space-x-4">
-            <button className="hover:underline">Terms of Service</button>
+            <TermsOfService
+              heading="Terms of Service"
+              subheading="Last updated: Sep 18, 2023 9:21 PM"
+            />
           </div>
         </div>
       </div>

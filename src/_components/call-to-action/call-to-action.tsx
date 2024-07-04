@@ -26,6 +26,7 @@ interface CTAProps {
 
 const CTA: FC<CTAProps> = ({ body, backgroundColor, image, heading, links, subheading }) => {
   const bgColor = `bg-${backgroundColor}`
+
   return (
     <section
       className={cn(
@@ -47,17 +48,15 @@ const CTA: FC<CTAProps> = ({ body, backgroundColor, image, heading, links, subhe
             )}
           </div>
           {links && (
-            <>
-              <div className="flex md:px-12">
-                {links.map((link) => {
-                  return (
-                    <Link key={`${link.href}-${link.label}`} href={link}>
-                      <Button variant="secondary">{link.label}</Button>
-                    </Link>
-                  )
-                })}
-              </div>
-            </>
+            <div className="flex md:px-12">
+              {links.map((link) => {
+                return (
+                  <Link key={`${link.href}-${link.label}`} href={link.href}>
+                    <Button variant="secondary">{link.label}</Button>
+                  </Link>
+                )
+              })}
+            </div>
           )}
         </div>
       )}

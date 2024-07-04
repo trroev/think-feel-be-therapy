@@ -12,7 +12,7 @@ interface AccordionProps {
   type?: 'single' | 'multiple'
 }
 
-const Accordion: FC<AccordionProps> = ({ items, type }) => {
+const Accordion: FC<AccordionProps> = ({ items, type = 'multiple' }) => {
   return (
     <section className="container py-12">
       <AccordionRoot type={type || 'multiple'} className="w-full">

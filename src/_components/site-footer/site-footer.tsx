@@ -4,6 +4,8 @@ import Link from 'next/link'
 
 import { type Navigation } from '@/_types'
 
+import { Disclaimer } from '../disclaimer'
+import { PrivacyPolicy } from '../privacy-policy'
 import { TermsOfService } from '../terms-of-service'
 import { Divider } from '../ui'
 
@@ -48,6 +50,11 @@ const SiteFooter: FC<SiteFooterProps> = ({ badgeGroup, navigation }) => {
               heading="Terms of Service"
               subheading="Last updated: Sep 18, 2023 9:21 PM"
             />
+            <PrivacyPolicy
+              heading="Privacy Policy"
+              subheading="Last updated: Nov 1, 2023 9:12 PM"
+            />
+            <Disclaimer heading="Disclaimer" subheading="Last updated: Sep 18, 2023 9:24 PM" />
           </div>
         </div>
       </div>

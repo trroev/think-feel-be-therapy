@@ -26,6 +26,7 @@ const TermsOfService: FC<TermsOfServiceProps> = ({ heading, subheading }) => {
           <DialogTitle>{heading}</DialogTitle>
           <DialogDescription>{subheading}</DialogDescription>
         </DialogHeader>
+        <Divider />
         <div className="flex flex-col space-y-2">
           <p>
             Please read this Terms of Service (&quot;Terms&quot;, &quot;Terms of Service&quot;)

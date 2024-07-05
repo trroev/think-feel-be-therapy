@@ -1,5 +1,7 @@
+import { testimonials } from '@/_config'
 import { CTA } from '@/_components/call-to-action'
 import { Hero } from '@/_components/hero'
+import { TestimonialSlider } from '@/_components/testimonial-slider'
 import { TextSection } from '@/_components/text-section'
 
 export default function IndexPage() {
@@ -49,6 +51,7 @@ export default function IndexPage() {
         <p>Our motto is accept more, resist less. I accept people wherever they are in life when they show up to my door, and guide them to learn how to better accept themselves and their circumstances. Acceptance is so much more than a value. It is also a skill, a guiding principle, and a way of relating to others. </p>
         "
       />
+      <TestimonialSlider testimonials={testimonials} />
       <CTA
         heading="Ready to start your journey?"
         image={{

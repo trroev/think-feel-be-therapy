@@ -1,3 +1,5 @@
+export * from './arrow-left'
+export * from './arrow-right'
 export * from './chevron-down'
 export * from './hamburger-menu'
 export * from './x'

@@ -1,5 +1,6 @@
 import { type FC } from 'react'
 import Image from 'next/image'
+import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '@/_lib'
 
@@ -71,13 +72,13 @@ const Hero: FC<HeroProps> = ({
           {heroTagline && (
             <>
               <Divider className="my-4" />
-              <div className="flex md:px-12">
+              <Slot className="flex flex-col px-4 max-sm:max-w-sm">
                 <h4>
                   {taglineHeading}
                   <br />
                   <WordCarousel options={{ loop: true }} words={wordsArray} />
                 </h4>
-              </div>
+              </Slot>
             </>
           )}
         </div>

@@ -27,18 +27,23 @@ interface SiteFooterProps {
   navigation: Navigation
 }
 
-const SiteFooter: FC<SiteFooterProps> = ({ badgeGroup, navigation }) => {
+const SiteFooter: FC<SiteFooterProps> = ({ badgeGroup }) => {
   return (
     <footer className="bg-brandSecondary py-12">
       <div className="container flex max-w-screen-2xl flex-col gap-6">
         <div className="flex flex-1 flex-wrap items-center justify-center gap-16 py-4 lg:gap-20">
           {badgeGroup?.map((badge) => {
+            const BadgeImage = () => (
+              <Image src={badge.badge.src} alt={badge.badge.alt} height={150} width={150} />
+            )
             const badgeLink = badge.link?.url
 
-            return (
+            return badge.link ? (
               <Link key={`${badge.badge.alt}`} href={badgeLink ?? ''} target="_blank">
-                <Image src={badge.badge.src} alt={badge.badge.alt} height={150} width={150} />
+                <BadgeImage />
               </Link>
+            ) : (
+              <BadgeImage key={`${badge.badge.alt}`} />
             )
           })}
         </div>

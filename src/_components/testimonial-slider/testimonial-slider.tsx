@@ -25,24 +25,15 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({ testimonials }) => {
   return (
     <section className="bg-brandQuaternary">
       <div className="container flex justify-center py-12">
-        <Carousel
-          // plugins={[
-          //   Autoplay({
-          //     delay: 5000,
-          //   }),
-          // ]}
-          className="w-full max-w-xl"
-        >
+        <Carousel className="w-full max-w-[250px] sm:max-w-sm md:max-w-xl">
           <CarouselContent>
             {testimonials.map((testimonial) => (
               <CarouselItem key={testimonial.id} className="flex items-center justify-center">
-                <div className="p-1">
-                  <Card>
-                    <CardContent className="flex items-center justify-center p-6">
-                      <p>{testimonial.content}</p>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card>
+                  <CardContent className="flex items-center justify-center p-6">
+                    <p className="text-sm sm:text-base">{testimonial.content}</p>
+                  </CardContent>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>

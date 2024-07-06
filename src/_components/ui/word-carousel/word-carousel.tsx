@@ -14,13 +14,13 @@ interface WordCarouselProps {
 }
 
 const WordCarousel: FC<WordCarouselProps> = ({ options, words }) => {
-  const [emblaRef] = useEmblaCarousel(options, [Autoplay(), Fade()])
+  const [emblaRef] = useEmblaCarousel(options, [Autoplay({ delay: 3000 }), Fade()])
 
   return (
     <div className="overflow-hidden" ref={emblaRef}>
       <div className="flex">
         {words.map((word, index) => (
-          <span key={index} className="flex-[0_0_100%]">
+          <span key={index} className="flex-[0_0_100%] text-brandTertiary">
             {word.word}
           </span>
         ))}

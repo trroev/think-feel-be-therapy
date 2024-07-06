@@ -55,8 +55,8 @@ export default function IndexPage() {
       <CTA
         heading="Ready to start your journey?"
         image={{
-          alt: 'McWay Falls in Big Sur, California',
-          url: '/images/mcway-falls.jpg',
+          alt: 'Big Sur, California',
+          url: '/images/big-sur_flowers.jpg',
         }}
         links={[
           {

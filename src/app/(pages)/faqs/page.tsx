@@ -134,7 +134,16 @@ export default function FAQsPage() {
         subheading="Answers to your most frequently asked questions about Think.Feel.Be. Therapy"
       />
       <Accordion items={accordionItems} />
-      <CTA image={{ alt: 'McWay Falls in Big Sur, California', url: '/images/mcway-falls.jpg' }} />
+      <CTA
+        heading="Learn more about Rachael"
+        links={[
+          {
+            href: '/about',
+            label: 'Meet Rachael',
+          },
+        ]}
+        image={{ alt: 'Bixby Bridge in Big Sur, California', url: '/images/bixby-bridge.jpg' }}
+      />
     </>
   )
 }

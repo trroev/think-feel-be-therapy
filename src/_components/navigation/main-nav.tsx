@@ -30,7 +30,7 @@ const MainNav: FC<MainNavProps> = ({ navigation }) => {
               className={cn(
                 pathname === `/${slug}` && 'font-medium underline',
                 'hover:underline',
-                'lg:text-xl'
+                'text-sm lg:text-xl'
               )}
             >
               {item.label}

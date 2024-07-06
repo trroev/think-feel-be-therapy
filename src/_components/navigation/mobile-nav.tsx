@@ -34,12 +34,12 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
       <SheetContent className="border-none bg-brandPrimary p-0 text-background">
         <div className="flex flex-col gap-10">
           <div className="w-full border-b border-border/40 p-6">
-            <MobileLink href="/" className="group flex items-center gap-2" onOpenChange={setOpen}>
+            <MobileLink href="/" className="group flex items-center gap-4" onOpenChange={setOpen}>
               <Image
                 src={logoUrl || '/'}
                 alt="Think.Feel.Be. Therapy logo"
-                height={50}
-                width={50}
+                height={75}
+                width={75}
               />
               <span className="font-bold group-hover:underline">Think.Feel.Be. Therapy</span>
             </MobileLink>

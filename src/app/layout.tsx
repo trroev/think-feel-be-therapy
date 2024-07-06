@@ -29,7 +29,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body
-        className={cn('min-h-screen bg-white text-foreground antialiased', montserrat.className)}
+        className={cn(
+          'min-h-screen bg-background text-foreground antialiased',
+          montserrat.className
+        )}
       >
         <SiteHeader navigation={navData} />
         <main className="grow">{children}</main>

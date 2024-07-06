@@ -3,7 +3,37 @@ import { CTA } from '@/_components/call-to-action'
 import { PageHeader } from '@/_components/page-header'
 import { TextSection } from '@/_components/text-section'
 
+const getToKnowMeContent = [
+  {
+    content: `
+      <ul>
+        <li>I enjoy mindful nature walks with my partner, our daughter and family dog.</li>
+        <li>Live music and concerts are some of my favorite experiences. Ask me about some of my all-time favorites (so far).</li>
+        <li>Large bodies of water are my grounding place. I miss living near the Ocean, and try to get in proximity to water as often as I can.</li>
+        <li>Traveling to new places and experiencing different cultures is a lifelong passion and core value for me. Until the pandemic, I had a 10 year streak of visiting one “new to me” place every year. I hope to get back to that soon!</li>
+        <li>I’m a book nerd, and usually in the evenings or weekends you can find me with my nose lost in a book.</li>
+      </ul>
+    `,
+    heading: 'Get to Know Me',
+    id: 'get-to-know-me',
+  },
+]
+
 const accordionItems = [
+  {
+    content: `
+      <ul>
+        <li>Person/Client Centered</li>
+        <li>Interpersonal Therapy</li>
+        <li>Cognitive Behavioral Therapy (CBT)</li>
+        <li>Mindfulness</li>
+        <li>Dialectical Behavioral Therapy (DBT)</li>
+        <li>Exposure Response Prevention (ERP)</li>
+      </ul>
+    `,
+    heading: 'Modes of Treatment',
+    id: 'modes-of-treatment',
+  },
   {
     content: `
       <ul>
@@ -119,20 +149,6 @@ const accordionItems = [
     heading: 'Experience',
     id: 'experience',
   },
-  {
-    content: `
-      <ul>
-        <li>Person/Client Centered</li>
-        <li>Interpersonal Therapy</li>
-        <li>Cognitive Behavioral Therapy (CBT)</li>
-        <li>Mindfulness</li>
-        <li>Dialectical Behavioral Therapy (DBT)</li>
-        <li>Exposure Response Prevention (ERP)</li>
-      </ul>
-    `,
-    heading: 'Modes of Treatment',
-    id: 'modes-of-treatment',
-  },
 ]
 
 export default function AboutPage() {
@@ -161,6 +177,7 @@ export default function AboutPage() {
           Looking forward to connecting with you!
           </p>"
       />
+      <Accordion items={getToKnowMeContent} />
       <Accordion items={accordionItems} />
       <CTA
         backgroundColor="brandSecondary"
@@ -172,7 +189,12 @@ export default function AboutPage() {
           },
         ]}
       />
-      <CTA image={{ alt: 'McWay Falls in Big Sur, California', url: '/images/mcway-falls.jpg' }} />
+      <CTA
+        image={{
+          alt: 'Asilomar Beach in Pacific Grove, California',
+          url: '/images/asilomar-beach.jpg',
+        }}
+      />
       <CTA
         backgroundColor="brandPrimary"
         heading="Want to learn more?"

@@ -12,11 +12,11 @@ export const testimonials = [
     id: 3,
   },
   {
-    content: `“I'll never forget the day I was driving in the car with my 5 year old who was ruminating about one of the many anxiety provokers we've come across and at her wits end exclaimed, "I just CAN'T STOP thinking about it!." Since, I've been meeting with Rachael for parent guidance, hoping to learn how to better help my girl cope. I'm happy to report, we've seen so many positive changes over the last 8 months. Rachael has patiently listened to my distress, reframed my thinking and my daughter's struggles much more helpfully, and despite never having met my daughter, understands her and can therefore teach me the skills I need. Rachael's influence is constant. It has changed how we understand our daughter and her worries, changed our parenting techniques- especially how we handle unwanted behavior, and how we react and encourage her during the most difficult moments. I am very grateful for stumbling upon Rachael- she's calm, never judges, patient, firm, and has a wealth of knowledge and expertise to share.” -Parent Client 2022-2023`,
+    content: `"Since, I've been meeting with Rachael for parent guidance, hoping to learn how to better help my girl cope. I'm happy to report, we've seen so many positive changes over the last 8 months. Rachael has patiently listened to my distress, reframed my thinking and my daughter's struggles much more helpfully, and despite never having met my daughter, understands her and can therefore teach me the skills I need. Rachael's influence is constant. It has changed how we understand our daughter and her worries, changed our parenting techniques- especially how we handle unwanted behavior, and how we react and encourage her during the most difficult moments. I am very grateful for stumbling upon Rachael- she's calm, never judges, patient, firm, and has a wealth of knowledge and expertise to share.” -Parent Client 2022-2023`,
     id: 4,
   },
   {
-    content: `"Rachael was the sweetest therapist I've ever met. I loved her attentiveness and active listening skills. I absolutely recommend her, as she is very open minded and easy to warm up to." -Adolescent client 2023-2024`,
+    content: `"Rachael was the sweetest therapist I've ever met. I loved her attentiveness and active listening skills. I absolutely recommend her, as she is very open minded and easy to warm up to." -Client 2023-2024`,
     id: 5,
   },
   {

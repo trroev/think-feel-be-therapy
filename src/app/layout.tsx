@@ -2,9 +2,13 @@ import { type ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 
-import '@/styles/globals.css'
+import { cn } from '@/_lib'
 
-import { cn } from '@/lib'
+import '@/_styles/globals.css'
+
+import { badgeGroup, navData } from '@/_config'
+import { SiteFooter } from '@/_components/site-footer'
+import { SiteHeader } from '@/_components/site-header'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -20,10 +24,19 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body
-        className={cn('min-h-screen bg-white text-foreground antialiased', montserrat.className)}
+        className={cn(
+          'min-h-screen bg-background text-foreground antialiased',
+          montserrat.className
+        )}
       >
+        <SiteHeader navigation={navData} />
         <main className="grow">{children}</main>
+        <SiteFooter badgeGroup={badgeGroup} navigation={navData} />
       </body>
     </html>
   )

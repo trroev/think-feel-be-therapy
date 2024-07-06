@@ -56,7 +56,7 @@ export default function IndexPage() {
         heading="Ready to start your journey?"
         image={{
           alt: 'Big Sur, California',
-          url: '/images/big-sur_flowers.jpg',
+          url: '/images/big-sur_redwoods.jpg',
         }}
         links={[
           {

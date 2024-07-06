@@ -3,9 +3,11 @@ import Image from 'next/image'
 
 import { cn } from '@/_lib'
 
+import { Accordion, type AccordionProps } from '../accordion'
 import { RichText } from '../rich-text'
 
 interface TextSectionProps {
+  accordion?: AccordionProps
   backgroundColor?:
     | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
     | null
@@ -18,6 +20,7 @@ interface TextSectionProps {
 }
 
 const TextSection: FC<TextSectionProps> = ({
+  accordion,
   backgroundColor,
   heading,
   headingAlignment,
@@ -60,13 +63,15 @@ const TextSection: FC<TextSectionProps> = ({
                 className="min-w-72 rounded-lg object-cover shadow-lg"
               />
             </div>
-            <div className="md:w-1/2">
+            <div className="flex flex-col gap-12 md:w-1/2">
               <RichText content={richText} />
+              {accordion && <Accordion asChild {...accordion} />}
             </div>
           </div>
         ) : (
-          <div className="flex flex-col md:px-12">
+          <div className="flex flex-col gap-12 md:px-12">
             <RichText content={richText} />
+            {accordion && <Accordion asChild {...accordion} />}
           </div>
         )}
       </div>

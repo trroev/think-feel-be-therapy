@@ -29,6 +29,7 @@ const accordionItems = [
         <li>Mindfulness</li>
         <li>Dialectical Behavioral Therapy (DBT)</li>
         <li>Exposure Response Prevention (ERP)</li>
+        <li>Unified Protocol</li>
       </ul>
     `,
     heading: 'Modes of Treatment',
@@ -176,8 +177,10 @@ export default function AboutPage() {
           <br>
           Looking forward to connecting with you!
           </p>"
+        accordion={{
+          items: getToKnowMeContent,
+        }}
       />
-      <Accordion items={getToKnowMeContent} />
       <Accordion items={accordionItems} />
       <CTA
         backgroundColor="brandSecondary"

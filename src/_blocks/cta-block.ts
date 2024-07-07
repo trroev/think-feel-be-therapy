@@ -24,9 +24,9 @@ export const CallToAction: Block = {
     },
     {
       name: 'subheading',
-      type: 'text',
+      type: 'textarea',
     },
-    richText,
+    richText('Body'),
     linkGroup({
       appearances: false,
       overrides: {

@@ -1,4 +1,6 @@
-import { Hero } from '@/_blocks/hero'
+import { CallToAction } from '@/_blocks/cta-block'
+import { Hero } from '@/_blocks/hero-block'
+import { pageHeader } from '@/_fields/page-header'
 import { slugField } from '@/_fields/slug'
 import { type CollectionConfig } from 'payload'
 
@@ -40,10 +42,10 @@ export const Pages: CollectionConfig = {
     {
       type: 'tabs',
       tabs: [
-        // {
-        //   label: 'Page Header',
-        //   fields: [pageHeader],
-        // },
+        {
+          label: 'Page Header',
+          fields: [pageHeader],
+        },
         {
           label: 'Content',
           fields: [
@@ -51,7 +53,7 @@ export const Pages: CollectionConfig = {
               name: 'content',
               type: 'blocks',
               required: true,
-              blocks: [Hero],
+              blocks: [CallToAction, Hero],
             },
           ],
         },

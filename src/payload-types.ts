@@ -63,11 +63,64 @@ export interface Page {
   id: number;
   title: string;
   publishedAt?: string | null;
-  content: HeroBlockType[];
+  pageHeader?: PageHeaderFieldType;
+  content: (CallToActionBlockType | HeroBlockType)[];
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageHeaderFieldType".
+ */
+export interface PageHeaderFieldType {
+  heading?: string | null;
+  subheading?: string | null;
+  backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CallToActionBlockType".
+ */
+export interface CallToActionBlockType {
+  backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
+  image?: number | Media | null;
+  heading?: string | null;
+  subheading?: string | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: number | Page;
+          } | null;
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ctaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

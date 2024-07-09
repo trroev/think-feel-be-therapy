@@ -1,6 +1,6 @@
 import { backgroundColor } from '@/_fields/background-color'
 import linkGroup from '@/_fields/link-group'
-import { richText } from '@/_fields/richtext'
+import { HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { type Block } from 'payload'
 
 export const CallToAction: Block = {
@@ -26,7 +26,13 @@ export const CallToAction: Block = {
       name: 'subheading',
       type: 'textarea',
     },
-    richText('Body'),
+    {
+      name: 'body',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+      }),
+    },
     linkGroup({
       appearances: false,
       overrides: {

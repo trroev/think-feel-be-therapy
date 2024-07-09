@@ -14,7 +14,7 @@ export default async function TestPage() {
     <div className="flex flex-col gap-12">
       <div>
         <h1>Test Page</h1>
-        <h4>Media collection:</h4>
+        <h4>Pages collection:</h4>
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </div>
       {/* {data.docs.map((doc) => (

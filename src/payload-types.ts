@@ -64,7 +64,7 @@ export interface Page {
   title: string;
   publishedAt?: string | null;
   pageHeader?: PageHeaderFieldType;
-  content: (CallToActionBlockType | HeroBlockType)[];
+  content: (CallToActionBlockType | HeroBlockType | TextSectionBlockType)[];
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -144,6 +144,36 @@ export interface HeroBlockType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'heroBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextSectionBlockType".
+ */
+export interface TextSectionBlockType {
+  backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
+  heading?: string | null;
+  headingAlignment?: ('left' | 'center' | 'right') | null;
+  subheading?: string | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  image?: number | Media | null;
+  imageFirst?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'textSectionBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

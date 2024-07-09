@@ -1,5 +1,6 @@
 import { CallToAction } from '@/_blocks/cta-block'
 import { Hero } from '@/_blocks/hero-block'
+import { TextSection } from '@/_blocks/text-section-block'
 import { pageHeader } from '@/_fields/page-header'
 import { slugField } from '@/_fields/slug'
 import { type CollectionConfig } from 'payload'
@@ -53,7 +54,7 @@ export const Pages: CollectionConfig = {
               name: 'content',
               type: 'blocks',
               required: true,
-              blocks: [CallToAction, Hero],
+              blocks: [CallToAction, Hero, TextSection],
             },
           ],
         },

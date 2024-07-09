@@ -88,7 +88,7 @@ export interface CallToActionBlockType {
   image?: number | Media | null;
   heading?: string | null;
   subheading?: string | null;
-  richText?: {
+  body?: {
     root: {
       type: string;
       children: {
@@ -154,7 +154,7 @@ export interface TextSectionBlockType {
   heading?: string | null;
   headingAlignment?: ('left' | 'center' | 'right') | null;
   subheading?: string | null;
-  richText?: {
+  body?: {
     root: {
       type: string;
       children: {

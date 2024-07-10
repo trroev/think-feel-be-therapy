@@ -9,6 +9,8 @@ import sharp from 'sharp'
 import { Media } from './_collections/media'
 import { Pages } from './_collections/pages'
 import { Users } from './_collections/users'
+import { Footer } from './_globals/footer'
+import { Navigation } from './_globals/navigation'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,6 +20,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Media, Pages, Users],
+  globals: [Footer, Navigation],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

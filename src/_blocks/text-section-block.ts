@@ -2,6 +2,8 @@ import { backgroundColor } from '@/_fields/background-color'
 import { HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { type Block } from 'payload'
 
+import { Accordion } from './accordion-block'
+
 export const TextSection: Block = {
   slug: 'textSectionBlock',
   imageURL: '/images/blocks/text-section-block.jpg',
@@ -54,6 +56,12 @@ export const TextSection: Block = {
     {
       name: 'imageFirst',
       type: 'checkbox',
+    },
+    {
+      name: 'accordion',
+      type: 'blocks',
+      maxRows: 1,
+      blocks: [Accordion],
     },
   ],
 }

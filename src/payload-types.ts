@@ -218,6 +218,7 @@ export interface TextSectionBlockType {
   } | null;
   image?: number | Media | null;
   imageFirst?: boolean | null;
+  accordion?: AccordionBlockType[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'textSectionBlock';

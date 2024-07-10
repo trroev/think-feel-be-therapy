@@ -64,7 +64,13 @@ export interface Page {
   title: string;
   publishedAt?: string | null;
   pageHeader?: PageHeaderFieldType;
-  content: (CallToActionBlockType | HeroBlockType | TextSectionBlockType)[];
+  content: (
+    | AccordionBlockType
+    | CallToActionBlockType
+    | HeroBlockType
+    | MentayaWidgetBlockType
+    | TextSectionBlockType
+  )[];
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -78,6 +84,37 @@ export interface PageHeaderFieldType {
   heading?: string | null;
   subheading?: string | null;
   backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlockType".
+ */
+export interface AccordionBlockType {
+  type?: ('multiple' | 'single') | null;
+  items?:
+    | {
+        heading: string;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'accordionBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -144,6 +181,16 @@ export interface HeroBlockType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'heroBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MentayaWidgetBlockType".
+ */
+export interface MentayaWidgetBlockType {
+  fullWidth?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mentayaWidgetBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

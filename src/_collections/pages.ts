@@ -1,5 +1,7 @@
+import { Accordion } from '@/_blocks/accordion-block'
 import { CallToAction } from '@/_blocks/cta-block'
 import { Hero } from '@/_blocks/hero-block'
+import { MentayaWidget } from '@/_blocks/mentaya-widget-block'
 import { TextSection } from '@/_blocks/text-section-block'
 import { pageHeader } from '@/_fields/page-header'
 import { slugField } from '@/_fields/slug'
@@ -54,7 +56,7 @@ export const Pages: CollectionConfig = {
               name: 'content',
               type: 'blocks',
               required: true,
-              blocks: [CallToAction, Hero, TextSection],
+              blocks: [Accordion, CallToAction, Hero, MentayaWidget, TextSection],
             },
           ],
         },

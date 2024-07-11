@@ -1,4 +1,5 @@
 import link from '@/_fields/link'
+import { HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { GlobalConfig } from 'payload'
 
 export const Footer: GlobalConfig = {
@@ -20,8 +21,30 @@ export const Footer: GlobalConfig = {
         },
         link({
           appearances: false,
+          disableLabel: true,
         }),
       ],
+    },
+    {
+      name: 'termsOfService',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+      }),
+    },
+    {
+      name: 'privacyPolicy',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+      }),
+    },
+    {
+      name: 'disclaimer',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+      }),
     },
   ],
 }

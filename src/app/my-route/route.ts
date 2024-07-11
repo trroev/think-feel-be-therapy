@@ -6,8 +6,8 @@ export const GET = async () => {
     config: configPromise,
   })
 
-  const data = await payload.find({
-    collection: 'media',
+  const data = await payload.findGlobal({
+    slug: 'footer',
   })
 
   return Response.json(data)

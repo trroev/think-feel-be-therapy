@@ -1,16 +1,18 @@
 import { type FC } from 'react'
+import { type PageHeaderFieldType } from '@/payload-types'
 
 import { cn } from '@/_lib'
 
 import { Divider } from '../ui'
 
-interface PageHeaderProps {
-  backgroundColor?:
-    | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
-    | null
-  heading?: string | null
-  subheading?: string | null
-}
+interface PageHeaderProps extends PageHeaderFieldType {}
+// {
+//   backgroundColor?:
+//     | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
+//     | null
+//   heading?: string | null
+//   subheading?: string | null
+// }
 
 const PageHeader: FC<PageHeaderProps> = ({ backgroundColor, heading, subheading }) => {
   const bgColor = `bg-${backgroundColor}`

@@ -1,21 +1,14 @@
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { getPages } from '@/app/actions/get-pages'
 
 export default async function TestPage() {
-  const payload = await getPayload({
-    config: configPromise,
-  })
-
-  const data = await payload.find({
-    collection: 'pages',
-  })
+  const pageData = await getPages()
 
   return (
     <div className="flex flex-col gap-12">
       <div>
         <h1>Test Page</h1>
         <h4>Pages collection:</h4>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <pre>{JSON.stringify(pageData, null, 2)}</pre>
       </div>
       {/* {data.docs.map((doc) => (
         <div key={doc.id} className="flex flex-col gap-4">

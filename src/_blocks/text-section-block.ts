@@ -1,5 +1,5 @@
 import { backgroundColor } from '@/_fields/background-color'
-import { HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical'
 import { type Block } from 'payload'
 
 import { Accordion } from './accordion-block'
@@ -48,6 +48,7 @@ export const TextSection: Block = {
         features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
       }),
     },
+    lexicalHTML('body', { name: 'body_html' }),
     {
       name: 'image',
       type: 'upload',

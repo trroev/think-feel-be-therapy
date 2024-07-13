@@ -1,5 +1,6 @@
 import type { Page } from '@/payload-types'
 
+import { Blocks } from '@/_components/blocks'
 import { PageHeader } from '@/_components/page-header'
 import { getPage } from '@/app/actions'
 import { getPages } from '@/app/actions/get-pages'
@@ -10,7 +11,7 @@ export default async function Page({ params: { slug = '' } }) {
   return (
     <>
       {pageHeader?.heading ?? pageHeader?.subheading ? <PageHeader {...pageHeader} /> : null}
-      {/* <Blocks blocks={content} /> */}
+      <Blocks blocks={content} />
     </>
   )
 }

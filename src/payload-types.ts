@@ -112,6 +112,7 @@ export interface AccordionBlockType {
           };
           [k: string]: unknown;
         } | null;
+        content_html?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -143,6 +144,7 @@ export interface CallToActionBlockType {
     };
     [k: string]: unknown;
   } | null;
+  body_html?: string | null;
   links?:
     | {
         link: {
@@ -172,6 +174,7 @@ export interface HeroBlockType {
   heading?: string | null;
   headingFontWeight?: ('thin' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold') | null;
   subheading?: string | null;
+  addTagline?: boolean | null;
   tagline?: {
     staticHeading?: string | null;
     words?:
@@ -219,6 +222,7 @@ export interface TextSectionBlockType {
     };
     [k: string]: unknown;
   } | null;
+  body_html?: string | null;
   image?: number | Media | null;
   imageFirst?: boolean | null;
   accordion?: AccordionBlockType[] | null;

@@ -59,8 +59,15 @@ export const Hero: Block = {
       type: 'text',
     },
     {
+      name: 'addTagline',
+      type: 'checkbox',
+    },
+    {
       name: 'tagline',
       type: 'group',
+      admin: {
+        condition: (_, siblingData) => siblingData.addTagline,
+      },
       fields: [
         {
           name: 'staticHeading',
@@ -87,11 +94,5 @@ export const Hero: Block = {
         },
       ],
     },
-    // {
-    //   name: 'heroTagline',
-    //   type: 'blocks',
-    //   maxRows: 1,
-    //   blocks: [Tagline],
-    // },
   ],
 }

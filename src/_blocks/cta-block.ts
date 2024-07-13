@@ -1,6 +1,6 @@
 import { backgroundColor } from '@/_fields/background-color'
 import linkGroup from '@/_fields/link-group'
-import { HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical'
 import { type Block } from 'payload'
 
 export const CallToAction: Block = {
@@ -33,6 +33,7 @@ export const CallToAction: Block = {
         features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
       }),
     },
+    lexicalHTML('body', { name: 'body_html' }),
     linkGroup({
       appearances: false,
       overrides: {

@@ -1,4 +1,4 @@
-import { HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical'
 import { type Block } from 'payload'
 
 export const Accordion: Block = {
@@ -45,6 +45,7 @@ export const Accordion: Block = {
             features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
           }),
         },
+        lexicalHTML('content', { name: 'content_html' }),
       ],
     },
   ],

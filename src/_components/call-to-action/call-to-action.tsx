@@ -1,30 +1,16 @@
 import { type FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { type CallToActionBlockType, type Media, type Page } from '@/payload-types'
 
 import { cn } from '@/_lib'
 
 import { RichText } from '../rich-text'
 import { Button } from '../ui'
 
-interface CTAProps {
-  backgroundColor?:
-    | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
-    | null
-  body?: string
-  heading?: string
-  image?: {
-    alt: string
-    url: string
-  }
-  links?: {
-    href: string
-    label: string
-  }[]
-  subheading?: string
-}
+interface CTAProps extends CallToActionBlockType {}
 
-const CTA: FC<CTAProps> = ({ body, backgroundColor, image, heading, links, subheading }) => {
+const CTA: FC<CTAProps> = ({ backgroundColor, body_html, heading, image, links, subheading }) => {
   const bgColor = `bg-${backgroundColor}`
 
   return (
@@ -40,18 +26,20 @@ const CTA: FC<CTAProps> = ({ body, backgroundColor, image, heading, links, subhe
             {heading && <h2 className="text-center">{heading}</h2>}
             {subheading && <h5 className="text-center">{subheading}</h5>}
           </div>
-          {body && (
+          {body_html && (
             <div className="max-w-prose">
-              <RichText content={body} />
+              <RichText content={body_html} />
             </div>
           )}
         </div>
         {links && (
           <div className="flex md:px-12">
             {links.map((link) => {
+              const linkUrl = (link.link.url as string) ?? (link.link.reference?.value as Page).slug
+
               return (
-                <Link key={`${link.href}-${link.label}`} href={link.href}>
-                  <Button variant="secondary">{link.label}</Button>
+                <Link key={link.id} href={linkUrl}>
+                  <Button variant="secondary">{link.link.label}</Button>
                 </Link>
               )
             })}
@@ -60,8 +48,8 @@ const CTA: FC<CTAProps> = ({ body, backgroundColor, image, heading, links, subhe
       </div>
       {image && (
         <Image
-          src={image.url}
-          alt={image.alt}
+          src={(image as Media).url as string}
+          alt={(image as Media).alt}
           fill
           className={cn('absolute inset-0 object-cover', heading && 'brightness-50')}
         />

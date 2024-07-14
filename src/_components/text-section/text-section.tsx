@@ -20,6 +20,8 @@ const TextSection: FC<TextSectionProps> = ({
   subheading,
 }) => {
   const bgColor = `bg-${backgroundColor}`
+  const textSectionAccordion = accordion?.[0]
+  console.log('ACCORDION: ', textSectionAccordion)
 
   return (
     <section className={cn('container py-12', bgColor)}>
@@ -55,13 +57,13 @@ const TextSection: FC<TextSectionProps> = ({
             </div>
             <div className="flex flex-col gap-12 md:w-1/2">
               {body_html && <RichText content={body_html} />}
-              {accordion && <Accordion blockType="accordionBlock" asChild {...accordion} />}
+              {textSectionAccordion && <Accordion asChild {...textSectionAccordion} />}
             </div>
           </div>
         ) : (
           <div className="flex flex-col gap-12 md:px-12">
             {body_html && <RichText content={body_html} />}
-            {accordion && <Accordion blockType="accordionBlock" asChild {...accordion} />}
+            {textSectionAccordion && <Accordion asChild {...textSectionAccordion} />}
           </div>
         )}
       </div>

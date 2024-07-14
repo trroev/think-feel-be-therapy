@@ -1,5 +1,5 @@
 import link from '@/_fields/link'
-import { HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical'
 import type { GlobalConfig } from 'payload'
 
 export const Footer: GlobalConfig = {
@@ -27,24 +27,69 @@ export const Footer: GlobalConfig = {
     },
     {
       name: 'termsOfService',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
-      }),
+      type: 'group',
+      fields: [
+        {
+          name: 'heading',
+          type: 'text',
+        },
+        {
+          name: 'subheading',
+          type: 'text',
+        },
+        {
+          name: 'termsOfServiceContent',
+          type: 'richText',
+          editor: lexicalEditor({
+            features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+          }),
+        },
+        lexicalHTML('termsOfServiceContent', { name: 'termsOfServiceContent_html' }),
+      ],
     },
     {
       name: 'privacyPolicy',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
-      }),
+      type: 'group',
+      fields: [
+        {
+          name: 'heading',
+          type: 'text',
+        },
+        {
+          name: 'subheading',
+          type: 'text',
+        },
+        {
+          name: 'privacyPolicyContent',
+          type: 'richText',
+          editor: lexicalEditor({
+            features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+          }),
+        },
+        lexicalHTML('privacyPolicyContent', { name: 'privacyPolicyContent_html' }),
+      ],
     },
     {
       name: 'disclaimer',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
-      }),
+      type: 'group',
+      fields: [
+        {
+          name: 'heading',
+          type: 'text',
+        },
+        {
+          name: 'subheading',
+          type: 'text',
+        },
+        {
+          name: 'disclaimerContent',
+          type: 'richText',
+          editor: lexicalEditor({
+            features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+          }),
+        },
+        lexicalHTML('disclaimerContent', { name: 'disclaimerContent_html' }),
+      ],
     },
   ],
 }

@@ -14,7 +14,6 @@ export default async function Page({ params: { slug = '' } }) {
   }
 
   const { content, pageHeader } = page
-  console.log('PAGE CONTENT: ', content)
 
   return (
     <>

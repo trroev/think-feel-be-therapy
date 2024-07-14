@@ -21,7 +21,6 @@ const TextSection: FC<TextSectionProps> = ({
 }) => {
   const bgColor = `bg-${backgroundColor}`
   const textSectionAccordion = accordion?.[0]
-  console.log('ACCORDION: ', textSectionAccordion)
 
   return (
     <section className={cn('container py-12', bgColor)}>

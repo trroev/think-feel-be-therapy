@@ -9,6 +9,7 @@ interface AccordionProps extends AccordionBlockType {
 }
 
 const Accordion: FC<AccordionProps> = ({ asChild, items, type = 'multiple' }) => {
+  console.log('Accordion', items)
   return asChild ? (
     <AccordionRoot type={type || 'multiple'} className="w-full">
       {items?.map((item) => (

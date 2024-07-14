@@ -2,11 +2,19 @@ import type { Page } from '@/payload-types'
 
 import { Blocks } from '@/_components/blocks'
 import { PageHeader } from '@/_components/page-header'
-import { getPage } from '@/app/actions'
+import { getPage } from '@/app/actions/get-page'
 import { getPages } from '@/app/actions/get-pages'
 
 export default async function Page({ params: { slug = '' } }) {
-  const { pageHeader, content }: Page = await getPage({ slug })
+  const actualSlug = slug === '' ? 'home' : slug
+  const page: Page = await getPage({ slug: actualSlug })
+
+  if (!page) {
+    return <div>Page not found</div>
+  }
+
+  const { content, pageHeader } = page
+  console.log('PAGE CONTENT: ', content)
 
   return (
     <>
@@ -19,6 +27,7 @@ export default async function Page({ params: { slug = '' } }) {
 export async function generateStaticParams() {
   try {
     const pages = await getPages()
+
     return pages.docs.map((page) => ({ params: { slug: page.slug } }))
   } catch (error) {
     console.error(error)

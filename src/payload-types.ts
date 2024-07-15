@@ -70,6 +70,7 @@ export interface Page {
   content: (
     | AccordionBlockType
     | CallToActionBlockType
+    | ContactFormBlockType
     | HeroBlockType
     | MentayaWidgetBlockType
     | TextSectionBlockType
@@ -163,6 +164,16 @@ export interface CallToActionBlockType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'ctaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlockType".
+ */
+export interface ContactFormBlockType {
+  fullWidth?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactFormBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

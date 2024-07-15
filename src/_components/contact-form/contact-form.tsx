@@ -1,6 +1,9 @@
 import { type FC } from 'react'
+import { type ContactFormBlockType } from '@/payload-types'
 
-const ContactForm: FC = () => {
+interface ContactFormProps extends ContactFormBlockType {}
+
+const ContactForm: FC<ContactFormProps> = () => {
   return (
     <section className="container flex justify-center py-12">
       <div className="flex min-h-screen w-full">

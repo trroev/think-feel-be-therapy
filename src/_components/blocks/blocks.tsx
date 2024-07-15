@@ -3,6 +3,7 @@ import { type Page } from '@/payload-types'
 
 import { Accordion } from '../accordion'
 import { CTA } from '../call-to-action'
+import { ContactForm } from '../contact-form'
 import { Hero } from '../hero'
 import { MentayaWidget } from '../mentaya-widget'
 import { TextSection } from '../text-section'
@@ -10,6 +11,7 @@ import { TextSection } from '../text-section'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const blockComponents: { [key: string]: FC<any> } = {
   accordionBlock: Accordion,
+  contactFormBlock: ContactForm,
   ctaBlock: CTA,
   heroBlock: Hero,
   mentayaWidgetBlock: MentayaWidget,

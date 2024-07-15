@@ -73,6 +73,7 @@ export interface Page {
     | ContactFormBlockType
     | HeroBlockType
     | MentayaWidgetBlockType
+    | TestimonialSectionBlockType
     | TextSectionBlockType
   )[];
   slug?: string | null;
@@ -208,6 +209,27 @@ export interface MentayaWidgetBlockType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mentayaWidgetBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialSectionBlockType".
+ */
+export interface TestimonialSectionBlockType {
+  backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
+  heading?: string | null;
+  alignment?: ('left' | 'center' | 'right') | null;
+  subheading?: string | null;
+  testimonialCards?:
+    | {
+        quote: string;
+        client?: string | null;
+        year?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonialSectionBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

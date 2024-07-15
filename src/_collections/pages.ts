@@ -3,6 +3,7 @@ import { ContactForm } from '@/_blocks/contact-form-block'
 import { CallToAction } from '@/_blocks/cta-block'
 import { Hero } from '@/_blocks/hero-block'
 import { MentayaWidget } from '@/_blocks/mentaya-widget-block'
+import { TestimonialSection } from '@/_blocks/testimonial-section-block'
 import { TextSection } from '@/_blocks/text-section-block'
 import { pageHeader } from '@/_fields/page-header'
 import { slugField } from '@/_fields/slug'
@@ -57,7 +58,15 @@ export const Pages: CollectionConfig = {
               name: 'content',
               type: 'blocks',
               required: true,
-              blocks: [Accordion, CallToAction, ContactForm, Hero, MentayaWidget, TextSection],
+              blocks: [
+                Accordion,
+                CallToAction,
+                ContactForm,
+                Hero,
+                MentayaWidget,
+                TestimonialSection,
+                TextSection,
+              ],
             },
           ],
         },

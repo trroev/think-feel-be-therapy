@@ -1,49 +1,69 @@
 'use client'
 
 import { type FC } from 'react'
+import { type TestimonialSectionBlockType } from '@/payload-types'
 
+import { cn } from '@/_lib'
+
+import { TestimonialCard } from '../testimonial-card'
 import {
-  Card,
-  CardContent,
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  Divider,
 } from '../ui'
 
-interface Testimonial {
-  content: string
-  id: number
-}
+interface TestimonialSliderProps extends TestimonialSectionBlockType {}
 
-interface TestimonialSliderProps {
-  testimonials: Testimonial[]
-}
+const TestimonialSlider: FC<TestimonialSliderProps> = ({
+  alignment,
+  backgroundColor,
+  heading,
+  subheading,
+  testimonialCards,
+}) => {
+  const bgColor = `bg-${backgroundColor}`
 
-const TestimonialSlider: FC<TestimonialSliderProps> = ({ testimonials }) => {
   return (
-    <>
-      <section className="bg-brandQuaternary">
-        <div className="container flex justify-center py-12">
-          <Carousel className="w-full max-w-[250px] sm:max-w-sm md:max-w-xl">
-            <CarouselContent>
-              {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id} className="flex items-center justify-center">
-                  <Card>
-                    <CardContent className="flex items-center justify-center p-6">
-                      <p className="text-sm sm:text-base">{testimonial.content}</p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
-      </section>
-    </>
+    <section className={bgColor}>
+      <div className="container flex flex-col items-center gap-12 py-12">
+        {heading && (
+          <div
+            className={cn(
+              'flex flex-col gap-4 self-stretch',
+              alignment === 'center' && 'items-center',
+              alignment === 'left' && 'items-start',
+              alignment === 'right' && 'items-end'
+            )}
+          >
+            <h3>{heading}</h3>
+            {subheading && (
+              <>
+                <Divider />
+                <h6>{subheading}</h6>
+              </>
+            )}
+          </div>
+        )}
+        <Carousel className="w-full max-w-[250px] sm:max-w-sm md:max-w-xl">
+          <CarouselContent>
+            {testimonialCards?.map((testimonial) => (
+              <CarouselItem key={testimonial.id} className="flex items-center justify-center">
+                <TestimonialCard
+                  client={testimonial.client as string}
+                  quote={testimonial.quote}
+                  year={testimonial.year as string}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+    </section>
   )
 }
 

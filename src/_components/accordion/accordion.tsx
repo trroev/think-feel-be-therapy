@@ -1,16 +1,11 @@
 import { type FC } from 'react'
+import { type AccordionBlockType } from '@/payload-types'
 
 import { RichText } from '../rich-text'
 import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '../ui'
 
-interface AccordionProps {
+interface AccordionProps extends AccordionBlockType {
   asChild?: boolean
-  items: {
-    content: string
-    heading: string
-    id: string
-  }[]
-  type?: 'single' | 'multiple'
 }
 
 const Accordion: FC<AccordionProps> = ({ asChild, items, type = 'multiple' }) => {
@@ -20,7 +15,7 @@ const Accordion: FC<AccordionProps> = ({ asChild, items, type = 'multiple' }) =>
         <AccordionItem key={item.id} value={`${item.heading}`}>
           <AccordionTrigger>{item.heading}</AccordionTrigger>
           <AccordionContent>
-            <RichText content={item.content} />
+            {item.content_html && <RichText content={item.content_html} />}
           </AccordionContent>
         </AccordionItem>
       ))}
@@ -32,7 +27,7 @@ const Accordion: FC<AccordionProps> = ({ asChild, items, type = 'multiple' }) =>
           <AccordionItem key={item.id} value={`${item.heading}`}>
             <AccordionTrigger>{item.heading}</AccordionTrigger>
             <AccordionContent>
-              <RichText content={item.content} />
+              {item.content_html && <RichText content={item.content_html} />}
             </AccordionContent>
           </AccordionItem>
         ))}

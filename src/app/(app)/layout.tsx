@@ -6,9 +6,11 @@ import { cn } from '@/_lib'
 
 import '@/_styles/globals.css'
 
-import { badgeGroup, navData } from '@/_config'
+import { type Navigation } from '@/payload-types'
+
 import { SiteFooter } from '@/_components/site-footer'
 import { SiteHeader } from '@/_components/site-header'
+import { getGlobal } from '@/app/actions/get-global'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -22,7 +24,10 @@ interface RootLayoutProps {
   readonly children: ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const navData = await getGlobal({ slug: 'navigation' })
+  const footerData = await getGlobal({ slug: 'footer' })
+
   return (
     <html lang="en">
       <head>
@@ -35,9 +40,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           montserrat.className
         )}
       >
-        <SiteHeader navigation={navData} />
+        <SiteHeader navigation={navData as unknown as Navigation} />
         <main className="grow">{children}</main>
-        <SiteFooter badgeGroup={badgeGroup} navigation={navData} />
+        <SiteFooter footer={footerData} />
       </body>
     </html>
   )

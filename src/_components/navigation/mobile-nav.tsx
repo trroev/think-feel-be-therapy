@@ -4,8 +4,8 @@ import { useState, type FC } from 'react'
 import Image from 'next/image'
 import Link, { type LinkProps } from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { type Media, type Navigation, type Page } from '@/payload-types'
 
-import { type Navigation } from '@/_types'
 import { cn } from '@/_lib'
 
 import { Button, Divider, HamburgerMenu, Sheet, SheetContent, SheetTrigger } from '../ui'
@@ -17,7 +17,7 @@ interface MobileNavProps {
 const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  const logoUrl = navigation.logo?.url
+  const logoUrl = (navigation.logo as Media).url
   const navItems = navigation.navItems
 
   return (
@@ -46,12 +46,12 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
           </div>
           <div className="flex flex-col space-y-4 px-6">
             {navItems.map((item) => {
-              const slug = item.link
+              const slug = (item.link as Page).slug
 
               return (
                 <MobileLink
                   key={`${slug}-${item.label}`}
-                  href={slug}
+                  href={slug === 'home' ? '/' : `/${slug}`}
                   className={cn(
                     pathname === slug && 'font-medium underline',
                     'text-xl hover:underline'

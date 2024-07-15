@@ -1,10 +1,9 @@
 import { type FC } from 'react'
+import { type MentayaWidgetBlockType } from '@/payload-types'
 
 import { cn } from '@/_lib'
 
-interface MentayaWidgetProps {
-  fullWidth?: boolean
-}
+interface MentayaWidgetProps extends MentayaWidgetBlockType {}
 
 const MentayaWidget: FC<MentayaWidgetProps> = ({ fullWidth }) => {
   return (

@@ -1,40 +1,36 @@
 import { type FC } from 'react'
 import Image from 'next/image'
+import { type HeroBlockType, type Media } from '@/payload-types'
 import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '@/_lib'
 
 import { Divider, WordCarousel } from '../ui'
 
-interface TaglineProps {
-  staticHeading: string
-  words: { word: string }[]
-}
-
-interface HeroProps {
-  backgroundColor?:
-    | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
-    | null
-  heading?: string
-  headingFontWeight?:
-    | ('thin' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold')
-    | null
-  heroTagline?: TaglineProps[]
-  image?: { alt: string; url: string }
-  subheading?: string
+interface HeroProps extends HeroBlockType {
+  // backgroundColor?:
+  //   | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
+  //   | null
+  // heading?: string
+  // headingFontWeight?:
+  //   | ('thin' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold')
+  //   | null
+  // heroTagline?: TaglineProps[]
+  // image?: { alt: string; url: string }
+  // subheading?: string
 }
 
 const Hero: FC<HeroProps> = ({
   backgroundColor,
   heading,
   headingFontWeight,
-  heroTagline,
   image,
   subheading,
+  tagline,
 }) => {
   const bgColor = `bg-${backgroundColor}`
-  const taglineHeading = heroTagline?.[0].staticHeading
-  const wordsArray = heroTagline?.[0].words as unknown as { word: string }[]
+  const taglineHeading = tagline?.staticHeading
+  const wordsArray = tagline?.words || []
 
   const getHeadingFontWeight = (() => {
     switch (headingFontWeight) {
@@ -69,7 +65,7 @@ const Hero: FC<HeroProps> = ({
         <div className="container z-10 flex flex-col items-center justify-center py-4 text-center text-background md:py-6 lg:py-8">
           <h1 className={cn(getHeadingFontWeight)}>{heading}</h1>
           {subheading && <h3>{subheading}</h3>}
-          {heroTagline && (
+          {tagline && (
             <>
               <Divider className="my-4" />
               <Slot className="flex flex-col px-4 max-sm:max-w-sm">
@@ -85,8 +81,8 @@ const Hero: FC<HeroProps> = ({
       )}
       {image && (
         <Image
-          src={image.url}
-          alt={image.alt}
+          src={(image as Media).url as string}
+          alt={(image as Media).alt}
           fill
           className={cn('absolute inset-0 object-cover', heading && 'brightness-[0.6]')}
         />

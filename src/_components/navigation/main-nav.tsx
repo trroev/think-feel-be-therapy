@@ -3,30 +3,27 @@
 import { type FC } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { type Navigation, type Page } from '@/payload-types'
 
-import { type Navigation } from '@/_types'
 import { cn } from '@/_lib'
 
 import { Button, Divider } from '../ui'
 
-interface MainNavProps {
-  navigation: Navigation
-}
+interface MainNavProps extends Pick<Navigation, 'navItems'> {}
 
-const MainNav: FC<MainNavProps> = ({ navigation }) => {
+const MainNav: FC<MainNavProps> = ({ navItems }) => {
   const pathname = usePathname()
-  const navItems = navigation.navItems
 
   return (
     <nav className="hidden md:flex">
       <div className="flex items-center space-x-4">
         {navItems.map((item) => {
-          const slug = item.link
+          const slug = (item.link as Page).slug
 
           return (
             <Link
-              key={`${slug}-${item.label}`}
-              href={slug}
+              key={item.id}
+              href={slug === 'home' ? '/' : `/${slug}`}
               className={cn(
                 pathname === `/${slug}` && 'font-medium underline',
                 'hover:underline',

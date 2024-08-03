@@ -35,7 +35,7 @@ export default function IndexPage() {
           Rachael is especially helpful with supporting people who are struggling with anxiety, depression, parenting stress, issues in relationships, and providing affirming care for LGBTQIA+ folks."
       />
       <TextSection
-        heading="Our Values"
+        heading="Values"
         headingAlignment="center"
         richText="
         <h5>Change:</h5>
@@ -48,10 +48,14 @@ export default function IndexPage() {
         <p>You are the expert on yourself. Therapy is a judgment-free space where you get to discover what living an authentic life means to you.</p>
         <br>
         <h5>Acceptance:</h5>
-        <p>Our motto is accept more, resist less. I accept people wherever they are in life when they show up to my door, and guide them to learn how to better accept themselves and their circumstances. Acceptance is so much more than a value. It is also a skill, a guiding principle, and a way of relating to others. </p>
+        <p>My motto is accept more, resist less. I accept people wherever they are in life when they show up to my door, and guide them to learn how to better accept themselves and their circumstances. Acceptance is so much more than a value. It is also a skill, a guiding principle, and a way of relating to others. </p>
         "
       />
-      <TestimonialSlider testimonials={testimonials} />
+      <TestimonialSlider
+        heading="Testimonials"
+        subheading="See what clients are saying"
+        testimonials={testimonials}
+      />
       <CTA
         heading="Ready to start your journey?"
         image={{

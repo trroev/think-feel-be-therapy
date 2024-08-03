@@ -11,6 +11,7 @@ interface TextSectionProps {
   backgroundColor?:
     | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
     | null
+  fullHeightImage?: boolean | null
   heading?: string | null
   headingAlignment?: ('left' | 'center' | 'right') | null
   subheading?: string | null
@@ -22,6 +23,7 @@ interface TextSectionProps {
 const TextSection: FC<TextSectionProps> = ({
   accordion,
   backgroundColor,
+  fullHeightImage,
   heading,
   headingAlignment,
   image,
@@ -33,47 +35,68 @@ const TextSection: FC<TextSectionProps> = ({
 
   return (
     <section className={cn('container py-12', bgColor)}>
-      <div className="flex flex-col gap-12">
-        {heading && (
-          <div
-            className={cn(
-              'flex flex-col gap-4',
-              headingAlignment === 'center' && 'items-center',
-              headingAlignment === 'left' && 'items-start',
-              headingAlignment === 'right' && 'items-end'
-            )}
-          >
-            <h3>{heading}</h3>
-            {subheading && <h6>{subheading}</h6>}
+      <div
+        className={cn(
+          'flex flex-col gap-12 md:px-12',
+          fullHeightImage && imageFirst
+            ? 'md:flex-row md:items-center'
+            : 'flex-col-reverse md:flex-row-reverse md:items-center'
+        )}
+      >
+        {image && fullHeightImage && (
+          <div className="flex grow justify-center">
+            <Image
+              src={image.url}
+              alt={image.alt}
+              height={450}
+              width={400}
+              className="min-w-72 rounded-[99px] object-cover shadow-lg"
+            />
           </div>
         )}
-        {image ? (
-          <div
-            className={cn(
-              'flex flex-col gap-12 md:flex-row md:px-12',
-              imageFirst ? '' : 'flex-col-reverse md:flex-row-reverse'
-            )}
-          >
-            <div className="flex items-center justify-center md:w-1/2">
-              <Image
-                src={image.url}
-                alt={image.alt}
-                height={450}
-                width={400}
-                className="min-w-72 rounded-lg object-cover shadow-lg"
-              />
+        <div className="flex grow flex-col gap-12">
+          {heading && (
+            <div
+              className={cn(
+                'flex flex-col gap-4',
+                headingAlignment === 'center' && 'items-center',
+                headingAlignment === 'left' && 'items-start',
+                headingAlignment === 'right' && 'items-end',
+                fullHeightImage && 'items-start'
+              )}
+            >
+              <h3>{heading}</h3>
+              {subheading && <h6>{subheading}</h6>}
             </div>
-            <div className="flex flex-col gap-12 md:w-1/2">
+          )}
+          {image && !fullHeightImage ? (
+            <div
+              className={cn(
+                'flex flex-col gap-12 md:flex-row md:px-12',
+                imageFirst ? '' : 'flex-col-reverse md:flex-row-reverse'
+              )}
+            >
+              <div className="flex items-center justify-center md:w-1/2">
+                <Image
+                  src={image.url}
+                  alt={image.alt}
+                  height={450}
+                  width={400}
+                  className="min-w-72 rounded-[99px] object-cover shadow-lg"
+                />
+              </div>
+              <div className="flex flex-col gap-12 md:w-1/2">
+                <RichText content={richText} />
+                {accordion && <Accordion asChild {...accordion} />}
+              </div>
+            </div>
+          ) : (
+            <div className={cn('flex flex-col gap-12 md:px-12', fullHeightImage && 'md:px-0')}>
               <RichText content={richText} />
               {accordion && <Accordion asChild {...accordion} />}
             </div>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-12 md:px-12">
-            <RichText content={richText} />
-            {accordion && <Accordion asChild {...accordion} />}
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   )

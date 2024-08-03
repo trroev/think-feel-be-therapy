@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { type Media, type TextSectionBlockType } from '@/payload-types'
 
 import { cn } from '@/_lib'
+import { renderBackgroundColor } from '@/_lib/helpers'
 
 import { Accordion } from '../accordion'
 import { RichText } from '../rich-text'
@@ -19,11 +20,10 @@ const TextSection: FC<TextSectionProps> = ({
   imageFirst,
   subheading,
 }) => {
-  const bgColor = `bg-${backgroundColor}`
   const textSectionAccordion = accordion?.[0]
 
   return (
-    <section className={cn('container py-12', bgColor)}>
+    <section className={cn('containerˇ py-12', renderBackgroundColor(backgroundColor))}>
       <div className="flex flex-col gap-12">
         {heading && (
           <div

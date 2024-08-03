@@ -2,26 +2,18 @@ import { type FC } from 'react'
 import { type PageHeaderFieldType } from '@/payload-types'
 
 import { cn } from '@/_lib'
+import { renderBackgroundColor } from '@/_lib/helpers'
 
 import { Divider } from '../ui'
 
 interface PageHeaderProps extends PageHeaderFieldType {}
-// {
-//   backgroundColor?:
-//     | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
-//     | null
-//   heading?: string | null
-//   subheading?: string | null
-// }
 
 const PageHeader: FC<PageHeaderProps> = ({ backgroundColor, heading, subheading }) => {
-  const bgColor = `bg-${backgroundColor}`
-
   return (
     <section
       className={cn(
         'flex w-full flex-col items-center justify-center py-4 md:py-6 lg:py-8',
-        bgColor
+        renderBackgroundColor(backgroundColor)
       )}
     >
       <div className="container">

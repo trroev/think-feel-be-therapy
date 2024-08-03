@@ -3,7 +3,7 @@ import { CTA } from '@/_components/call-to-action'
 import { PageHeader } from '@/_components/page-header'
 import { TextSection } from '@/_components/text-section'
 
-const getToKnowMeContent = [
+const accordionItems = [
   {
     content: `
       <ul>
@@ -16,39 +16,6 @@ const getToKnowMeContent = [
     `,
     heading: 'Get to Know Me',
     id: 'get-to-know-me',
-  },
-]
-
-const accordionItems = [
-  {
-    content: `
-      <ul>
-        <li>Person/Client Centered</li>
-        <li>Interpersonal Therapy</li>
-        <li>Cognitive Behavioral Therapy (CBT)</li>
-        <li>Mindfulness</li>
-        <li>Dialectical Behavioral Therapy (DBT)</li>
-        <li>Exposure Response Prevention (ERP)</li>
-        <li>Unified Protocol</li>
-      </ul>
-    `,
-    heading: 'Modes of Treatment',
-    id: 'modes-of-treatment',
-  },
-  {
-    content: `
-      <ul>
-        <li>Anxiety</li>
-        <li>Depression</li>
-        <li>ADHD</li>
-        <li>People pleasing and perfectionist tendencies</li>
-        <li>Parenting</li>
-        <li>Navigating life changes</li>
-        <li>Trauma</li>
-      </ul>
-    `,
-    heading: 'Specializations',
-    id: 'specializations',
   },
   {
     content: `
@@ -177,9 +144,6 @@ export default function AboutPage() {
           <br>
           Looking forward to connecting with you!
           </p>"
-        accordion={{
-          items: getToKnowMeContent,
-        }}
       />
       <Accordion items={accordionItems} />
       <CTA

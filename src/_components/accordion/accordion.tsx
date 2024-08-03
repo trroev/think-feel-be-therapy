@@ -27,7 +27,7 @@ const Accordion: FC<AccordionProps> = ({ asChild, items, type = 'multiple' }) =>
     </AccordionRoot>
   ) : (
     <section className="container py-12">
-      <AccordionRoot type={type || 'multiple'} className="w-full">
+      <AccordionRoot type={type || 'multiple'} className="md:px-12">
         {items?.map((item) => (
           <AccordionItem key={item.id} value={`${item.heading}`}>
             <AccordionTrigger>{item.heading}</AccordionTrigger>

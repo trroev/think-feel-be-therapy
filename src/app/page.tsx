@@ -65,7 +65,7 @@ export default function IndexPage() {
         links={[
           {
             href: 'https://thinkfeelbetherapy.sessionshealth.com/request',
-            label: 'Schedule a Session',
+            label: "Let's Connect",
           },
         ]}
       />

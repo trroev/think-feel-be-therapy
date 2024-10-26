@@ -20,18 +20,13 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Media, Pages, Users],
-  globals: [Footer, Navigation],
-  editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
-  typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
-  },
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  sharp,
+  editor: lexicalEditor(),
+  globals: [Footer, Navigation],
   plugins: [
     // seoPlugin({
     //   collections: ['pages'],
@@ -46,4 +41,9 @@ export default buildConfig({
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
   ],
+  secret: process.env.PAYLOAD_SECRET || '',
+  sharp,
+  typescript: {
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
 })

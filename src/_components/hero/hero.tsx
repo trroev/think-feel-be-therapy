@@ -84,6 +84,7 @@ const Hero: FC<HeroProps> = ({
           src={(image as Media).url as string}
           alt={(image as Media).alt}
           fill
+          priority
           className={cn('absolute inset-0 object-cover', heading && 'brightness-[0.6]')}
         />
       )}

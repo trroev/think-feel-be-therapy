@@ -17,7 +17,7 @@ export default async function Page({ params: { slug = '' } }) {
 
   return (
     <>
-      {pageHeader?.heading ?? pageHeader?.subheading ? <PageHeader {...pageHeader} /> : null}
+      {(pageHeader?.heading ?? pageHeader?.subheading) ? <PageHeader {...pageHeader} /> : null}
       <Blocks blocks={content} />
     </>
   )

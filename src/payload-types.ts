@@ -11,14 +11,15 @@ export interface Config {
     users: UserAuthOperations;
   };
   collections: {
-    media: Media;
     pages: Page;
+    media: Media;
     users: User;
+    'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   globals: {
     footer: Footer;
@@ -32,6 +33,7 @@ export interface Config {
 export interface UserAuthOperations {
   forgotPassword: {
     email: string;
+    password: string;
   };
   login: {
     email: string;
@@ -43,33 +45,15 @@ export interface UserAuthOperations {
   };
   unlock: {
     email: string;
+    password: string;
   };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
-  id: number;
+  id: string;
   title: string;
   publishedAt?: string | null;
   pageHeader?: PageHeaderFieldType;
@@ -83,6 +67,11 @@ export interface Page {
     | TextSectionBlockType
   )[];
   slug?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (string | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -134,7 +123,7 @@ export interface AccordionBlockType {
  */
 export interface CallToActionBlockType {
   backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
-  image?: number | Media | null;
+  image?: (string | null) | Media;
   heading?: string | null;
   subheading?: string | null;
   body?: {
@@ -160,7 +149,7 @@ export interface CallToActionBlockType {
           newTab?: boolean | null;
           reference?: {
             relationTo: 'pages';
-            value: number | Page;
+            value: string | Page;
           } | null;
           url?: string | null;
           label: string;
@@ -171,6 +160,25 @@ export interface CallToActionBlockType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'ctaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: string;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -188,7 +196,7 @@ export interface ContactFormBlockType {
  */
 export interface HeroBlockType {
   backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
-  image?: number | Media | null;
+  image?: (string | null) | Media;
   heading?: string | null;
   headingFontWeight?: ('thin' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold') | null;
   subheading?: string | null;
@@ -262,7 +270,7 @@ export interface TextSectionBlockType {
     [k: string]: unknown;
   } | null;
   body_html?: string | null;
-  image?: number | Media | null;
+  image?: (string | null) | Media;
   imageFirst?: boolean | null;
   accordion?: AccordionBlockType[] | null;
   id?: string | null;
@@ -274,7 +282,7 @@ export interface TextSectionBlockType {
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
+  id: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -288,13 +296,40 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents".
+ */
+export interface PayloadLockedDocument {
+  id: string;
+  document?:
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null);
+  globalSlug?: string | null;
+  user: {
+    relationTo: 'users';
+    value: string | User;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   key?: string | null;
   value?:
@@ -314,7 +349,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -325,16 +360,16 @@ export interface PayloadMigration {
  * via the `definition` "footer".
  */
 export interface Footer {
-  id: number;
+  id: string;
   badgeGroup?:
     | {
-        badge: number | Media;
+        badge: string | Media;
         link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?: {
             relationTo: 'pages';
-            value: number | Page;
+            value: string | Page;
           } | null;
           url?: string | null;
         };
@@ -409,11 +444,11 @@ export interface Footer {
  * via the `definition` "navigation".
  */
 export interface Navigation {
-  id: number;
-  logo: number | Media;
+  id: string;
+  logo: string | Media;
   navItems: {
     label: string;
-    link: number | Page;
+    link: string | Page;
     id?: string | null;
   }[];
   updatedAt?: string | null;

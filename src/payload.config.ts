@@ -50,7 +50,7 @@ const baseConfig: Config = {
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
   ],
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_PRIVATE_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },

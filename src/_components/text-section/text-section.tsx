@@ -23,7 +23,7 @@ const TextSection: FC<TextSectionProps> = ({
   const textSectionAccordion = accordion?.[0]
 
   return (
-    <section className={cn('containerˇ py-12', renderBackgroundColor(backgroundColor))}>
+    <section className={cn('container py-12', renderBackgroundColor(backgroundColor))}>
       <div className="flex flex-col gap-12">
         {heading && (
           <div

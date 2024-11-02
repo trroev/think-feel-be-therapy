@@ -283,6 +283,7 @@ export interface TextSectionBlockType {
  */
 export interface User {
   id: string;
+  role: 'user' | 'admin';
   updatedAt: string;
   createdAt: string;
   email: string;

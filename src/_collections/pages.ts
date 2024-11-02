@@ -10,26 +10,19 @@ import { slugField } from '@/_fields/slug'
 import { type CollectionConfig } from 'payload'
 
 import { populatePublishedAt, revalidatePage } from '@/_lib'
+import { AdminAccess } from '@/_access/admin'
+import { EveryoneAccess } from '@/_access/everyone'
 
 export const Pages: CollectionConfig = {
-  slug: 'pages',
+  access: {
+    create: AdminAccess,
+    delete: AdminAccess,
+    read: EveryoneAccess,
+    update: AdminAccess,
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
-  },
-  hooks: {
-    beforeChange: [populatePublishedAt],
-    afterChange: [revalidatePage],
-  },
-  versions: {
-    drafts: true,
-  },
-  access: {
-    read: () => true,
-    // read: adminsOrPublished,
-    // update: admins,
-    // create: admins,
-    // delete: admins,
   },
   fields: [
     {
@@ -74,4 +67,12 @@ export const Pages: CollectionConfig = {
     },
     slugField(),
   ],
+  hooks: {
+    afterChange: [revalidatePage],
+    beforeChange: [populatePublishedAt],
+  },
+  slug: 'pages',
+  versions: {
+    drafts: true,
+  },
 }

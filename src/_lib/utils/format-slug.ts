@@ -8,7 +8,12 @@ const format = (val: string): string =>
 
 export const formatSlug =
   (fallback: string): FieldHook =>
-  ({ operation, value, originalDoc, data }) => {
+    ({
+      data,
+      operation,
+      value,
+      originalDoc,
+    }) => {
     if (typeof value === 'string') {
       return format(value)
     }

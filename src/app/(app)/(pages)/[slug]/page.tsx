@@ -6,6 +6,7 @@ import { getPage } from '@/app/actions/get-page'
 import { getPages } from '@/app/actions/get-pages'
 
 export default async function Page({ params: { slug = '' } }) {
+  console.log('SLUG: ', slug)
   const actualSlug = slug === '' ? 'home' : slug
   const page: Page = await getPage({ slug: actualSlug })
 

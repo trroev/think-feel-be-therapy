@@ -1,9 +1,13 @@
+import { EveryoneAccess } from '@/_access/everyone'
+import { LoggedInAccess } from '@/_access/logged-in'
 import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
-  slug: 'media',
   access: {
-    read: () => true,
+    create: LoggedInAccess,
+    delete: LoggedInAccess,
+    read: EveryoneAccess,
+    update: LoggedInAccess,
   },
   fields: [
     {
@@ -12,5 +16,6 @@ export const Media: CollectionConfig = {
       required: true,
     },
   ],
+  slug: 'media',
   upload: true,
 }

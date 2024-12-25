@@ -5,13 +5,13 @@ import { Hero } from '@/_blocks/hero-block'
 import { MentayaWidget } from '@/_blocks/mentaya-widget-block'
 import { TestimonialSection } from '@/_blocks/testimonial-section-block'
 import { TextSection } from '@/_blocks/text-section-block'
-import { pageHeader } from '@/_fields/page-header'
 import { slugField } from '@/_fields/slug'
 import { type CollectionConfig } from 'payload'
 
 import { populatePublishedAt, revalidatePage } from '@/_lib'
 import { AdminAccess } from '@/_access/admin'
 import { EveryoneAccess } from '@/_access/everyone'
+import { pageHeader } from '@/_blocks/page-header'
 
 export const Pages: CollectionConfig = {
   access: {
@@ -41,10 +41,6 @@ export const Pages: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Page Header',
-          fields: [pageHeader],
-        },
-        {
           label: 'Content',
           fields: [
             {
@@ -57,6 +53,7 @@ export const Pages: CollectionConfig = {
                 ContactForm,
                 Hero,
                 MentayaWidget,
+                pageHeader,
                 TestimonialSection,
                 TextSection,
               ],

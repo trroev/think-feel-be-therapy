@@ -1,12 +1,13 @@
 import { type FC } from 'react'
-import { type PageHeaderFieldType } from '@/payload-types'
+
 
 import { cn } from '@/_lib'
 import { renderBackgroundColor } from '@/_lib/helpers'
 
 import { Divider } from '../ui'
+import { PageHeaderBlockType } from '@/payload-types'
 
-interface PageHeaderProps extends PageHeaderFieldType {}
+interface PageHeaderProps extends PageHeaderBlockType {}
 
 const PageHeader: FC<PageHeaderProps> = ({ backgroundColor, heading, subheading }) => {
   return (

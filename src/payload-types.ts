@@ -56,13 +56,13 @@ export interface Page {
   id: string;
   title: string;
   publishedAt?: string | null;
-  pageHeader?: PageHeaderFieldType;
   content: (
     | AccordionBlockType
     | CallToActionBlockType
     | ContactFormBlockType
     | HeroBlockType
     | MentayaWidgetBlockType
+    | PageHeaderBlockType
     | TestimonialSectionBlockType
     | TextSectionBlockType
   )[];
@@ -75,15 +75,6 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "PageHeaderFieldType".
- */
-export interface PageHeaderFieldType {
-  heading?: string | null;
-  subheading?: string | null;
-  backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -223,6 +214,18 @@ export interface MentayaWidgetBlockType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mentayaWidgetBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageHeaderBlockType".
+ */
+export interface PageHeaderBlockType {
+  heading?: string | null;
+  subheading?: string | null;
+  backgroundColor?: ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pageHeaderBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -8,6 +8,7 @@ import { Hero } from '../hero'
 import { MentayaWidget } from '../mentaya-widget'
 import { TestimonialSlider } from '../testimonial-slider'
 import { TextSection } from '../text-section'
+import { PageHeader } from '../page-header'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const blockComponents: { [key: string]: FC<any> } = {
@@ -16,6 +17,7 @@ const blockComponents: { [key: string]: FC<any> } = {
   ctaBlock: CTA,
   heroBlock: Hero,
   mentayaWidgetBlock: MentayaWidget,
+  pageHeaderBlock: PageHeader,
   testimonialSectionBlock: TestimonialSlider,
   textSectionBlock: TextSection,
 }

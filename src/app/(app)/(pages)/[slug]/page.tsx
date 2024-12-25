@@ -1,12 +1,10 @@
 import type { Page } from '@/payload-types'
 
 import { Blocks } from '@/_components/blocks'
-import { PageHeader } from '@/_components/page-header'
 import { getPage } from '@/app/actions/get-page'
 import { getPages } from '@/app/actions/get-pages'
 
 export default async function Page({ params: { slug = '' } }) {
-  console.log('SLUG: ', slug)
   const actualSlug = slug === '' ? 'home' : slug
   const page: Page = await getPage({ slug: actualSlug })
 
@@ -14,11 +12,10 @@ export default async function Page({ params: { slug = '' } }) {
     return <div>Page not found</div>
   }
 
-  const { content, pageHeader } = page
+  const { content } = page
 
   return (
     <>
-      {(pageHeader?.heading ?? pageHeader?.subheading) ? <PageHeader {...pageHeader} /> : null}
       <Blocks blocks={content} />
     </>
   )

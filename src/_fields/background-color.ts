@@ -1,28 +1,26 @@
-import { type Field } from 'payload'
+import { BackgroundColor } from '@/_types'
+import { SelectField } from 'payload'
 
-export const backgroundColor: Field = {
+const backgroundColorOptions: Record<
+  BackgroundColor,
+  string
+  > = {
+  brandPrimary: 'Teal',
+  brandSecondary: 'Green',
+  brandTertiary: 'Yellow',
+  brandQuaternary: 'Orange',
+  transparent: 'None',
+}
+
+const getBackgroundColorOptions = (): { label: string, value: string }[] => {
+  return Object.entries(backgroundColorOptions).map(([value, label]) => ({
+    label,
+    value,
+  }))
+}
+
+export const backgroundColor: SelectField = {
   name: 'backgroundColor',
   type: 'select',
-  options: [
-    {
-      label: 'Teal',
-      value: 'brandPrimary',
-    },
-    {
-      label: 'Green',
-      value: 'brandSecondary',
-    },
-    {
-      label: 'Yellow',
-      value: 'brandTertiary',
-    },
-    {
-      label: 'Orange',
-      value: 'brandQuaternary',
-    },
-    {
-      label: 'None',
-      value: 'transparent',
-    },
-  ],
+  options: getBackgroundColorOptions(),
 }

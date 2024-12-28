@@ -8,3 +8,5 @@ export interface Navigation {
     link: string
   }[]
 }
+
+export type BackgroundColor = 'brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent'

@@ -53,7 +53,7 @@ export default function ClientGuidePage() {
         richText="
           <ul>
             <li>Individual Therapy - $175/session</li>
-            <li>Family, Couples, & Parent Coaching - $210/session</li>
+            <li>Family Therapy & Parent Coaching - $200/session</li>
           </ul>
         "
       />
@@ -65,23 +65,22 @@ export default function ClientGuidePage() {
         headingAlignment="center"
         richText="
           <p>
-            Paying for your sessions is convenient and easy through our HIPAA-compliant platform, Mentaya and Sessions Health. Both Mentaya and Sessions Health  securely store your payment information (credit card, HSA/FSA card, or ACH banking account information) on file and debit your account after each session.
+            I am in-network and able to submit claims directly to:
+          </p>
+          <ul>
+            <li>Blue Cross Blue Shield</li>
+            <li>Aetna</li>
+          </ul>
+          <br>
+          <p>
+            For those who do not have insurance through those carriers, my services are available via private pay. I am considered an out-of-network (OON) provider. You may still qualify for reimbursement from your insurance for therapy. I partner with Mentaya, a service that streamlines getting reimbursed for your therapy sessions through out-of-network benefits. Please reach out for more details about how to use OON coverage for therapy.
           </p>
           <br>
           <p>
-            Mentaya auto-submits claims to your health insurance provider after each appointment. If you qualify for reimbursement (per your insurance plan policy) you will receive these funds back from your out of pocket costs for completed sessions.
-          </p>
-          <br>
-          <p>
-            If you do not have OON coverage, you will receive a $10/session discount on services as I am able to bill directly through Sessions Health.
-          </p>
-          <br>
-          <p>
-            Use this helpful tool below to learn if you qualify for reimbursement from your insurance provider.
+           Insurance coverage can be confusing, I'm happy to help you navigate what makes the most sense of how to utilize insurance benefits to help you access support during an initial consult call.
           </p>
         "
       />
-      <MentayaWidget />
       <TextSection
         heading="Cancellation Policy"
         headingAlignment="center"

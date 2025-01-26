@@ -13,7 +13,7 @@ interface PageHeaderProps {
 }
 
 const PageHeader: FC<PageHeaderProps> = ({ backgroundColor, heading, subheading }) => {
-  const bgColor = `bg-${backgroundColor}`
+  const bgColor = backgroundColor && `bg-${backgroundColor}`
 
   return (
     <section

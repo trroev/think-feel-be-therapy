@@ -15,7 +15,10 @@ const accordionItems = [
   {
     content: `
       <p>
-        My rate is $175 for individuals and $210 for couples, family therapy, or parent-coaching. I have a limited number of sliding scale slots based on need and schedule availability. <a href="/contact">Contact me</a> to inquire about sliding fee scale rates.
+        My rate is $175 for individuals and $200 for family therapy or parent-coaching. I have a limited number of sliding scale slots based on need and schedule availability. <a href="/contact">Contact me</a> to inquire about sliding fee scale rates.
+      </p>
+      <p>
+        *Please note: many times insurance generally does not cover family therapy and parent coaching services, and in most cases this will be a private pay arrangement.
       </p>
     `,
     heading: 'What is your fee?',
@@ -24,7 +27,7 @@ const accordionItems = [
   {
     content: `
       <p>
-        I am considered an out-of-network provider. I use a secure billing platform called Mentaya, which can help determine whether your plan includes any out of network benefits and whether it is possible to seek reimbursement for treatment. <a href="/client-guide">Learn more</a> about this in our client guide.
+        I am in-network with Blue Cross Blue Shield and Aetna. For any other insurance carrier, I am considered an out of network provider (and leave rest of info already there). Add asterisk under this stating "if you are interested in using BCBS or Aetna, please know each plan varies for how they cover mental health benefits. You may be responsible for the full fee until all deductibles have been met.
       </p>
     `,
     heading: 'Do you accept insurance?',
@@ -33,38 +36,37 @@ const accordionItems = [
   {
     content: `
       <p>
-        There are many reasons some therapists do not accept insurance. For me, this decision came down to a few main reasons:
+        Locate the Mental Health/Behavioral Health 1800 number on the back of your card and ask the following questions:
       </p>
-      <br>
       <ul>
         <li>
-          I care about protecting the confidentiality of my clients. I won't share your diagnosis with your insurance provider and we can avoid your insurance trying to dictate how often we can meet (applicable only for clients who are not using OON insurance benefits)
+          Do I have mental health benefits?
         </li>
-        <br>
         <li>
-          You deserve agency. If working with an in-network therapist is best for you or your finances, do it! If you don't want to use your insurance, great, you shouldn't have to. Even if you have insurance, you may have a high deductible plan that doesn't offer much in the way of mental health coverage. Just remember, you have options, and I can help you figure out what makes the most sense for you.
+          What is my deductible and copay for metnal health/behavioral health services?
         </li>
-        <br>
         <li>
-          Most of us know how convoluted and complicated working with insurances can be. It's hard enough to find a therapist let alone having to hassle with insurance to make it work. Also, insurances don't always compensate therapists well and billing insurance takes a lot of time and management. I've built my practice to offer the highest quality care to my clients and to meet my needs as a business owner.
+          What are my out of pocket costs per visit?
+        </li>
+        <li>
+          Does my insurance have both in network and out of network coverage for mental health providers?
+        </li>
+        <li>
+          Do I need a referral from a primary care physician to see a mental health provider?
+        </li>
+        <li>
+          Does my plan require pre-authorization for therapy?
+        </li>
+        <li>
+          Is there a limit on the number of sessions or treatments covered?
+        </li>
+        <li>
+          Are there any specific mental health conditions or disorders that may not be covered?
         </li>
       </ul>
-      <br>
-      <p>
-        You can get more information using this <a href="https://mentalhealthmatch.com/articles/therapy/untold-truth-why-your-therapist-doesnt-take-insurance" target="_blank">link</a>.
-      </p>
     `,
-    heading: "Why don't you accept insurance?",
-    id: 'why-no-insurance',
-  },
-  {
-    content: `
-      <p>
-        Superbills are invoices that are submitted to your insurance provider when pursuing out-of-network benefits. These invoices include dates, service type (therapy code for insurance), length of session, payment amount, and a diagnosis code.
-      </p>
-    `,
-    heading: 'What is a superbill?',
-    id: 'superbill',
+    heading: 'How do I find out what my insurance coverage is for mental health benefits?',
+    id: 'insurance-coverage-how',
   },
   {
     content: `
@@ -104,15 +106,6 @@ const accordionItems = [
     `,
     heading: 'Are you LGBTQIA+ affirming?',
     id: 'lgbtqia-affirming',
-  },
-  {
-    content: `
-      <p>
-        I work with relationships of all shapes and sizes. I’m here for individuals, partners, parents, and families.
-      </p>
-    `,
-    heading: 'What kinds of relationships do you work with?',
-    id: 'relationship-types',
   },
   {
     content: `

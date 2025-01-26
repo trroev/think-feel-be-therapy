@@ -27,8 +27,12 @@ const accordionItems = [
   {
     content: `
       <p>
-        I am in-network with Blue Cross Blue Shield and Aetna. For any other insurance carrier, I am considered an out of network provider (and leave rest of info already there). Add asterisk under this stating "if you are interested in using BCBS or Aetna, please know each plan varies for how they cover mental health benefits. You may be responsible for the full fee until all deductibles have been met.
+        I am in-network with Blue Cross Blue Shield and Aetna. For any other insurance carrier, I am considered an out of network provider. I use a secure billing platform called Mentaya, which can help determine whether your plan includes any out of network benefits and whether it is possible to seek reimbursement for treatment. <a href="/client-guide">Learn more</a> about this in our client guide.
       </p>
+      <br>
+      <small>
+        *if you are interested in using BCBS or Aetna, please know each plan varies for how they cover mental health benefits. You may be responsible for the full fee until all deductibles have been met.
+      </small>
     `,
     heading: 'Do you accept insurance?',
     id: 'insurance',
@@ -36,7 +40,7 @@ const accordionItems = [
   {
     content: `
       <p>
-        Locate the Mental Health/Behavioral Health 1800 number on the back of your card and ask the following questions:
+        Locate the Mental Health/Behavioral Health 1-800 number on the back of your card and ask the following questions:
       </p>
       <ul>
         <li>
@@ -92,7 +96,7 @@ const accordionItems = [
   {
     content: `
       <p>
-        Sessions Health is the secure, HIPAA-compliant platform you'll use to schedule/reschedule appointments, complete your intake paperwork, and access our online video appointments. Current clients can use this link to access their <a href="https://thinkfeelbetherapy.sessionshealth.com/" target="_blank"></a>Sessions Health Client Portal.
+        Sessions Health is the secure, HIPAA-compliant platform you'll use to schedule/reschedule appointments, complete your intake paperwork, and access our online video appointments. Current clients can use <a href="https://thinkfeelbetherapy.sessionshealth.com/" target="_blank">this link</a> to access their <a href="https://thinkfeelbetherapy.sessionshealth.com/" target="_blank"></a>Sessions Health Client Portal.
       </p>
     `,
     heading: 'What is Sessions Health?',

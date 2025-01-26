@@ -1,6 +1,5 @@
 import { Accordion } from '@/_components/accordion'
 import { CTA } from '@/_components/call-to-action'
-import { MentayaWidget } from '@/_components/mentaya-widget'
 import { PageHeader } from '@/_components/page-header'
 import { TextSection } from '@/_components/text-section'
 

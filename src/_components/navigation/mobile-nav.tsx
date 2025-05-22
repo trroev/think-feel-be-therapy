@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link, { type LinkProps } from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
-import { type Navigation } from '@/_types'
+import type { Navigation } from '@/_types'
 import { cn } from '@/_lib'
 
 import {
@@ -40,7 +40,7 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
       </SheetTrigger>
       <SheetContent className="border-none bg-brandPrimary p-0 text-background">
         <div className="flex flex-col gap-10">
-          <div className="w-full border-b border-border/40 p-6">
+          <div className='w-full border-border/40 border-b p-6'>
             <MobileLink
               href="/"
               className="group flex items-center gap-4"

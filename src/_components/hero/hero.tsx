@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import Image from 'next/image'
 import { Slot } from '@radix-ui/react-slot'
 
@@ -75,7 +75,7 @@ const Hero: FC<HeroProps> = ({
     <section
       className={cn(
         'relative flex flex-col items-center justify-center',
-        backgroundColor === 'transparent' ? 'border-y border-border' : bgColor,
+        backgroundColor === 'transparent' ? 'border-border border-y' : bgColor,
         image && 'h-[calc(100vh-6rem)]'
       )}
     >

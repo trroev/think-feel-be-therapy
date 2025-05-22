@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -45,7 +45,7 @@ const CTA: FC<CTAProps> = ({
       className={cn(
         'relative flex min-h-80 items-center justify-center',
         backgroundColor === 'transparent' && !image
-          ? 'border-y border-border'
+          ? 'border-border border-y'
           : bgColor
       )}
     >

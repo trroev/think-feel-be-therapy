@@ -1,8 +1,8 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { type Navigation } from '@/_types'
+import type { Navigation } from '@/_types'
 
 import { Disclaimer } from '../disclaimer'
 import { PrivacyPolicy } from '../privacy-policy'

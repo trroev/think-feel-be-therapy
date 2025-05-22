@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 
 import { RichText } from '../rich-text'
 import {

@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 
 import {
   Dialog,
@@ -261,7 +261,7 @@ const TermsOfService: FC<TermsOfServiceProps> = ({ heading, subheading }) => {
           <a
             href="https://www.socialworkers.org/About/Ethics/Code-of-Ethics/Code-of-Ethics-English"
             target="_blank"
-            className="font-semibold text-brandPrimary hover:underline"
+            className="font-semibold text-brandPrimary hover:underline" rel="noreferrer"
           >
             NASW Code of Ethics
           </a>
@@ -314,7 +314,7 @@ const TermsOfService: FC<TermsOfServiceProps> = ({ heading, subheading }) => {
             <a
               href="mailto:therapy@rachaelmathiak.com"
               target="_blank"
-              className="font-semibold text-brandPrimary hover:underline"
+              className="font-semibold text-brandPrimary hover:underline" rel="noreferrer"
             >
               therapy@rachaelmathiak.com
             </a>

@@ -1,6 +1,6 @@
 'use client'
 
-import { type FC } from 'react'
+import type { FC } from 'react'
 
 import { cn } from '@/_lib'
 
@@ -80,7 +80,7 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({
                           </p>
                         )}
                         {testimonial.client && !testimonial.year && (
-                          <p className="text-sm font-semibold sm:text-base">
+                          <p className='font-semibold text-sm sm:text-base'>
                             -{testimonial.client}
                           </p>
                         )}

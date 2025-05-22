@@ -39,7 +39,7 @@ const SectionHeading: FC<HeadingProps> = ({
   headingAlignment,
   fullHeightImage,
 }) => {
-  if (!heading) return null
+  if (!heading) { return null }
 
   return (
     <div

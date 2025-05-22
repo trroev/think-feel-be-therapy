@@ -19,7 +19,8 @@ export default function IndexPage() {
         heading="Think.Feel.Be."
         heroTagline={[
           {
-            staticHeading: 'Therapy for people who want to understand and accept',
+            staticHeading:
+              'Therapy for people who want to understand and accept',
             words: wordsArray.map((word) => ({ word })),
           },
         ]}

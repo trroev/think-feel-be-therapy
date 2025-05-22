@@ -6,13 +6,23 @@ import { Divider } from '../ui'
 
 interface PageHeaderProps {
   backgroundColor?:
-    | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
+    | (
+        | 'brandPrimary'
+        | 'brandSecondary'
+        | 'brandTertiary'
+        | 'brandQuaternary'
+        | 'transparent'
+      )
     | null
   heading?: string | null
   subheading?: string | null
 }
 
-const PageHeader: FC<PageHeaderProps> = ({ backgroundColor, heading, subheading }) => {
+const PageHeader: FC<PageHeaderProps> = ({
+  backgroundColor,
+  heading,
+  subheading,
+}) => {
   const bgColor = backgroundColor && `bg-${backgroundColor}`
 
   return (

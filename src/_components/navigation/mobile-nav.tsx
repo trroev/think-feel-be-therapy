@@ -8,7 +8,14 @@ import { usePathname, useRouter } from 'next/navigation'
 import { type Navigation } from '@/_types'
 import { cn } from '@/_lib'
 
-import { Button, Divider, HamburgerMenu, Sheet, SheetContent, SheetTrigger } from '../ui'
+import {
+  Button,
+  Divider,
+  HamburgerMenu,
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from '../ui'
 
 interface MobileNavProps {
   navigation: Navigation
@@ -34,14 +41,20 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
       <SheetContent className="border-none bg-brandPrimary p-0 text-background">
         <div className="flex flex-col gap-10">
           <div className="w-full border-b border-border/40 p-6">
-            <MobileLink href="/" className="group flex items-center gap-4" onOpenChange={setOpen}>
+            <MobileLink
+              href="/"
+              className="group flex items-center gap-4"
+              onOpenChange={setOpen}
+            >
               <Image
                 src={logoUrl || '/'}
                 alt="Think.Feel.Be. Therapy logo"
                 height={75}
                 width={75}
               />
-              <span className="font-bold group-hover:underline">Think.Feel.Be. Therapy</span>
+              <span className="font-bold group-hover:underline">
+                Think.Feel.Be. Therapy
+              </span>
             </MobileLink>
           </div>
           <div className="flex flex-col space-y-4 px-6">
@@ -64,7 +77,9 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
             })}
             <Divider />
             <Button asChild variant="secondary">
-              <Link href="https://thinkfeelbetherapy.sessionshealth.com/">Schedule a Session</Link>
+              <Link href="https://thinkfeelbetherapy.sessionshealth.com/">
+                Schedule a Session
+              </Link>
             </Button>
           </div>
         </div>
@@ -79,7 +94,13 @@ interface MobileLinkProps extends LinkProps {
   onOpenChange?: (open: boolean) => void
 }
 
-const MobileLink = ({ children, className, href, onOpenChange, ...props }: MobileLinkProps) => {
+const MobileLink = ({
+  children,
+  className,
+  href,
+  onOpenChange,
+  ...props
+}: MobileLinkProps) => {
   const router = useRouter()
 
   return (

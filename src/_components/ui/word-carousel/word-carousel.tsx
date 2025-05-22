@@ -14,7 +14,10 @@ interface WordCarouselProps {
 }
 
 const WordCarousel: FC<WordCarouselProps> = ({ options, words }) => {
-  const [emblaRef] = useEmblaCarousel(options, [Autoplay({ delay: 3000 }), Fade()])
+  const [emblaRef] = useEmblaCarousel(options, [
+    Autoplay({ delay: 3000 }),
+    Fade(),
+  ])
 
   return (
     <div className="overflow-hidden" ref={emblaRef}>

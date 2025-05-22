@@ -13,11 +13,25 @@ interface TaglineProps {
 
 interface HeroProps {
   backgroundColor?:
-    | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
+    | (
+        | 'brandPrimary'
+        | 'brandSecondary'
+        | 'brandTertiary'
+        | 'brandQuaternary'
+        | 'transparent'
+      )
     | null
   heading?: string
   headingFontWeight?:
-    | ('thin' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold')
+    | (
+        | 'thin'
+        | 'light'
+        | 'normal'
+        | 'medium'
+        | 'semibold'
+        | 'bold'
+        | 'extrabold'
+      )
     | null
   heroTagline?: TaglineProps[]
   image?: { alt: string; url: string }
@@ -88,7 +102,10 @@ const Hero: FC<HeroProps> = ({
           src={image.url}
           alt={image.alt}
           fill
-          className={cn('absolute inset-0 object-cover', heading && 'brightness-[0.6]')}
+          className={cn(
+            'absolute inset-0 object-cover',
+            heading && 'brightness-[0.6]'
+          )}
         />
       )}
     </section>

@@ -9,7 +9,13 @@ import { RichText } from '../rich-text'
 interface TextSectionProps {
   accordion?: AccordionProps
   backgroundColor?:
-    | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
+    | (
+        | 'brandPrimary'
+        | 'brandSecondary'
+        | 'brandTertiary'
+        | 'brandQuaternary'
+        | 'transparent'
+      )
     | null
   fullHeightImage?: boolean | null
   heading?: string | null
@@ -91,7 +97,12 @@ const TextSection: FC<TextSectionProps> = ({
               </div>
             </div>
           ) : (
-            <div className={cn('flex flex-col gap-12 md:px-12', fullHeightImage && 'md:px-0')}>
+            <div
+              className={cn(
+                'flex flex-col gap-12 md:px-12',
+                fullHeightImage && 'md:px-0'
+              )}
+            >
               <RichText content={richText} />
               {accordion && <Accordion asChild {...accordion} />}
             </div>

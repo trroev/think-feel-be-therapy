@@ -29,5 +29,8 @@ module.exports = {
   importOrderMergeDuplicateImports: true,
   importOrderCombineTypeAndValueImports: true,
   tailwindConfig: './tailwind.config.ts',
-  plugins: ['@ianvs/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
+  plugins: [
+    '@ianvs/prettier-plugin-sort-imports',
+    'prettier-plugin-tailwindcss',
+  ],
 }

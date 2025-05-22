@@ -39,7 +39,9 @@ const MainNav: FC<MainNavProps> = ({ navigation }) => {
         })}
         <Divider orientation="vertical" />
         <Button asChild variant="secondary">
-          <Link href="https://thinkfeelbetherapy.sessionshealth.com/">Schedule a Session</Link>
+          <Link href="https://thinkfeelbetherapy.sessionshealth.com/">
+            Schedule a Session
+          </Link>
         </Button>
       </div>
     </nav>

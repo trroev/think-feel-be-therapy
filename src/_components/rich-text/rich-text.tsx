@@ -22,7 +22,7 @@ const resolveContent = (value: string, inline: boolean): string => {
 const RichText = forwardRef<HTMLDivElement, RichTextProps>(
   ({ asChild = false, className, content, inline = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'div'
-    if (!content) return null
+    if (!content) { return null }
 
     const htmlString = resolveContent(content, inline)
 

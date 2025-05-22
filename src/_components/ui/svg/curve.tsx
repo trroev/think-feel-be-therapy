@@ -5,10 +5,12 @@ const SvgComponent = (
   ref: Ref<SVGSVGElement>
 ) => (
   <svg
+  {...props}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1440 320"
     ref={ref}
-    {...props}
+    role="presentation"
+    aria-hidden="true"
   >
     <path
       fill="currentColor"

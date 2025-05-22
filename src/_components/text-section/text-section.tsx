@@ -26,6 +26,90 @@ interface TextSectionProps {
   imageFirst?: boolean | null
 }
 
+interface HeadingProps {
+  heading: string
+  subheading?: string | null
+  headingAlignment?: ('left' | 'center' | 'right') | null
+  fullHeightImage?: boolean | null
+}
+
+const SectionHeading: FC<HeadingProps> = ({
+  heading,
+  subheading,
+  headingAlignment,
+  fullHeightImage,
+}) => {
+  if (!heading) return null
+
+  return (
+    <div
+      className={cn(
+        'flex flex-col gap-4',
+        headingAlignment === 'center' && 'items-center',
+        headingAlignment === 'left' && 'items-start',
+        headingAlignment === 'right' && 'items-end',
+        fullHeightImage && 'items-start'
+      )}
+    >
+      <h3>{heading}</h3>
+      {subheading && <h6>{subheading}</h6>}
+    </div>
+  )
+}
+
+interface ContentSectionProps {
+  image?: { alt: string; url: string }
+  imageFirst?: boolean | null
+  richText: string
+  accordion?: AccordionProps
+  fullHeightImage?: boolean | null
+}
+
+const ContentSection: FC<ContentSectionProps> = ({
+  image,
+  imageFirst,
+  richText,
+  accordion,
+  fullHeightImage,
+}) => {
+  if (!image || fullHeightImage) {
+    return (
+      <div
+        className={cn(
+          'flex flex-col gap-12 md:px-12',
+          fullHeightImage && 'md:px-0'
+        )}
+      >
+        <RichText content={richText} />
+        {accordion && <Accordion asChild {...accordion} />}
+      </div>
+    )
+  }
+
+  return (
+    <div
+      className={cn(
+        'flex flex-col gap-12 md:flex-row md:px-12',
+        imageFirst ? '' : 'flex-col-reverse md:flex-row-reverse'
+      )}
+    >
+      <div className="flex items-center justify-center md:w-1/2">
+        <Image
+          src={image.url}
+          alt={image.alt}
+          height={450}
+          width={400}
+          className="min-w-72 rounded-[99px] object-cover shadow-lg"
+        />
+      </div>
+      <div className="flex flex-col gap-12 md:w-1/2">
+        <RichText content={richText} />
+        {accordion && <Accordion asChild {...accordion} />}
+      </div>
+    </div>
+  )
+}
+
 const TextSection: FC<TextSectionProps> = ({
   accordion,
   backgroundColor,
@@ -61,52 +145,19 @@ const TextSection: FC<TextSectionProps> = ({
           </div>
         )}
         <div className="flex grow flex-col gap-12">
-          {heading && (
-            <div
-              className={cn(
-                'flex flex-col gap-4',
-                headingAlignment === 'center' && 'items-center',
-                headingAlignment === 'left' && 'items-start',
-                headingAlignment === 'right' && 'items-end',
-                fullHeightImage && 'items-start'
-              )}
-            >
-              <h3>{heading}</h3>
-              {subheading && <h6>{subheading}</h6>}
-            </div>
-          )}
-          {image && !fullHeightImage ? (
-            <div
-              className={cn(
-                'flex flex-col gap-12 md:flex-row md:px-12',
-                imageFirst ? '' : 'flex-col-reverse md:flex-row-reverse'
-              )}
-            >
-              <div className="flex items-center justify-center md:w-1/2">
-                <Image
-                  src={image.url}
-                  alt={image.alt}
-                  height={450}
-                  width={400}
-                  className="min-w-72 rounded-[99px] object-cover shadow-lg"
-                />
-              </div>
-              <div className="flex flex-col gap-12 md:w-1/2">
-                <RichText content={richText} />
-                {accordion && <Accordion asChild {...accordion} />}
-              </div>
-            </div>
-          ) : (
-            <div
-              className={cn(
-                'flex flex-col gap-12 md:px-12',
-                fullHeightImage && 'md:px-0'
-              )}
-            >
-              <RichText content={richText} />
-              {accordion && <Accordion asChild {...accordion} />}
-            </div>
-          )}
+          <SectionHeading
+            heading={heading || ''}
+            subheading={subheading}
+            headingAlignment={headingAlignment}
+            fullHeightImage={fullHeightImage}
+          />
+          <ContentSection
+            image={image}
+            imageFirst={imageFirst}
+            richText={richText}
+            accordion={accordion}
+            fullHeightImage={fullHeightImage}
+          />
         </div>
       </div>
     </section>

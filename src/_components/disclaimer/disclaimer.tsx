@@ -19,7 +19,9 @@ const Disclaimer: FC<DisclaimerProps> = ({ heading, subheading }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="hover:underline">Disclaimer</button>
+        <button className="hover:underline" type="button">
+          Disclaimer
+        </button>
       </DialogTrigger>
       <DialogContent className="max-h-[calc(100vh-2rem)] overflow-scroll lg:max-w-[800px]">
         <DialogHeader>

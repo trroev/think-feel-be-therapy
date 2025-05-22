@@ -5,6 +5,7 @@ const SvgComponent = (
   ref: Ref<SVGSVGElement>
 ) => (
   <svg
+  {...props}
     xmlns="http://www.w3.org/2000/svg"
     width={15}
     height={15}
@@ -12,7 +13,8 @@ const SvgComponent = (
     viewBox="0 0 15 15"
     className={className}
     ref={ref}
-    {...props}
+    role="img"
+    aria-label="Chevron down"
   >
     <path
       fill="currentColor"

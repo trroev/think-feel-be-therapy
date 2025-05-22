@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type FC } from 'react'
+import { type ReactNode, useState, type FC } from 'react'
 import Image from 'next/image'
 import Link, { type LinkProps } from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -89,7 +89,7 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
 }
 
 interface MobileLinkProps extends LinkProps {
-  children: React.ReactNode
+  children: ReactNode
   className?: string
   onOpenChange?: (open: boolean) => void
 }

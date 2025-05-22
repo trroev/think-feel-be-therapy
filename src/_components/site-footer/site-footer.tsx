@@ -9,7 +9,7 @@ import { PrivacyPolicy } from '../privacy-policy'
 import { TermsOfService } from '../terms-of-service'
 import { Divider } from '../ui'
 
-interface Link {
+interface LinkType {
   label: string
   url: string
 }
@@ -21,7 +21,7 @@ interface SiteFooterProps {
           alt: string
           src: string
         }
-        link?: Link
+        link?: LinkType
       }[]
     | null
   navigation: Navigation

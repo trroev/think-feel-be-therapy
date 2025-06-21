@@ -144,7 +144,7 @@ const PrivacyPolicy: FC<PrivacyPolicyProps> = ({ heading, subheading }) => {
             us at{' '}
             <a
               href="mailto:therapy@rachaelmathiak.com"
-              className="font-semibold text-brandPrimary hover:underline"
+              className="font-semibold text-brand-primary hover:underline"
             >
               therapy@rachaelmathiak.com
             </a>

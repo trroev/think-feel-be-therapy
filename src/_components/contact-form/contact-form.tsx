@@ -7,7 +7,7 @@ const ContactForm: FC = () => {
         <iframe
           src="https://docs.google.com/forms/d/e/1FAIpQLSdTsbAFsbghh-epnVRoPEzQUBOkCNrwbNMSUoqSr0DpsrqInQ/viewform?embedded=true"
           title="Contact Form"
-          className="size-full rounded-lg border border-border bg-brandPrimary/30"
+          className="size-full rounded-lg border border-border bg-brand-primary/30"
         >
           Loading…
         </iframe>

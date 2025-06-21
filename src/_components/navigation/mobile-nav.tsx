@@ -38,7 +38,7 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
           <span className="sr-only">Open mobile navigation</span>
         </Button>
       </SheetTrigger>
-      <SheetContent className="border-none bg-brandPrimary p-0 text-background">
+      <SheetContent className="border-none bg-brand-primary p-0 text-background">
         <div className="flex flex-col gap-10">
           <div className='w-full border-border/40 border-b p-6'>
             <MobileLink

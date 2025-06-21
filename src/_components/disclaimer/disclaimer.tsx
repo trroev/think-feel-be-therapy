@@ -69,7 +69,7 @@ const Disclaimer: FC<DisclaimerProps> = ({ heading, subheading }) => {
             at{' '}
             <a
               href="mailto:therapy@rachaelmathiak.com"
-              className="font-semibold text-brandPrimary hover:underline"
+              className="font-semibold text-brand-primary hover:underline"
             >
               therapy@rachaelmathiak.com
             </a>

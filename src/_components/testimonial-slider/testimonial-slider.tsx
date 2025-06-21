@@ -37,7 +37,7 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({
 }) => {
   return (
     <>
-      <section className="bg-brandSecondary">
+      <section className="bg-brand-secondary">
         <div className="container flex flex-col items-center gap-12 py-12">
           {heading && (
             <div
@@ -67,7 +67,7 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({
                   <Card>
                     <CardContent className="flex items-center justify-center p-6">
                       <div className="flex flex-col space-y-2">
-                        <p className="line-clamp-[8] text-sm sm:text-base">
+                        <p className="line-clamp-8 text-sm sm:text-base">
                           &quot;{testimonial.quote}&quot;
                         </p>
                         {testimonial.client && testimonial.year && (

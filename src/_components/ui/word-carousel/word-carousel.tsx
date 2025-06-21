@@ -23,7 +23,7 @@ const WordCarousel: FC<WordCarouselProps> = ({ options, words }) => {
     <div className="overflow-hidden" ref={emblaRef}>
       <div className="flex">
         {words.map((word, index) => (
-          <span key={index} className="flex-[0_0_100%] text-brandTertiary">
+          <span key={index} className="flex-[0_0_100%] text-brand-tertiary">
             {word.word}
           </span>
         ))}

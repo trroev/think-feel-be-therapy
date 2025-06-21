@@ -29,8 +29,8 @@ interface SiteFooterProps {
 
 const SiteFooter: FC<SiteFooterProps> = ({ badgeGroup }) => {
   return (
-    <footer className="bg-brandSecondary py-12">
-      <div className="container flex max-w-screen-2xl flex-col gap-6">
+    <footer className="bg-brand-secondary py-12">
+      <div className="container flex max-w-(--breakpoint-2xl) flex-col gap-6">
         <div className="flex flex-1 flex-wrap items-center justify-center gap-16 py-4 lg:gap-20">
           {badgeGroup?.map((badge) => {
             const BadgeImage = () => (

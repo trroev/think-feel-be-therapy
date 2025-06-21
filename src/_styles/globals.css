@@ -141,6 +141,10 @@
     text-rendering: optimizeLegibility;
   }
 
+  button {
+    @apply cursor-pointer;
+  }
+
   h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl;
   }

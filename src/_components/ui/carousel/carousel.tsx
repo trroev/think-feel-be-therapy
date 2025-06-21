@@ -1,12 +1,12 @@
 'use client'
 
-import * as React from 'react'
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react'
+import * as React from 'react'
 
-import { cn } from '@/_lib'
 import { Button } from '@/_components/ui'
+import { cn } from '@/_lib'
 
 import { ArrowLeft, ArrowRight } from '../svg'
 
@@ -197,7 +197,7 @@ CarouselItem.displayName = 'CarouselItem'
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = 'outline-solid', size = 'icon', ...props }, ref) => {
+>(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
@@ -226,7 +226,7 @@ CarouselPrevious.displayName = 'CarouselPrevious'
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = 'outline-solid', size = 'icon', ...props }, ref) => {
+>(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (

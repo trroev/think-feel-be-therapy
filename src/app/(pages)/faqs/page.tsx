@@ -69,7 +69,8 @@ const accordionItems = [
         </li>
       </ul>
     `,
-    heading: 'How do I find out what my insurance coverage is for mental health benefits?',
+    heading:
+      'How do I find out what my insurance coverage is for mental health benefits?',
     id: 'insurance-coverage-how',
   },
   {
@@ -139,7 +140,10 @@ export default function FAQsPage() {
             label: 'Meet Rachael',
           },
         ]}
-        image={{ alt: 'Bixby Bridge in Big Sur, California', url: '/images/bixby-bridge.jpg' }}
+        image={{
+          alt: 'Bixby Bridge in Big Sur, California',
+          url: '/images/bixby-bridge.jpg',
+        }}
       />
     </>
   )

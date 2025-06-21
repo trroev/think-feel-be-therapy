@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -9,7 +9,13 @@ import { Button } from '../ui'
 
 interface CTAProps {
   backgroundColor?:
-    | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
+    | (
+        | 'brandPrimary'
+        | 'brandSecondary'
+        | 'brandTertiary'
+        | 'brandQuaternary'
+        | 'transparent'
+      )
     | null
   body?: string
   heading?: string
@@ -24,14 +30,23 @@ interface CTAProps {
   subheading?: string
 }
 
-const CTA: FC<CTAProps> = ({ body, backgroundColor, image, heading, links, subheading }) => {
+const CTA: FC<CTAProps> = ({
+  body,
+  backgroundColor,
+  image,
+  heading,
+  links,
+  subheading,
+}) => {
   const bgColor = `bg-${backgroundColor}`
 
   return (
     <section
       className={cn(
         'relative flex min-h-80 items-center justify-center',
-        backgroundColor === 'transparent' && !image ? 'border-y border-border' : bgColor
+        backgroundColor === 'transparent' && !image
+          ? 'border-border border-y'
+          : bgColor
       )}
     >
       <div className="container z-10 flex flex-col items-center gap-8 py-4 text-background md:py-6 lg:py-8">
@@ -63,7 +78,10 @@ const CTA: FC<CTAProps> = ({ body, backgroundColor, image, heading, links, subhe
           src={image.url}
           alt={image.alt}
           fill
-          className={cn('absolute inset-0 object-cover', heading && 'brightness-50')}
+          className={cn(
+            'absolute inset-0 object-cover',
+            heading && 'brightness-50'
+          )}
         />
       )}
     </section>

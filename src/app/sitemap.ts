@@ -1,4 +1,4 @@
-import { type MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 
 const url = 'https://www.thinkfeelbetherapy.com/'
 

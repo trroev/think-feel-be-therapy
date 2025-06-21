@@ -1,14 +1,19 @@
 import { forwardRef, memo, type Ref, type SVGProps } from 'react'
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const SvgComponent = (
+  props: SVGProps<SVGSVGElement>,
+  ref: Ref<SVGSVGElement>
+) => (
   <svg
+  {...props}
     xmlns="http://www.w3.org/2000/svg"
     width={15}
     height={15}
     fill="none"
     viewBox="0 0 15 15"
     ref={ref}
-    {...props}
+    role="img"
+    aria-label="Arrow right"
   >
     <path
       fill="currentColor"

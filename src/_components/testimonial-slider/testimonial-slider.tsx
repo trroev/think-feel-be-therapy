@@ -1,6 +1,6 @@
 'use client'
 
-import { type FC } from 'react'
+import type { FC } from 'react'
 
 import { cn } from '@/_lib'
 
@@ -60,7 +60,10 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({
           <Carousel className="w-full max-w-[250px] sm:max-w-sm md:max-w-xl">
             <CarouselContent>
               {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id} className="flex items-center justify-center">
+                <CarouselItem
+                  key={testimonial.id}
+                  className="flex items-center justify-center"
+                >
                   <Card>
                     <CardContent className="flex items-center justify-center p-6">
                       <div className="flex flex-col space-y-2">
@@ -69,12 +72,15 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({
                         </p>
                         {testimonial.client && testimonial.year && (
                           <p className="text-sm sm:text-base">
-                            — <span className="font-semibold">{testimonial.client},</span>{' '}
+                            —{' '}
+                            <span className="font-semibold">
+                              {testimonial.client},
+                            </span>{' '}
                             {testimonial.year}
                           </p>
                         )}
                         {testimonial.client && !testimonial.year && (
-                          <p className="text-sm font-semibold sm:text-base">
+                          <p className='font-semibold text-sm sm:text-base'>
                             -{testimonial.client}
                           </p>
                         )}

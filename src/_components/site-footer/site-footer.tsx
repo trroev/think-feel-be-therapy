@@ -1,15 +1,15 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { type Navigation } from '@/_types'
+import type { Navigation } from '@/_types'
 
 import { Disclaimer } from '../disclaimer'
 import { PrivacyPolicy } from '../privacy-policy'
 import { TermsOfService } from '../terms-of-service'
 import { Divider } from '../ui'
 
-interface Link {
+interface LinkType {
   label: string
   url: string
 }
@@ -21,7 +21,7 @@ interface SiteFooterProps {
           alt: string
           src: string
         }
-        link?: Link
+        link?: LinkType
       }[]
     | null
   navigation: Navigation
@@ -34,12 +34,21 @@ const SiteFooter: FC<SiteFooterProps> = ({ badgeGroup }) => {
         <div className="flex flex-1 flex-wrap items-center justify-center gap-16 py-4 lg:gap-20">
           {badgeGroup?.map((badge) => {
             const BadgeImage = () => (
-              <Image src={badge.badge.src} alt={badge.badge.alt} height={150} width={150} />
+              <Image
+                src={badge.badge.src}
+                alt={badge.badge.alt}
+                height={150}
+                width={150}
+              />
             )
             const badgeLink = badge.link?.url
 
             return badge.link ? (
-              <Link key={`${badge.badge.alt}`} href={badgeLink ?? ''} target="_blank">
+              <Link
+                key={`${badge.badge.alt}`}
+                href={badgeLink ?? ''}
+                target="_blank"
+              >
                 <BadgeImage />
               </Link>
             ) : (
@@ -59,7 +68,10 @@ const SiteFooter: FC<SiteFooterProps> = ({ badgeGroup }) => {
               heading="Privacy Policy"
               subheading="Last updated: Nov 1, 2023 9:12 PM"
             />
-            <Disclaimer heading="Disclaimer" subheading="Last updated: Sep 18, 2023 9:24 PM" />
+            <Disclaimer
+              heading="Disclaimer"
+              subheading="Last updated: Sep 18, 2023 9:24 PM"
+            />
           </div>
         </div>
       </div>

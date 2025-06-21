@@ -1,7 +1,12 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 
 import { RichText } from '../rich-text'
-import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '../ui'
+import {
+  AccordionContent,
+  AccordionItem,
+  AccordionRoot,
+  AccordionTrigger,
+} from '../ui'
 
 interface AccordionProps {
   asChild?: boolean
@@ -13,7 +18,11 @@ interface AccordionProps {
   type?: 'single' | 'multiple'
 }
 
-const Accordion: FC<AccordionProps> = ({ asChild, items, type = 'multiple' }) => {
+const Accordion: FC<AccordionProps> = ({
+  asChild,
+  items,
+  type = 'multiple',
+}) => {
   return asChild ? (
     <AccordionRoot type={type || 'multiple'} className="w-full">
       {items?.map((item) => (

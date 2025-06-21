@@ -45,7 +45,10 @@ export default function ClientGuidePage() {
         subheading="Everything you need to know about working with Think.Feel.Be. Therapy"
       />
       <TextSection
-        image={{ alt: "Rachael Mathiak's office", url: '/images/rachael-office.jpg' }}
+        image={{
+          alt: "Rachael Mathiak's office",
+          url: '/images/rachael-office.jpg',
+        }}
         fullHeightImage
         heading="Services & Pricing"
         headingAlignment="center"

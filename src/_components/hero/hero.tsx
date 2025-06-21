@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import type { FC } from 'react'
 import Image from 'next/image'
 import { Slot } from '@radix-ui/react-slot'
 
@@ -13,11 +13,25 @@ interface TaglineProps {
 
 interface HeroProps {
   backgroundColor?:
-    | ('brandPrimary' | 'brandSecondary' | 'brandTertiary' | 'brandQuaternary' | 'transparent')
+    | (
+        | 'brandPrimary'
+        | 'brandSecondary'
+        | 'brandTertiary'
+        | 'brandQuaternary'
+        | 'transparent'
+      )
     | null
   heading?: string
   headingFontWeight?:
-    | ('thin' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold')
+    | (
+        | 'thin'
+        | 'light'
+        | 'normal'
+        | 'medium'
+        | 'semibold'
+        | 'bold'
+        | 'extrabold'
+      )
     | null
   heroTagline?: TaglineProps[]
   image?: { alt: string; url: string }
@@ -61,7 +75,7 @@ const Hero: FC<HeroProps> = ({
     <section
       className={cn(
         'relative flex flex-col items-center justify-center',
-        backgroundColor === 'transparent' ? 'border-y border-border' : bgColor,
+        backgroundColor === 'transparent' ? 'border-border border-y' : bgColor,
         image && 'h-[calc(100vh-6rem)]'
       )}
     >
@@ -88,7 +102,10 @@ const Hero: FC<HeroProps> = ({
           src={image.url}
           alt={image.alt}
           fill
-          className={cn('absolute inset-0 object-cover', heading && 'brightness-[0.6]')}
+          className={cn(
+            'absolute inset-0 object-cover',
+            heading && 'brightness-[0.6]'
+          )}
         />
       )}
     </section>

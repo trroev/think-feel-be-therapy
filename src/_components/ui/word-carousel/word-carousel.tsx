@@ -1,7 +1,7 @@
 'use client'
 
-import { type FC } from 'react'
-import { type EmblaOptionsType } from 'embla-carousel'
+import type { FC } from 'react'
+import type { EmblaOptionsType } from 'embla-carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Fade from 'embla-carousel-fade'
 import useEmblaCarousel from 'embla-carousel-react'
@@ -14,7 +14,10 @@ interface WordCarouselProps {
 }
 
 const WordCarousel: FC<WordCarouselProps> = ({ options, words }) => {
-  const [emblaRef] = useEmblaCarousel(options, [Autoplay({ delay: 3000 }), Fade()])
+  const [emblaRef] = useEmblaCarousel(options, [
+    Autoplay({ delay: 3000 }),
+    Fade(),
+  ])
 
   return (
     <div className="overflow-hidden" ref={emblaRef}>

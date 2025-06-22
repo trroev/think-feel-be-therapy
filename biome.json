@@ -2,7 +2,11 @@
   "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "extends": ["ultracite"],
   "files": {
-    "includes": ["**", "!src/app/(payload)/**/*"]
+    "includes": [
+      "**",
+      "!src/app/(payload)/**/*",
+      "!src/_types/payload-types.ts"
+    ]
   },
   "formatter": {},
   "javascript": {

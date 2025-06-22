@@ -1,8 +1,8 @@
-import { testimonials } from '@/_config'
-import { CTA } from '@/_components/call-to-action'
-import { Hero } from '@/_components/hero'
-import { TestimonialSlider } from '@/_components/testimonial-slider'
-import { TextSection } from '@/_components/text-section'
+import { CTA } from '@/components/call-to-action'
+import { Hero } from '@/components/hero'
+import { TestimonialSlider } from '@/components/testimonial-slider'
+import { TextSection } from '@/components/text-section'
+import { testimonials } from '@/config'
 
 export default function IndexPage() {
   const wordsArray = [

@@ -1,6 +1,6 @@
-import { Accordion } from '@/_components/accordion'
-import { CTA } from '@/_components/call-to-action'
-import { PageHeader } from '@/_components/page-header'
+import { Accordion } from '@/components/accordion'
+import { CTA } from '@/components/call-to-action'
+import { PageHeader } from '@/components/page-header'
 
 const accordionItems = [
   {
@@ -134,16 +134,16 @@ export default function FAQsPage() {
       <Accordion items={accordionItems} />
       <CTA
         heading="Learn more about Rachael"
+        image={{
+          alt: 'Bixby Bridge in Big Sur, California',
+          url: '/images/bixby-bridge.jpg',
+        }}
         links={[
           {
             href: '/about',
             label: 'Meet Rachael',
           },
         ]}
-        image={{
-          alt: 'Bixby Bridge in Big Sur, California',
-          url: '/images/bixby-bridge.jpg',
-        }}
       />
     </>
   )

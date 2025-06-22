@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
-import { populatePublishedAt } from '@/_hooks/populatePublishedAt'
+import { backgroundColorField } from '@/fields/backgroundColor'
 import { slugField } from '@/fields/slug'
+import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { revalidatePage } from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -36,6 +37,17 @@ export const Pages: CollectionConfig<'pages'> = {
               type: 'text',
               required: true,
             },
+            {
+              name: 'subheading',
+              type: 'text',
+            },
+            {
+              name: 'backgroundImage',
+              type: 'relationship',
+              relationTo: 'media',
+              hasMany: false,
+            },
+            backgroundColorField,
           ],
           label: 'Hero',
         },

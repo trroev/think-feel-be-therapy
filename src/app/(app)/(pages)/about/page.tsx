@@ -1,7 +1,7 @@
-import { Accordion } from '@/_components/accordion'
-import { CTA } from '@/_components/call-to-action'
-import { PageHeader } from '@/_components/page-header'
-import { TextSection } from '@/_components/text-section'
+import { Accordion } from '@/components/accordion'
+import { CTA } from '@/components/call-to-action'
+import { PageHeader } from '@/components/page-header'
+import { TextSection } from '@/components/text-section'
 
 const accordionItems = [
   {

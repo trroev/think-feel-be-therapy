@@ -8,6 +8,7 @@
     "dev": "dotenvx run --convention=nextjs -- next dev --turbo",
     "format": "biome format",
     "format:fix": "biome format --write",
+    "generate:importmap": "dotenvx run --convention=nextjs -- payload generate:importmap",
     "generate:types": "payload generate:types",
     "lint": "biome lint",
     "lint:fix": "biome lint --write",

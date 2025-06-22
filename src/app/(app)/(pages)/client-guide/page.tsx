@@ -1,7 +1,7 @@
-import { Accordion } from '@/_components/accordion'
-import { CTA } from '@/_components/call-to-action'
-import { PageHeader } from '@/_components/page-header'
-import { TextSection } from '@/_components/text-section'
+import { Accordion } from '@/components/accordion'
+import { CTA } from '@/components/call-to-action'
+import { PageHeader } from '@/components/page-header'
+import { TextSection } from '@/components/text-section'
 
 const accordionItems = [
   {
@@ -45,13 +45,13 @@ export default function ClientGuidePage() {
         subheading="Everything you need to know about working with Think.Feel.Be. Therapy"
       />
       <TextSection
+        fullHeightImage
+        heading="Services & Pricing"
+        headingAlignment="center"
         image={{
           alt: "Rachael Mathiak's office",
           url: '/images/rachael-office.jpg',
         }}
-        fullHeightImage
-        heading="Services & Pricing"
-        headingAlignment="center"
         richText="
           <ul>
             <li>Individual Therapy - $175/session</li>
@@ -61,10 +61,10 @@ export default function ClientGuidePage() {
       />
       <Accordion items={accordionItems} />
       <TextSection
-        image={{ alt: 'Rachael Mathiak', url: '/images/coffee-notes.jpg' }}
-        imageFirst
         heading="Payment & Insurance Information"
         headingAlignment="center"
+        image={{ alt: 'Rachael Mathiak', url: '/images/coffee-notes.jpg' }}
+        imageFirst
         richText="
           <p>
             I am in-network and able to submit claims directly to:

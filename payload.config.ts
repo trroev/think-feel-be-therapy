@@ -4,6 +4,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
+import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 
 const filename = fileURLToPath(import.meta.url)
@@ -17,7 +18,7 @@ export default buildConfig({
   }),
 
   // Define and configure your collections in this array
-  collections: [Pages],
+  collections: [Media, Pages],
 
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),

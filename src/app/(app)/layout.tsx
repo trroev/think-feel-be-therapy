@@ -1,14 +1,14 @@
-import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
+import type { ReactNode } from 'react'
 
-import { cn } from '@/_lib'
+import { cn } from '@/lib'
 
-import '@/_styles/globals.css'
+import '@/styles/globals.css'
 
-import { badgeGroup, navData } from '@/_config'
-import { SiteFooter } from '@/_components/site-footer'
-import { SiteHeader } from '@/_components/site-header'
+import { SiteFooter } from '@/components/site-footer'
+import { SiteHeader } from '@/components/site-header'
+import { badgeGroup, navData } from '@/config'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -26,8 +26,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link href="/favicon.ico" rel="icon" sizes="32x32" />
+        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body
         className={cn(

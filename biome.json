@@ -12,6 +12,9 @@
   },
   "linter": {
     "rules": {
+      "nursery": {
+        "noUnknownAtRule": "off"
+      },
       "style": {
         "useFilenamingConvention": "off",
         "noParameterAssign": "error",

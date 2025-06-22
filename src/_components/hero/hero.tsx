@@ -67,7 +67,7 @@ const Hero: FC<HeroProps> = ({
       case 'extrabold':
         return 'font-extrabold'
       default:
-        return undefined
+        return 
     }
   })()
 

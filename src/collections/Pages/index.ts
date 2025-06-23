@@ -6,17 +6,20 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import type { CollectionConfig } from 'payload'
-import { backgroundColorField } from '@/fields/backgroundColor'
+import { anyone } from '@/access/anyone'
+import { authenticated } from '@/access/authenticated'
+import { Hero } from '@/blocks/Hero/config'
+import { PageHeader } from '@/blocks/PageHeader/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { revalidatePage } from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig<'pages'> = {
   access: {
-    create: () => true,
-    read: () => true,
-    update: () => true,
-    delete: () => true,
+    create: authenticated,
+    read: anyone,
+    update: authenticated,
+    delete: authenticated,
   },
   admin: {
     defaultColumns: ['title', 'updatedAt'],
@@ -40,37 +43,18 @@ export const Pages: CollectionConfig<'pages'> = {
         {
           fields: [
             {
-              name: 'heading',
-              type: 'text',
+              label: 'Layout',
+              name: 'blocks',
+              type: 'blocks',
+              blocks: [Hero, PageHeader],
               required: true,
+              admin: {
+                initCollapsed: true,
+              },
             },
-            {
-              name: 'subheading',
-              type: 'text',
-            },
-            {
-              name: 'backgroundImage',
-              type: 'relationship',
-              relationTo: 'media',
-            },
-            backgroundColorField,
           ],
-          label: 'Hero',
+          label: 'Content',
         },
-        // {
-        //   fields: [
-        //     {
-        //       name: 'layout',
-        //       type: 'blocks',
-        //       blocks: [],
-        //       required: true,
-        //       admin: {
-        //         initCollapsed: true,
-        //       },
-        //     },
-        //   ],
-        //   label: 'Content',
-        // },
         {
           name: 'meta',
           label: 'SEO',

@@ -1,29 +1,39 @@
-import type { Field } from 'payload'
+import type { SelectField } from 'payload'
+import { deepMerge } from 'payload'
 
-export const backgroundColorField: Field = {
-  name: 'backgroundColor',
-  type: 'select',
-  options: [
+type BackgroundColorField = (overrides?: Partial<SelectField>) => [SelectField]
+
+export const backgroundColorField: BackgroundColorField = (overrides = {}) => {
+  const field = deepMerge<SelectField>(
     {
-      label: 'Teal',
-      value: 'brand-primary',
+      name: 'backgroundColor',
+      type: 'select',
+      defaultValue: 'brand-primary',
+      options: [
+        {
+          label: 'Teal',
+          value: 'brand-primary',
+        },
+        {
+          label: 'Green',
+          value: 'brand-secondary',
+        },
+        {
+          label: 'Yellow',
+          value: 'brand-tertiary',
+        },
+        {
+          label: 'Orange',
+          value: 'brand-quaternary',
+        },
+        {
+          label: 'None',
+          value: 'transparent',
+        },
+      ],
     },
-    {
-      label: 'Green',
-      value: 'brand-secondary',
-    },
-    {
-      label: 'Yellow',
-      value: 'brand-tertiary',
-    },
-    {
-      label: 'Orange',
-      value: 'brand-quaternary',
-    },
-    {
-      label: 'None',
-      value: 'transparent',
-    },
-  ],
-  defaultValue: 'brand-primary',
+    overrides
+  )
+
+  return [field]
 }

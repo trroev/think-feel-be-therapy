@@ -8,7 +8,6 @@ export const backgroundColorField: BackgroundColorField = (overrides = {}) => {
     {
       name: 'backgroundColor',
       type: 'select',
-      defaultValue: 'brand-primary',
       options: [
         {
           label: 'Teal',

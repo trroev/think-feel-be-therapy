@@ -5,6 +5,12 @@ import { backgroundColorField } from '@/fields/backgroundColor'
 export const Hero: Block = {
   fields: [
     {
+      name: 'backgroundImage',
+      relationTo: 'media',
+      type: 'relationship',
+    },
+    ...backgroundColorField(),
+    {
       name: 'heading',
       required: true,
       type: 'text',
@@ -13,17 +19,6 @@ export const Hero: Block = {
       name: 'subheading',
       type: 'text',
     },
-    {
-      name: 'backgroundImage',
-      relationTo: 'media',
-      type: 'relationship',
-    },
-    ...backgroundColorField({
-      admin: {
-        condition: (data) => !data?.backgroundImage,
-      },
-      defaultValue: undefined,
-    }),
     {
       fields: [
         {

@@ -8,6 +8,8 @@ import {
 import type { CollectionConfig } from 'payload'
 import { anyone } from '@/access/anyone'
 import { authenticated } from '@/access/authenticated'
+import { CallToAction } from '@/blocks/CallToAction/config'
+import { Content } from '@/blocks/Content/config'
 import { Hero } from '@/blocks/Hero/config'
 import { PageHeader } from '@/blocks/PageHeader/config'
 import { slugField } from '@/fields/slug'
@@ -46,7 +48,7 @@ export const Pages: CollectionConfig<'pages'> = {
               label: 'Layout',
               name: 'blocks',
               type: 'blocks',
-              blocks: [Hero, PageHeader],
+              blocks: [CallToAction, Content, Hero, PageHeader],
               required: true,
               admin: {
                 initCollapsed: true,

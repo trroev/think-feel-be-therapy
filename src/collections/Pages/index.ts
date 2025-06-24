@@ -12,6 +12,7 @@ import { CallToAction } from '@/blocks/CallToAction/config'
 import { Hero } from '@/blocks/Hero/config'
 import { ImageWithText } from '@/blocks/ImageWithText/config'
 import { PageHeader } from '@/blocks/PageHeader/config'
+import { TestimonialsSlider } from '@/blocks/TestimonialsSlider/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { revalidatePage } from './hooks/revalidatePage'
@@ -48,7 +49,13 @@ export const Pages: CollectionConfig<'pages'> = {
               label: 'Layout',
               name: 'blocks',
               type: 'blocks',
-              blocks: [CallToAction, Hero, ImageWithText, PageHeader],
+              blocks: [
+                CallToAction,
+                Hero,
+                ImageWithText,
+                PageHeader,
+                TestimonialsSlider,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

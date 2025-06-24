@@ -11,6 +11,9 @@ export const Testimonials: CollectionConfig = {
     read: anyone,
     update: authenticated,
   },
+  admin: {
+    useAsTitle: 'name',
+  },
   fields: [
     {
       label: 'Client Name/Alias',

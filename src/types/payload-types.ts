@@ -224,7 +224,7 @@ export interface Media {
 export interface Page {
   id: string;
   title: string;
-  blocks: (CallToActionBlock | HeroBlock | ImageWithTextBlock | PageHeaderBlock)[];
+  blocks: (CallToActionBlock | HeroBlock | ImageWithTextBlock | PageHeaderBlock | TestimonialsSliderBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -384,6 +384,16 @@ export interface PageHeaderBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'page-header';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsSliderBlock".
+ */
+export interface TestimonialsSliderBlock {
+  testimonials?: (string | Testimonial)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials-slider';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -696,6 +706,7 @@ export interface PagesSelect<T extends boolean = true> {
         hero?: T | HeroBlockSelect<T>;
         'image-with-text'?: T | ImageWithTextBlockSelect<T>;
         'page-header'?: T | PageHeaderBlockSelect<T>;
+        'testimonials-slider'?: T | TestimonialsSliderBlockSelect<T>;
       };
   meta?:
     | T
@@ -797,6 +808,15 @@ export interface PageHeaderBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
   heading?: T;
   subheading?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsSliderBlock_select".
+ */
+export interface TestimonialsSliderBlockSelect<T extends boolean = true> {
+  testimonials?: T;
   id?: T;
   blockName?: T;
 }

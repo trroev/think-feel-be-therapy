@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
     reactCompiler: false,
   },
   reactStrictMode: true,
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
 }
 
 export default withPayload(nextConfig)

@@ -104,6 +104,7 @@ export const ImageWithText: Block = {
       },
     },
   ],
+  interfaceName: 'ImageWithTextBlock',
   labels: {
     singular: 'Image with Text',
     plural: 'Image with Text Blocks',

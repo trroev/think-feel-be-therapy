@@ -8,6 +8,7 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
+import { Testimonials } from '@/collections/Testimonials'
 import type { Page } from '@/types/payload-types'
 import { getServerSideURL } from '@/utils/getURL'
 
@@ -34,7 +35,7 @@ export default buildConfig({
   }),
 
   // Define and configure your collections in this array
-  collections: [Media, Pages],
+  collections: [Media, Pages, Testimonials],
 
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
@@ -56,6 +57,6 @@ export default buildConfig({
   sharp,
 
   typescript: {
-    outputFile: path.resolve(dirname, 'src', '_types', 'payload-types.ts'),
+    outputFile: path.resolve(dirname, 'src', 'types', 'payload-types.ts'),
   },
 })

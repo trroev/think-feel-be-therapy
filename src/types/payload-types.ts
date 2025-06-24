@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     media: Media;
     pages: Page;
+    testimonials: Testimonial;
     users: User;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
@@ -79,6 +80,7 @@ export interface Config {
   collectionsSelect: {
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -222,17 +224,193 @@ export interface Media {
 export interface Page {
   id: string;
   title: string;
-  heading: string;
-  backgroundImage?: (string | null) | Media;
-  backgroundColor?:
-    | ('brand-primary' | 'brand-secondary' | 'brand-tertiary' | 'brand-quaternary' | 'transparent')
-    | null;
+  blocks: (CallToActionBlock | HeroBlock | ImageWithTextBlock | PageHeaderBlock)[];
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CallToActionBlock".
+ */
+export interface CallToActionBlock {
+  backgroundImage?: (string | null) | Media;
+  backgroundColor?:
+    | ('brand-primary' | 'brand-secondary' | 'brand-tertiary' | 'brand-quaternary' | 'transparent')
+    | null;
+  heading?: string | null;
+  subheading?: string | null;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  bodyHTML?: string | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock".
+ */
+export interface HeroBlock {
+  backgroundImage?: (string | null) | Media;
+  backgroundColor?:
+    | ('brand-primary' | 'brand-secondary' | 'brand-tertiary' | 'brand-quaternary' | 'transparent')
+    | null;
+  heading: string;
+  subheading?: string | null;
+  caption?: {
+    tagline?: string | null;
+    words?:
+      | {
+          word?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageWithTextBlock".
+ */
+export interface ImageWithTextBlock {
+  backgroundColor?:
+    | ('brand-primary' | 'brand-secondary' | 'brand-tertiary' | 'brand-quaternary' | 'transparent')
+    | null;
+  heading?: string | null;
+  headingAlignment?: ('left' | 'center' | 'right') | null;
+  subheading?: string | null;
+  contentType?: ('text' | 'accordion') | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  richTextHTML?: string | null;
+  accordion?:
+    | {
+        heading: string;
+        accordionContent?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        accordionContentHTML?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  image?: (string | null) | Media;
+  imageFirst?: boolean | null;
+  fullHeightImage?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'image-with-text';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageHeaderBlock".
+ */
+export interface PageHeaderBlock {
+  backgroundColor?:
+    | ('brand-primary' | 'brand-secondary' | 'brand-tertiary' | 'brand-quaternary' | 'transparent')
+    | null;
+  heading: string;
+  subheading?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'page-header';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  name?: string | null;
+  dateRange?: string | null;
+  testimonial?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  testimonialHTML?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -357,6 +535,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
       } | null)
     | ({
         relationTo: 'users';
@@ -507,15 +689,128 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
-  heading?: T;
-  backgroundImage?: T;
-  backgroundColor?: T;
+  blocks?:
+    | T
+    | {
+        cta?: T | CallToActionBlockSelect<T>;
+        hero?: T | HeroBlockSelect<T>;
+        'image-with-text'?: T | ImageWithTextBlockSelect<T>;
+        'page-header'?: T | PageHeaderBlockSelect<T>;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CallToActionBlock_select".
+ */
+export interface CallToActionBlockSelect<T extends boolean = true> {
+  backgroundImage?: T;
+  backgroundColor?: T;
+  heading?: T;
+  subheading?: T;
+  body?: T;
+  bodyHTML?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock_select".
+ */
+export interface HeroBlockSelect<T extends boolean = true> {
+  backgroundImage?: T;
+  backgroundColor?: T;
+  heading?: T;
+  subheading?: T;
+  caption?:
+    | T
+    | {
+        tagline?: T;
+        words?:
+          | T
+          | {
+              word?: T;
+              id?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageWithTextBlock_select".
+ */
+export interface ImageWithTextBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  heading?: T;
+  headingAlignment?: T;
+  subheading?: T;
+  contentType?: T;
+  richText?: T;
+  richTextHTML?: T;
+  accordion?:
+    | T
+    | {
+        heading?: T;
+        accordionContent?: T;
+        accordionContentHTML?: T;
+        id?: T;
+      };
+  image?: T;
+  imageFirst?: T;
+  fullHeightImage?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageHeaderBlock_select".
+ */
+export interface PageHeaderBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  heading?: T;
+  subheading?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  name?: T;
+  dateRange?: T;
+  testimonial?: T;
+  testimonialHTML?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

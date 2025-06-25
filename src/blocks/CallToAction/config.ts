@@ -30,6 +30,7 @@ export const CallToAction: Block = {
       lexicalFieldName: 'body',
     }),
     linkGroup({
+      appearances: false,
       overrides: { maxRows: 2 },
     }),
   ],

@@ -8,6 +8,7 @@ import {
 import type { CollectionConfig } from 'payload'
 import { anyone } from '@/access/anyone'
 import { authenticated } from '@/access/authenticated'
+import { Accordion } from '@/blocks/Accordion/config'
 import { CallToAction } from '@/blocks/CallToAction/config'
 import { Hero } from '@/blocks/Hero/config'
 import { ImageWithText } from '@/blocks/ImageWithText/config'
@@ -50,6 +51,7 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'blocks',
               type: 'blocks',
               blocks: [
+                Accordion,
                 CallToAction,
                 Hero,
                 ImageWithText,

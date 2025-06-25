@@ -224,7 +224,14 @@ export interface Media {
 export interface Page {
   id: string;
   title: string;
-  blocks: (CallToActionBlock | HeroBlock | ImageWithTextBlock | PageHeaderBlock | TestimonialsSliderBlock)[];
+  blocks: (
+    | AccordionBlock
+    | CallToActionBlock
+    | HeroBlock
+    | ImageWithTextBlock
+    | PageHeaderBlock
+    | TestimonialsSliderBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -239,6 +246,36 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock".
+ */
+export interface AccordionBlock {
+  items?:
+    | {
+        heading: string;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'accordion';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -702,6 +739,7 @@ export interface PagesSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
+        accordion?: T | AccordionBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
         hero?: T | HeroBlockSelect<T>;
         'image-with-text'?: T | ImageWithTextBlockSelect<T>;
@@ -721,6 +759,21 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock_select".
+ */
+export interface AccordionBlockSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        heading?: T;
+        content?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -5,6 +5,7 @@ export const TestimonialsSlider: Block = {
     {
       name: 'testimonials',
       hasMany: true,
+      maxRows: 10,
       relationTo: 'testimonials',
       type: 'relationship',
     },

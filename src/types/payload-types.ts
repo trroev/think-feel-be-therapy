@@ -276,6 +276,7 @@ export interface AccordionBlock {
           };
           [k: string]: unknown;
         };
+        contentHTML?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -772,6 +773,7 @@ export interface AccordionBlockSelect<T extends boolean = true> {
     | {
         heading?: T;
         content?: T;
+        contentHTML?: T;
         id?: T;
       };
   id?: T;

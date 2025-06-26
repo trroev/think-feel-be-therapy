@@ -1,16 +1,5 @@
 import { match, P } from 'ts-pattern'
-import type { Page } from '@/types/payload-types'
-
-type Link = {
-  type?: ('reference' | 'custom') | null
-  newTab?: boolean | null
-  label?: string | null
-  reference?: {
-    relationTo: 'pages'
-    value: string | Page
-  } | null
-  url?: string | null
-}
+import type { Link, Page } from '@/types/payload-types'
 
 export function getLink(link: Link): {
   href: string

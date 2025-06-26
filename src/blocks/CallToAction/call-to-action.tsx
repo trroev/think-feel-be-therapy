@@ -53,9 +53,11 @@ const CallToAction: FC<Props> = ({
               const { href, label, newTab } = processedLink
 
               return (
-                <Link href={href} key={id} target={newTab ? '_blank' : '_self'}>
-                  <Button variant="secondary">{label}</Button>
-                </Link>
+                <Button asChild key={id} variant="secondary">
+                  <Link href={href} target={newTab ? '_blank' : '_self'}>
+                    {label}
+                  </Link>
+                </Button>
               )
             })}
           </div>

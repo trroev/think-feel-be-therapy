@@ -30,8 +30,6 @@ export const link: LinkType = ({
   overrides = {},
 } = {}) => {
   const linkResult: GroupField = {
-    name: 'link',
-    type: 'group',
     admin: {
       hideGutter: true,
     },
@@ -72,6 +70,9 @@ export const link: LinkType = ({
         ],
       },
     ],
+    interfaceName: 'Link',
+    type: 'group',
+    name: 'link',
   }
 
   const linkTypes: Field[] = [

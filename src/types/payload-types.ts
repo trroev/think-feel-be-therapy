@@ -313,22 +313,27 @@ export interface CallToActionBlock {
   bodyHTML?: string | null;
   links?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: string | Page;
-          } | null;
-          url?: string | null;
-          label: string;
-        };
+        link: Link;
         id?: string | null;
       }[]
     | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cta';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Link".
+ */
+export interface Link {
+  type?: ('reference' | 'custom') | null;
+  newTab?: boolean | null;
+  reference?: {
+    relationTo: 'pages';
+    value: string | Page;
+  } | null;
+  url?: string | null;
+  label: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -793,19 +798,22 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
   links?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
+        link?: T | LinkSelect<T>;
         id?: T;
       };
   id?: T;
   blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Link_select".
+ */
+export interface LinkSelect<T extends boolean = true> {
+  type?: T;
+  newTab?: T;
+  reference?: T;
+  url?: T;
+  label?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -976,15 +984,7 @@ export interface Footer {
     | {
         badgeImage: string | Media;
         addLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: string | Page;
-          } | null;
-          url?: string | null;
-        };
+        link?: Link;
         id?: string | null;
       }[]
     | null;
@@ -1051,29 +1051,11 @@ export interface Navigation {
   id: string;
   links?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: string | Page;
-          } | null;
-          url?: string | null;
-          label: string;
-        };
+        link: Link;
         id?: string | null;
       }[]
     | null;
-  cta: {
-    type?: ('reference' | 'custom') | null;
-    newTab?: boolean | null;
-    reference?: {
-      relationTo: 'pages';
-      value: string | Page;
-    } | null;
-    url?: string | null;
-    label: string;
-  };
+  cta: Link;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1087,14 +1069,7 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         badgeImage?: T;
         addLink?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-            };
+        link?: T | LinkSelect<T>;
         id?: T;
       };
   copyright?: T;
@@ -1116,26 +1091,10 @@ export interface NavigationSelect<T extends boolean = true> {
   links?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
+        link?: T | LinkSelect<T>;
         id?: T;
       };
-  cta?:
-    | T
-    | {
-        type?: T;
-        newTab?: T;
-        reference?: T;
-        url?: T;
-        label?: T;
-      };
+  cta?: T | LinkSelect<T>;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

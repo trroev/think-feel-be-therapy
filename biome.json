@@ -12,6 +12,10 @@
   },
   "linter": {
     "rules": {
+      "correctness": {
+        "noUnusedFunctionParameters": "warn",
+        "noUnusedVariables": "warn"
+      },
       "nursery": {
         "noUnknownAtRule": "off"
       },

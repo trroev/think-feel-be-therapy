@@ -26,7 +26,7 @@ export function getLink(link: Link): {
         const value = reference.value
         return {
           href: `/${value.slug}`,
-          label: value.title,
+          label: link.label ?? value.title,
           newTab: newTab ?? false,
         }
       }

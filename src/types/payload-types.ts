@@ -435,6 +435,8 @@ export interface PageHeaderBlock {
  * via the `definition` "TestimonialsSliderBlock".
  */
 export interface TestimonialsSliderBlock {
+  heading?: string | null;
+  subheading?: string | null;
   testimonials?: (string | Testimonial)[] | null;
   id?: string | null;
   blockName?: string | null;
@@ -880,6 +882,8 @@ export interface PageHeaderBlockSelect<T extends boolean = true> {
  * via the `definition` "TestimonialsSliderBlock_select".
  */
 export interface TestimonialsSliderBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
   testimonials?: T;
   id?: T;
   blockName?: T;

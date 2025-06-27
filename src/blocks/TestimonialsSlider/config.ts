@@ -3,6 +3,14 @@ import type { Block } from 'payload'
 export const TestimonialsSlider: Block = {
   fields: [
     {
+      name: 'heading',
+      type: 'text',
+    },
+    {
+      name: 'subheading',
+      type: 'text',
+    },
+    {
       name: 'testimonials',
       hasMany: true,
       maxRows: 10,

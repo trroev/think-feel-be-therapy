@@ -233,6 +233,7 @@ export interface Page {
   blocks: (
     | AccordionBlock
     | CallToActionBlock
+    | ContactFormBlock
     | HeroBlock
     | ImageWithTextBlock
     | PageHeaderBlock
@@ -334,6 +335,15 @@ export interface Link {
   } | null;
   url?: string | null;
   label: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock".
+ */
+export interface ContactFormBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contact-form';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -751,6 +761,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         accordion?: T | AccordionBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
+        'contact-form'?: T | ContactFormBlockSelect<T>;
         hero?: T | HeroBlockSelect<T>;
         'image-with-text'?: T | ImageWithTextBlockSelect<T>;
         'page-header'?: T | PageHeaderBlockSelect<T>;
@@ -816,6 +827,14 @@ export interface LinkSelect<T extends boolean = true> {
   reference?: T;
   url?: T;
   label?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock_select".
+ */
+export interface ContactFormBlockSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

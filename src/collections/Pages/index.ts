@@ -10,6 +10,7 @@ import { anyone } from '@/access/anyone'
 import { authenticated } from '@/access/authenticated'
 import { Accordion } from '@/blocks/Accordion/config'
 import { CallToAction } from '@/blocks/CallToAction/config'
+import { ContactForm } from '@/blocks/ContactForm/config'
 import { Hero } from '@/blocks/Hero/config'
 import { ImageWithText } from '@/blocks/ImageWithText/config'
 import { PageHeader } from '@/blocks/PageHeader/config'
@@ -53,6 +54,7 @@ export const Pages: CollectionConfig<'pages'> = {
               blocks: [
                 Accordion,
                 CallToAction,
+                ContactForm,
                 Hero,
                 ImageWithText,
                 PageHeader,

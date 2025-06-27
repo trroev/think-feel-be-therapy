@@ -26,7 +26,7 @@ const CallToAction: FC<Props> = ({
     <section
       className={cn(
         'relative flex min-h-80 items-center justify-center',
-        backgroundColor === 'transparent' && !backgroundImage
+        bgColor === 'transparent' && !backgroundImage
           ? 'border-border border-y'
           : bgColor
       )}

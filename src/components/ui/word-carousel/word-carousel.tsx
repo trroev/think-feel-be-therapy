@@ -8,9 +8,12 @@ import type { FC } from 'react'
 
 interface WordCarouselProps {
   options: EmblaOptionsType
-  words: {
-    word: string
-  }[]
+  words:
+    | {
+        word?: string | null
+        id?: string | null
+      }[]
+    | null
 }
 
 const WordCarousel: FC<WordCarouselProps> = ({ options, words }) => {
@@ -19,11 +22,15 @@ const WordCarousel: FC<WordCarouselProps> = ({ options, words }) => {
     Fade(),
   ])
 
+  if (!words || words.length === 0) {
+    return null
+  }
+
   return (
     <div className="overflow-hidden" ref={emblaRef}>
       <div className="flex">
-        {words.map((word, index) => (
-          <span className="flex-[0_0_100%] text-brand-tertiary" key={index}>
+        {words.map((word) => (
+          <span className="flex-[0_0_100%] text-brand-tertiary" key={word.id}>
             {word.word}
           </span>
         ))}

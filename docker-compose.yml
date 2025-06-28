@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  # The hostname 'mongo' is only for container-to-container communication.
+  # When running your app locally, you will connect via 'localhost'.
+  mongo:
+    image: mongo:latest
+    container_name: think-feel-be-therapy-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongo-data:

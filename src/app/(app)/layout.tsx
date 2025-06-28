@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     'Think.Feel.Be. Therapy is a mental health practice in Grand Rapids, MI. We offer therapy services for individuals, couples, and families, both in-person and remote in California, Massachusetts, and Michigan.',
   title: {
-    default: 'Think.Feel.Be. Therapy',
+    default: '',
     template: '%s | Think.Feel.Be. Therapy',
   },
 }

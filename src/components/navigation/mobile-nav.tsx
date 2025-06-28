@@ -13,6 +13,8 @@ import {
   HamburgerMenu,
   Sheet,
   SheetContent,
+  SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from '../ui'
 
@@ -38,6 +40,9 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
         </Button>
       </SheetTrigger>
       <SheetContent className="border-none bg-brand-primary p-0 text-background">
+        <SheetHeader>
+          <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
+        </SheetHeader>
         <div className="flex flex-col gap-10">
           <div className="w-full border-border/40 border-b p-6">
             <MobileLink

@@ -69,14 +69,20 @@ const SiteFooter: FC<Props> = ({
                 termsOfService={termsOfServiceHTML}
               />
             )}
-            <PrivacyPolicy
-              heading="Privacy Policy"
-              subheading="Last updated: Nov 1, 2023 9:12 PM"
-            />
-            <Disclaimer
-              heading="Disclaimer"
-              subheading="Last updated: Sep 18, 2023 9:24 PM"
-            />
+            {privacyPolicyHTML && (
+              <PrivacyPolicy
+                heading="Privacy Policy"
+                privacyPolicy={privacyPolicyHTML}
+                subheading="Last updated: Nov 1, 2023 9:12 PM"
+              />
+            )}
+            {disclaimerHTML && (
+              <Disclaimer
+                disclaimer={disclaimerHTML}
+                heading="Disclaimer"
+                subheading="Last updated: Sep 18, 2023 9:24 PM"
+              />
+            )}
           </div>
         </div>
       </div>

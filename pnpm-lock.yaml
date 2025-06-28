@@ -78,8 +78,8 @@ importers:
         specifier: ^5.2.5
         version: 5.2.5(@types/react@19.1.8)(react@19.1.0)
       lexical:
-        specifier: ^0.32.1
-        version: 0.32.1
+        specifier: ^0.28.0
+        version: 0.28.0
       next:
         specifier: 15.3.4
         version: 15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.77.4)
@@ -2436,9 +2436,6 @@ packages:
 
   lexical@0.28.0:
     resolution: {integrity: sha512-dLE3O1PZg0TlZxRQo9YDpjCjDUj8zluGyBO9MHdjo21qZmMUNrxQPeCRt8fn2s5l4HKYFQ1YNgl7k1pOJB/vZQ==}
-
-  lexical@0.32.1:
-    resolution: {integrity: sha512-Rvr9p00zUwzjXIqElIjMDyl/24QHw68yaqmXUWIT3lSdSAr8OpjSJK3iWBLZwVZwwpVhwShZRckomc+3vSb/zw==}
 
   lib0@0.2.109:
     resolution: {integrity: sha512-jP0gbnyW0kwlx1Atc4dcHkBbrVAkdHjuyHxtClUPYla7qCmwIif1qZ6vQeJdR5FrOVdn26HvQT0ko01rgW7/Xw==}
@@ -6054,8 +6051,6 @@ snapshots:
   kleur@3.0.3: {}
 
   lexical@0.28.0: {}
-
-  lexical@0.32.1: {}
 
   lib0@0.2.109:
     dependencies:

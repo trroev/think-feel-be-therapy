@@ -1,4 +1,4 @@
-name: Vercel Preview Deployment
+name: Vercel Staging Deployment
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -9,25 +9,18 @@ on:
   push:
     branches:
       - dev
-  pull_request:
-    types:
-      - opened
-      - edited
-      - ready_for_review
-      - synchronize
 
 jobs:
-  deploy-preview:
+  deploy-staging:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Slugify
-        uses: rlespinasse/github-slug-action@v4.4.1
-
-      - name: Install pnpm (if necessary)
-        run: which pnpm || npm install -g pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -35,17 +28,20 @@ jobs:
           node-version: 20.11.1
           cache: 'pnpm'
 
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: Pull Vercel Environment Information
         run: |
           pnpm dlx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
         env:
-          DOTENV_PRIVATE_KEY_PRODUCTION: ${{ secrets.DOTENV_PRIVATE_KEY_PRODUCTION }}
+          DOTENV_PRIVATE_KEY_DEVELOPMENT: ${{ secrets.DOTENV_PRIVATE_KEY_DEVELOPMENT }}
         run: |
           pnpm dlx vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         run: |
           pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > domain.txt
-          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }} set `cat domain.txt` ${{ env.GITHUB_REF_SLUG_URL }}-think-feel-be-therapy.vercel.app
+          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }} set `cat domain.txt` staging.thinkfeelbetherapy.com

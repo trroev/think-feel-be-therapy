@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "dotenvx run --convention=nextjs -- next build",
+    "build:staging": "dotenvx run -f .env.development -- next build",
     "dev": "dotenvx run --convention=nextjs -- next dev --turbo",
     "format": "biome format",
     "format:fix": "biome format --write",

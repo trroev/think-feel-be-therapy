@@ -10,6 +10,7 @@ import sharp from 'sharp'
 import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Testimonials } from '@/collections/Testimonials'
+import { Users } from '@/collections/Users'
 import { Footer } from '@/globals/footer/config'
 import { Navigation } from '@/globals/navigation/config'
 import type { Page } from '@/types/payload-types'
@@ -31,10 +32,13 @@ const generateURL: GenerateURL<Page> = ({ doc }) => {
 }
 
 export default buildConfig({
+  admin: {
+    user: Users.slug,
+  },
   db: mongooseAdapter({
     url: process.env.DATABASE_URI ?? '',
   }),
-  collections: [Media, Pages, Testimonials],
+  collections: [Media, Pages, Testimonials, Users],
   editor: lexicalEditor(),
   globals: [Footer, Navigation],
   plugins: [

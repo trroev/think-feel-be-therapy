@@ -61,4 +61,9 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'src', 'types', 'payload-types.ts'),
   },
+  upload: {
+    limits: {
+      fileSize: 5_000_000, // 5MB
+    },
+  },
 })

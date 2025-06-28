@@ -28,7 +28,7 @@ const Hero: FC<Props> = ({
       )}
     >
       <div className="container z-10 flex flex-col items-center justify-center py-4 text-center text-background md:py-6 lg:py-8">
-        <h1>{heading}</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl">{heading}</h1>
         {subheading && <h2>{subheading}</h2>}
         {caption?.tagline && (
           <>

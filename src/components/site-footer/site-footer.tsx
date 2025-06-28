@@ -14,8 +14,14 @@ type Props = Footer
 const SiteFooter: FC<Props> = ({
   badges = [],
   copyright,
+  termsOfServiceHeading,
+  termsOfServiceSubheading,
   termsOfServiceHTML,
+  privacyPolicyHeading,
+  privacyPolicySubheading,
   privacyPolicyHTML,
+  disclaimerHeading,
+  disclaimerSubheading,
   disclaimerHTML,
 }) => {
   return (
@@ -64,23 +70,30 @@ const SiteFooter: FC<Props> = ({
           <div className="flex items-center space-x-4">
             {termsOfServiceHTML && (
               <TermsOfService
-                heading="Terms of Service"
-                subheading={'Last updated: Sep 18, 2023 9:21 PM'}
+                heading={termsOfServiceHeading ?? 'Terms of Service'}
+                subheading={
+                  termsOfServiceSubheading ??
+                  'Last updated: Sep 18, 2023 9:21 PM'
+                }
                 termsOfService={termsOfServiceHTML}
               />
             )}
             {privacyPolicyHTML && (
               <PrivacyPolicy
-                heading="Privacy Policy"
+                heading={privacyPolicyHeading ?? 'Privacy Policy'}
                 privacyPolicy={privacyPolicyHTML}
-                subheading="Last updated: Nov 1, 2023 9:12 PM"
+                subheading={
+                  privacyPolicySubheading ?? 'Last updated: Nov 1, 2023 9:12 PM'
+                }
               />
             )}
             {disclaimerHTML && (
               <Disclaimer
                 disclaimer={disclaimerHTML}
-                heading="Disclaimer"
-                subheading="Last updated: Sep 18, 2023 9:24 PM"
+                heading={disclaimerHeading ?? 'Disclaimer'}
+                subheading={
+                  disclaimerSubheading ?? 'Last updated: Sep 18, 2023 9:24 PM'
+                }
               />
             )}
           </div>

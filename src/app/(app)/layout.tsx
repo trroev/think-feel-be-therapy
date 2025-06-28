@@ -6,6 +6,8 @@ import { cn } from '@/lib'
 
 import '@/styles/globals.css'
 
+import config from '@payload-config'
+import { getPayload } from 'payload'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { badgeGroup, navData } from '@/config'
@@ -21,11 +23,21 @@ export const metadata: Metadata = {
   },
 }
 
-interface RootLayoutProps {
+type RootLayoutProps = {
   readonly children: ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const payload = await getPayload({ config })
+
+  const [navigationResult, footer] = await Promise.allSettled([
+    payload.findGlobal({ slug: 'navigation' }),
+    payload.findGlobal({ slug: 'footer' }),
+  ])
+
+  const navigation =
+    navigationResult.status === 'fulfilled' ? navigationResult.value : null
+
   return (
     <html lang="en">
       <head>
@@ -38,7 +50,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           montserrat.className
         )}
       >
-        <SiteHeader navigation={navData} />
+        {navigation && <SiteHeader {...navigation} />}
         <main className="grow">{children}</main>
         <SiteFooter badgeGroup={badgeGroup} navigation={navData} />
       </body>

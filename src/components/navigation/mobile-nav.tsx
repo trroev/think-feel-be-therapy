@@ -5,8 +5,8 @@ import Link, { type LinkProps } from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { type FC, type ReactNode, useState } from 'react'
 import { cn } from '@/lib'
-import type { Navigation } from '@/types'
-
+import type { Navigation } from '@/types/payload-types'
+import { getLink } from '@/utils/getLink'
 import {
   Button,
   Divider,
@@ -18,15 +18,13 @@ import {
   SheetTrigger,
 } from '../ui'
 
-interface MobileNavProps {
-  navigation: Navigation
-}
+type Props = Navigation
 
-const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
+const MobileNav: FC<Props> = ({ cta, links }) => {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  const logoUrl = navigation.logo?.url
-  const navItems = navigation.navItems
+
+  const processedCta = getLink(cta)
 
   return (
     <Sheet onOpenChange={setOpen} open={open}>
@@ -53,7 +51,7 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
               <Image
                 alt="Think.Feel.Be. Therapy logo"
                 height={75}
-                src={logoUrl || '/'}
+                src="/images/logos/think-feel-be-therapy-png(2).png"
                 width={75}
               />
               <span className="font-bold group-hover:underline">
@@ -62,29 +60,44 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
             </MobileLink>
           </div>
           <div className="flex flex-col space-y-4 px-6">
-            {navItems.map((item) => {
-              const slug = item.link
+            {links &&
+              links.length > 0 &&
+              links.map(({ id, link }) => {
+                const processedLink = getLink(link)
 
-              return (
-                <MobileLink
-                  className={cn(
-                    pathname === slug && 'font-medium underline',
-                    'text-xl hover:underline'
-                  )}
-                  href={slug}
-                  key={`${slug}-${item.label}`}
-                  onOpenChange={setOpen}
-                >
-                  {item.label}
-                </MobileLink>
-              )
-            })}
-            <Divider />
-            <Button asChild variant="secondary">
-              <Link href="https://thinkfeelbetherapy.sessionshealth.com/">
-                Schedule a Session
-              </Link>
-            </Button>
+                if (!processedLink) {
+                  return null
+                }
+                const { href, label, newTab } = processedLink
+
+                return (
+                  <MobileLink
+                    className={cn(
+                      pathname === href && 'font-medium underline',
+                      'text-xl hover:underline'
+                    )}
+                    href={href}
+                    key={id}
+                    onOpenChange={setOpen}
+                    target={newTab ? '_blank' : '_self'}
+                  >
+                    {label}
+                  </MobileLink>
+                )
+              })}
+            {processedCta && (
+              <>
+                <Divider />
+                <Button asChild variant="secondary">
+                  <Link
+                    href={processedCta.href}
+                    target={processedCta.newTab ? '_blank' : '_self'}
+                  >
+                    {processedCta.label}
+                  </Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </SheetContent>
@@ -92,10 +105,11 @@ const MobileNav: FC<MobileNavProps> = ({ navigation }) => {
   )
 }
 
-interface MobileLinkProps extends LinkProps {
+type MobileLinkProps = LinkProps & {
   children: ReactNode
   className?: string
   onOpenChange?: (open: boolean) => void
+  target?: string
 }
 
 const MobileLink = ({
@@ -103,6 +117,7 @@ const MobileLink = ({
   className,
   href,
   onOpenChange,
+  target,
   ...props
 }: MobileLinkProps) => {
   const router = useRouter()
@@ -115,6 +130,7 @@ const MobileLink = ({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
+      target={target}
       {...props}
     >
       {children}

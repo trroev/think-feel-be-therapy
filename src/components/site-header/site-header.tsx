@@ -2,31 +2,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
 
-import type { Navigation } from '@/types'
+import type { Navigation } from '@/types/payload-types'
 
 import { MainNav, MobileNav } from '../navigation'
 
-interface SiteHeaderProps {
-  navigation: Navigation
-}
+type Props = Navigation
 
-const SiteHeader: FC<SiteHeaderProps> = ({ navigation }) => {
-  const logoUrl = navigation.logo?.url
-
+const SiteHeader: FC<Props> = (props) => {
   return (
     <header className="sticky top-0 z-50 w-full bg-brand-primary text-background">
       <div className="container flex h-24 max-w-(--breakpoint-2xl) items-center justify-between self-stretch py-2">
         <Link href="/">
           <Image
-            alt={navigation.logo?.alt || 'logo image'}
+            alt="Think.Feel.Be. Therapy logo"
             className="p-2"
             height={100}
-            src={logoUrl || '/'}
+            src="/images/logos/think-feel-be-therapy-png(2).png"
             width={100}
           />
         </Link>
-        <MainNav navigation={navigation} />
-        <MobileNav navigation={navigation} />
+        <MainNav {...props} />
+        <MobileNav {...props} />
       </div>
     </header>
   )

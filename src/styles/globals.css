@@ -54,17 +54,6 @@
   }
 }
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
-    max-width: none;
-  }
-  @media (width >= 1440px) {
-    max-width: 1440px;
-  }
-}
-
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -177,5 +166,9 @@
 
   .cms-html ul {
     @apply list-inside list-disc pl-2 sm:pl-4;
+  }
+
+  .container {
+    @apply mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8;
   }
 }

@@ -31,17 +31,13 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Pull Vercel Environment Information
-        run: |
-          pnpm dlx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build Project Artifacts
+      - name: Build and Deploy to Vercel
         env:
           DOTENV_PRIVATE_KEY_DEVELOPMENT: ${{ secrets.DOTENV_PRIVATE_KEY_DEVELOPMENT }}
         run: |
-          pnpm run build:staging
+          DEPLOYMENT_URL=$(pnpm dotenvx run -f .env.development -- pnpm dlx vercel --token=${{ secrets.VERCEL_TOKEN }})
+          echo "DEPLOYMENT_URL=${DEPLOYMENT_URL}" >> $GITHUB_ENV
 
-      - name: Deploy Project Artifacts to Vercel
+      - name: Alias Deployment
         run: |
-          pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > domain.txt
-          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} set `cat domain.txt` staging.thinkfeelbetherapy.com
+          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} set ${{ env.DEPLOYMENT_URL }} staging.thinkfeelbetherapy.com

@@ -21,7 +21,7 @@ const PageHeader: FC<PageHeaderProps> = ({
       )}
     >
       <div className="container">
-        <h1 className="">{heading}</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl">{heading}</h1>
         {subheading && (
           <>
             <Divider className="my-4" />

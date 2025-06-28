@@ -4,7 +4,7 @@ import type {
   CollectionAfterDeleteHook,
 } from 'payload'
 
-import type { Page } from '@/_types/payload-types'
+import type { Page } from '@/types/payload-types'
 
 export const revalidatePage: CollectionAfterChangeHook<Page> = ({
   doc,

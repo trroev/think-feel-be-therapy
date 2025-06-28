@@ -24,10 +24,10 @@ const ImageWithText: FC<Props> = ({
   const resolvedImage = getImage(image)
 
   return (
-    <section className={cn('container py-12', bgColor)}>
+    <section className={bgColor}>
       <div
         className={cn(
-          'flex flex-col gap-12 md:px-12',
+          'container flex flex-col gap-12 py-12 md:px-12',
           fullHeightImage && imageFirst
             ? 'md:flex-row md:items-center'
             : 'flex-col-reverse md:flex-row-reverse md:items-center'

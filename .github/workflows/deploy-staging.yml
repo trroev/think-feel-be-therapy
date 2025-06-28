@@ -44,4 +44,4 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: |
           pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > domain.txt
-          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }} set `cat domain.txt` staging.thinkfeelbetherapy.com
+          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} set `cat domain.txt` staging.thinkfeelbetherapy.com

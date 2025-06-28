@@ -1,9 +1,10 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "extends": ["ultracite"],
-  "formatter": {
-    "ignore": ["src/routeTree.gen.ts"]
+  "files": {
+    "includes": ["**", "!src/app/(payload)/**/*", "!src/types/payload-types.ts"]
   },
+  "formatter": {},
   "javascript": {
     "formatter": {
       "semicolons": "asNeeded"
@@ -11,8 +12,25 @@
   },
   "linter": {
     "rules": {
+      "correctness": {
+        "noUnusedFunctionParameters": "warn",
+        "noUnusedVariables": "warn"
+      },
+      "nursery": {
+        "noUnknownAtRule": "off"
+      },
       "style": {
-        "useFilenamingConvention": "off"
+        "useFilenamingConvention": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       }
     }
   }

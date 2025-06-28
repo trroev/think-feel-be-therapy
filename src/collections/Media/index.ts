@@ -38,6 +38,7 @@ export const Media: CollectionConfig = {
   slug: 'media',
   upload: {
     adminThumbnail: 'thumbnail',
+    disableLocalStorage: true,
     focalPoint: true,
   },
 }

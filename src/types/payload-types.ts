@@ -1015,6 +1015,11 @@ export interface Footer {
    * This text will appear after the copyright symbol & date.
    */
   copyright?: string | null;
+  termsOfServiceHeading?: string | null;
+  /**
+   * Last updated date (e.g. "Sep 18, 2023 9:21 PM")
+   */
+  termsOfServiceSubheading?: string | null;
   termsOfService?: {
     root: {
       type: string;
@@ -1031,6 +1036,11 @@ export interface Footer {
     [k: string]: unknown;
   } | null;
   termsOfServiceHTML?: string | null;
+  privacyPolicyHeading?: string | null;
+  /**
+   * Last updated date (e.g. "Sep 18, 2023 9:21 PM")
+   */
+  privacyPolicySubheading?: string | null;
   privacyPolicy?: {
     root: {
       type: string;
@@ -1047,6 +1057,11 @@ export interface Footer {
     [k: string]: unknown;
   } | null;
   privacyPolicyHTML?: string | null;
+  disclaimerHeading?: string | null;
+  /**
+   * Last updated date (e.g. "Sep 18, 2023 9:21 PM")
+   */
+  disclaimerSubheading?: string | null;
   disclaimer?: {
     root: {
       type: string;
@@ -1096,10 +1111,16 @@ export interface FooterSelect<T extends boolean = true> {
         id?: T;
       };
   copyright?: T;
+  termsOfServiceHeading?: T;
+  termsOfServiceSubheading?: T;
   termsOfService?: T;
   termsOfServiceHTML?: T;
+  privacyPolicyHeading?: T;
+  privacyPolicySubheading?: T;
   privacyPolicy?: T;
   privacyPolicyHTML?: T;
+  disclaimerHeading?: T;
+  disclaimerSubheading?: T;
   disclaimer?: T;
   disclaimerHTML?: T;
   updatedAt?: T;

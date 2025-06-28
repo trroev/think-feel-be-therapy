@@ -32,12 +32,14 @@ jobs:
         run: pnpm install
 
       - name: Build and Deploy to Vercel
+        id: build_and_deploy
         env:
           DOTENV_PRIVATE_KEY_DEVELOPMENT: ${{ secrets.DOTENV_PRIVATE_KEY_DEVELOPMENT }}
         run: |
-          DEPLOYMENT_URL=$(pnpm dotenvx run -f .env.development -- pnpm dlx vercel --token=${{ secrets.VERCEL_TOKEN }})
-          echo "DEPLOYMENT_URL=${DEPLOYMENT_URL}" >> $GITHUB_ENV
+          OUTPUT=$(pnpm dotenvx run -f .env.development -- pnpm dlx vercel --token=${{ secrets.VERCEL_TOKEN }})
+          DEPLOYMENT_URL=$(echo "$OUTPUT" | grep 'https://.*vercel.app' | tail -n 1)
+          echo "deployment_url=${DEPLOYMENT_URL}" >> "$GITHUB_OUTPUT"
 
       - name: Alias Deployment
         run: |
-          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} set ${{ env.DEPLOYMENT_URL }} staging.thinkfeelbetherapy.com
+          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} set ${{ steps.build_and_deploy.outputs.deployment_url }} staging.thinkfeelbetherapy.com

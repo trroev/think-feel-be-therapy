@@ -10,7 +10,6 @@ import config from '@payload-config'
 import { getPayload } from 'payload'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
-import { badgeGroup, navData } from '@/config'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -30,13 +29,15 @@ type RootLayoutProps = {
 export default async function RootLayout({ children }: RootLayoutProps) {
   const payload = await getPayload({ config })
 
-  const [navigationResult, footer] = await Promise.allSettled([
+  const [navigationResult, footerResult] = await Promise.allSettled([
     payload.findGlobal({ slug: 'navigation' }),
     payload.findGlobal({ slug: 'footer' }),
   ])
 
   const navigation =
     navigationResult.status === 'fulfilled' ? navigationResult.value : null
+
+  const footer = footerResult.status === 'fulfilled' ? footerResult.value : null
 
   return (
     <html lang="en">
@@ -52,7 +53,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       >
         {navigation && <SiteHeader {...navigation} />}
         <main className="grow">{children}</main>
-        <SiteFooter badgeGroup={badgeGroup} navigation={navData} />
+        {footer && <SiteFooter {...footer} />}
       </body>
     </html>
   )

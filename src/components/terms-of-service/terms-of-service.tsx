@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-
+import { RichText } from '../rich-text'
 import {
   Dialog,
   DialogContent,
@@ -13,9 +13,14 @@ import {
 interface TermsOfServiceProps {
   heading: string
   subheading?: string
+  termsOfService?: string
 }
 
-const TermsOfService: FC<TermsOfServiceProps> = ({ heading, subheading }) => {
+const TermsOfService: FC<TermsOfServiceProps> = ({
+  heading,
+  subheading,
+  termsOfService,
+}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -29,7 +34,8 @@ const TermsOfService: FC<TermsOfServiceProps> = ({ heading, subheading }) => {
           <DialogDescription>{subheading}</DialogDescription>
         </DialogHeader>
         <Divider />
-        <div className="flex flex-col space-y-2">
+        {termsOfService && <RichText content={termsOfService} />}
+        {/* <div className="flex flex-col space-y-2">
           <p>
             Please read this Terms of Service (&quot;Terms&quot;, &quot;Terms of
             Service&quot;) carefully before using the www.rachaelmathiak.com
@@ -261,9 +267,10 @@ const TermsOfService: FC<TermsOfServiceProps> = ({ heading, subheading }) => {
             We subscribe to the NASW, which can be found at the following link:
           </p>
           <a
+            className="font-semibold text-brand-primary hover:underline"
             href="https://www.socialworkers.org/About/Ethics/Code-of-Ethics/Code-of-Ethics-English"
+            rel="noreferrer"
             target="_blank"
-            className="font-semibold text-brand-primary hover:underline" rel="noreferrer"
           >
             NASW Code of Ethics
           </a>
@@ -314,14 +321,15 @@ const TermsOfService: FC<TermsOfServiceProps> = ({ heading, subheading }) => {
           <p>
             If you have any questions about these Terms, please contact us at{' '}
             <a
+              className="font-semibold text-brand-primary hover:underline"
               href="mailto:therapy@rachaelmathiak.com"
+              rel="noreferrer"
               target="_blank"
-              className="font-semibold text-brand-primary hover:underline" rel="noreferrer"
             >
               therapy@rachaelmathiak.com
             </a>
           </p>
-        </div>
+        </div> */}
       </DialogContent>
     </Dialog>
   )

@@ -33,8 +33,10 @@ export function getLink(link: Link): {
     )
     .with({ type: 'custom' }, (l) =>
       match(l)
-        .with({ url: P.string, label: P.string }, ({ url, label, newTab }) =>
-          url && label ? { href: url, label, newTab: newTab ?? false } : null
+        .with({ url: P.string }, ({ url, label, newTab }) =>
+          url
+            ? { href: url, label: label ?? '', newTab: newTab ?? false }
+            : null
         )
         .otherwise(() => null)
     )

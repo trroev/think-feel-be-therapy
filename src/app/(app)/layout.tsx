@@ -13,9 +13,12 @@ import { badgeGroup, navData } from '@/config'
 const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Think.Feel.Be. Therapy',
   description:
     'Think.Feel.Be. Therapy is a mental health practice in Grand Rapids, MI. We offer therapy services for individuals, couples, and families, both in-person and remote in California, Massachusetts, and Michigan.',
+  title: {
+    default: 'Think.Feel.Be. Therapy',
+    template: '%s | Think.Feel.Be. Therapy',
+  },
 }
 
 interface RootLayoutProps {

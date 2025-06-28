@@ -5,21 +5,21 @@ const SvgComponent = (
   ref: Ref<SVGSVGElement>
 ) => (
   <svg
-  {...props}
-    xmlns="http://www.w3.org/2000/svg"
-    width={15}
-    height={15}
+    {...props}
+    aria-label="Arrow right"
     fill="none"
-    viewBox="0 0 15 15"
+    height={15}
     ref={ref}
     role="img"
-    aria-label="Arrow right"
+    viewBox="0 0 15 15"
+    width={15}
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      clipRule="evenodd"
+      d="M8.146 3.146a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 8H2.5a.5.5 0 0 1 0-1h8.793L8.146 3.854a.5.5 0 0 1 0-.708Z"
       fill="currentColor"
       fillRule="evenodd"
-      d="M8.146 3.146a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 8H2.5a.5.5 0 0 1 0-1h8.793L8.146 3.854a.5.5 0 0 1 0-.708Z"
-      clipRule="evenodd"
     />
   </svg>
 )

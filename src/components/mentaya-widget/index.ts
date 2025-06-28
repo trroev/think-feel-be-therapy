@@ -1,1 +1,0 @@
-export * from './mentaya-widget'

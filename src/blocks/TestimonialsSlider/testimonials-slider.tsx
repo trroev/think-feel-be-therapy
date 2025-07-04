@@ -32,7 +32,9 @@ const TestimonialsSlider: FC<TestimonialsSliderProps> = ({
               {subheading && (
                 <>
                   <Divider />
-                  <h6>{subheading}</h6>
+                  <span className="font-semibold text-base tracking-tight md:text-lg lg:text-xl">
+                    {subheading}
+                  </span>
                 </>
               )}
             </div>

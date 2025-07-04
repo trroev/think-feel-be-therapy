@@ -25,7 +25,9 @@ const PageHeader: FC<PageHeaderProps> = ({
         {subheading && (
           <>
             <Divider className="my-4" />
-            <h6 className="">{subheading}</h6>
+            <span className="font-semibold text-base tracking-tight md:text-lg lg:text-xl">
+              {subheading}
+            </span>
           </>
         )}
       </div>

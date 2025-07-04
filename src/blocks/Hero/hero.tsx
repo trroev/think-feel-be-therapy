@@ -34,7 +34,7 @@ const Hero: FC<Props> = ({
           <>
             <Divider className="my-4" />
             <Slot className="flex flex-col px-4 max-sm:max-w-sm">
-              <h4>
+              <span className="font-semibold text-xl tracking-tight md:text-2xl lg:text-3xl">
                 {caption.tagline}
                 <br />
                 {caption.words && caption.words.length > 0 && (
@@ -43,7 +43,7 @@ const Hero: FC<Props> = ({
                     words={caption.words}
                   />
                 )}
-              </h4>
+              </span>
             </Slot>
           </>
         )}

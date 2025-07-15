@@ -87,7 +87,9 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     }
 
     return sitemapEntries
-  } catch {
+  } catch (error) {
+    // biome-ignore lint/suspicious/noConsole: <for debugging>
+    console.error('Error generating sitemap:', error)
     return [
       {
         url: getServerSideURL(),

@@ -26,7 +26,7 @@ const CallToAction: FC<Props> = ({
   const hasBody =
     body &&
     (
-      body.root.children[0].children as {
+      body?.root?.children[0]?.children as {
         type: string
         children: { type: string }[]
       }[]

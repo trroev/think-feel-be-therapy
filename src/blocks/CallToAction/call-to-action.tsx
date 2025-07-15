@@ -25,8 +25,10 @@ const CallToAction: FC<Props> = ({
 
   const hasBody =
     body &&
+    Array.isArray(body?.root?.children) &&
+    body.root.children.length > 0 &&
     (
-      body?.root?.children[0]?.children as {
+      body.root.children[0]?.children as {
         type: string
         children: { type: string }[]
       }[]

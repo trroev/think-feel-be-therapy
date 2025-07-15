@@ -14,6 +14,7 @@ type Props = CallToActionBlock
 const CallToAction: FC<Props> = ({
   backgroundColor,
   backgroundImage,
+  body,
   bodyHTML,
   heading,
   links,
@@ -21,6 +22,17 @@ const CallToAction: FC<Props> = ({
 }) => {
   const bgColor = mapBackgroundColor(backgroundColor)
   const bgImage = getImage(backgroundImage)
+
+  const hasBody =
+    body &&
+    Array.isArray(body?.root?.children) &&
+    body.root.children.length > 0 &&
+    (
+      body.root.children[0]?.children as {
+        type: string
+        children: { type: string }[]
+      }[]
+    ).length > 0
 
   return (
     <section
@@ -35,15 +47,19 @@ const CallToAction: FC<Props> = ({
         <div className="flex flex-col gap-4 md:px-12">
           <div className="flex flex-col gap-2">
             {heading && <h2 className="text-center">{heading}</h2>}
-            {subheading && <h5 className="text-center">{subheading}</h5>}
+            {subheading && (
+              <span className="text-center font-semibold text-lg tracking-tight md:text-xl lg:text-2xl">
+                {subheading}
+              </span>
+            )}
           </div>
-          {bodyHTML && (
+          {hasBody && bodyHTML && (
             <div className="max-w-prose">
               <RichText content={bodyHTML} />
             </div>
           )}
         </div>
-        {links && (
+        {links && links.length > 0 && (
           <div className="flex md:px-12">
             {links.map(({ id, link }) => {
               const processedLink = getLink(link)

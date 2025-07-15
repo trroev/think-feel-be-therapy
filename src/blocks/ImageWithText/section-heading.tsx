@@ -30,7 +30,11 @@ const SectionHeading: FC<Props> = ({
       )}
     >
       <h3>{heading}</h3>
-      {subheading && <h6>{subheading}</h6>}
+      {subheading && (
+        <span className="font-semibold text-base tracking-tight md:text-lg lg:text-xl">
+          {subheading}
+        </span>
+      )}
     </div>
   )
 }

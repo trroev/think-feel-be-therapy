@@ -20,6 +20,21 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
 
     const url = getServerSideURL()
 
+    // Temporary debugging - remove after fixing
+    // biome-ignore lint/suspicious/noConsole: <for debugging>
+    console.log('🔍 Sitemap Debug Info:')
+    // biome-ignore lint/suspicious/noConsole: <for debugging>
+    console.log('NEXT_PUBLIC_SERVER_URL:', process.env.NEXT_PUBLIC_SERVER_URL)
+    // biome-ignore lint/suspicious/noConsole: <for debugging>
+    console.log(
+      'VERCEL_PROJECT_PRODUCTION_URL:',
+      process.env.VERCEL_PROJECT_PRODUCTION_URL
+    )
+    // biome-ignore lint/suspicious/noConsole: <for debugging>
+    console.log('getServerSideURL() result:', url)
+    // biome-ignore lint/suspicious/noConsole: <for debugging>
+    console.log('URL ends with slash:', url.endsWith('/'))
+
     // Function to determine priority based on page slug
     const getPriority = (slug: string): number => {
       switch (slug) {
@@ -78,8 +93,11 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
         continue
       }
 
+      // Ensure proper URL construction by removing trailing slash from base URL
+      const baseUrl = url.endsWith('/') ? url.slice(0, -1) : url
+
       sitemapEntries.push({
-        url: `${url}/${slug}`,
+        url: `${baseUrl}/${slug}`,
         lastModified: new Date(updatedAt),
         changeFrequency: getChangeFrequency(slug),
         priority: getPriority(slug),

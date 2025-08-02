@@ -8,6 +8,7 @@ import '@/styles/globals.css'
 
 import config from '@payload-config'
 import { getPayload } from 'payload'
+import { GoogleAnalyticsComponent } from '@/components/google-analytics'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 
@@ -39,6 +40,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
   const footer = footerResult.status === 'fulfilled' ? footerResult.value : null
 
+  const gaId = process.env.NEXT_PUBLIC_GA_ID
+
   return (
     <html lang="en">
       <head>
@@ -54,6 +57,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         {navigation && <SiteHeader {...navigation} />}
         <main className="grow">{children}</main>
         {footer && <SiteFooter {...footer} />}
+        <GoogleAnalyticsComponent gaId={gaId ?? ''} />
       </body>
     </html>
   )

@@ -31,10 +31,15 @@ jobs:
         run: |
           pnpm dlx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
+      # `vercel pull` writes the literal placeholder `[SENSITIVE]` for the
+      # Sensitive BLOB_READ_WRITE_TOKEN when it runs off-Vercel (in CI). Wrapping
+      # the build in `dotenvx run -f .env.production` injects the real decrypted
+      # token into the environment first, so the placeholder never reaches Payload
+      # (mirrors deploy-staging.yml).
       - name: Build Project Artifacts
         env:
           DOTENV_PRIVATE_KEY_PRODUCTION: ${{ secrets.DOTENV_PRIVATE_KEY_PRODUCTION }}
-        run: pnpm dlx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: pnpm dotenvx run -f .env.production -- pnpm dlx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         run: pnpm dlx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

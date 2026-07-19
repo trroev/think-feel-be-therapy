@@ -67,6 +67,10 @@
     "ultracite": "5.0.0--canary.162.43587b3.1"
   },
   "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "@tailwindcss/oxide"
+    ],
     "ignoredBuiltDependencies": [
       "esbuild"
     ]

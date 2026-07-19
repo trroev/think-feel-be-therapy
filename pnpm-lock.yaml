@@ -56,6 +56,9 @@ importers:
       '@radix-ui/react-toast':
         specifier: ^1.2.14
         version: 1.2.14(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@vercel/blob':
+        specifier: ^0.22.3
+        version: 0.22.3
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1

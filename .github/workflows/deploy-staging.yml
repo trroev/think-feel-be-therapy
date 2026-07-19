@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -23,9 +23,9 @@ jobs:
           version: latest
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.11.1
+          node-version: 22.13.0
           cache: 'pnpm'
 
       - name: Install Dependencies
@@ -37,16 +37,11 @@ jobs:
       - name: Build Project Artifacts
         env:
           DOTENV_PRIVATE_KEY_DEVELOPMENT: ${{ secrets.DOTENV_PRIVATE_KEY_DEVELOPMENT }}
-          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          DOTENV_PRIVATE_KEY_PRODUCTION: ${{ secrets.DOTENV_PRIVATE_KEY_PRODUCTION }}
         run: pnpm dotenvx run -f .env.development -- pnpm dlx vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
+      # staging.thinkfeelbetherapy.com is a Vercel git-branch domain bound to `dev`,
+      # so Vercel auto-assigns it to this deployment. A manual `vercel alias set` is
+      # both unnecessary and rejected by Vercel for branch-managed domains.
       - name: Deploy Project Artifacts
-        id: deploy
-        run: |
-          OUTPUT=$(pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
-          DEPLOYMENT_URL=$(echo "$OUTPUT" | grep 'https://.*vercel.app' | tail -n 1)
-          echo "deployment_url=${DEPLOYMENT_URL}" >> "$GITHUB_OUTPUT"
-
-      - name: Alias Deployment
-        run: |
-          pnpm dlx vercel alias --token=${{ secrets.VERCEL_TOKEN }} set ${{ steps.deploy.outputs.deployment_url }} staging.thinkfeelbetherapy.com
+        run: pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}

@@ -1,7 +1,6 @@
-import { lexicalHTMLField } from '@payloadcms/richtext-lexical'
 import type { GlobalConfig } from 'payload'
 import { link } from '@/fields/link'
-import { richTextField } from '@/fields/richText'
+import { richTextWithHtmlField } from '@/fields/richText'
 
 export const Footer: GlobalConfig = {
   fields: [
@@ -71,15 +70,7 @@ export const Footer: GlobalConfig = {
                   name: 'termsOfServiceSubheading',
                   type: 'text',
                 },
-                ...richTextField({
-                  richTextOverrides: {
-                    name: 'termsOfService',
-                  },
-                }),
-                lexicalHTMLField({
-                  htmlFieldName: 'termsOfServiceHTML',
-                  lexicalFieldName: 'termsOfService',
-                }),
+                ...richTextWithHtmlField('termsOfService'),
               ],
               label: 'Terms of Service',
               type: 'group',
@@ -100,15 +91,7 @@ export const Footer: GlobalConfig = {
                   name: 'privacyPolicySubheading',
                   type: 'text',
                 },
-                ...richTextField({
-                  richTextOverrides: {
-                    name: 'privacyPolicy',
-                  },
-                }),
-                lexicalHTMLField({
-                  htmlFieldName: 'privacyPolicyHTML',
-                  lexicalFieldName: 'privacyPolicy',
-                }),
+                ...richTextWithHtmlField('privacyPolicy'),
               ],
               label: 'Privacy Policy',
               type: 'group',
@@ -129,15 +112,7 @@ export const Footer: GlobalConfig = {
                   name: 'disclaimerSubheading',
                   type: 'text',
                 },
-                ...richTextField({
-                  richTextOverrides: {
-                    name: 'disclaimer',
-                  },
-                }),
-                lexicalHTMLField({
-                  htmlFieldName: 'disclaimerHTML',
-                  lexicalFieldName: 'disclaimer',
-                }),
+                ...richTextWithHtmlField('disclaimer'),
               ],
               label: 'Disclaimer',
               type: 'group',

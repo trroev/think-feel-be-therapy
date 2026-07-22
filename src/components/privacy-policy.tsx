@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { RichText } from '../rich-text'
+import { RichText } from './rich-text'
 import {
   Dialog,
   DialogContent,
@@ -7,25 +7,25 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Divider,
-} from '../ui'
+} from './ui/dialog'
+import { Divider } from './ui/divider'
 
-type DisclaimerProps = {
+type PrivacyPolicyProps = {
   heading: string
   subheading?: string
-  disclaimer?: string
+  privacyPolicy?: string
 }
 
-const Disclaimer: FC<DisclaimerProps> = ({
+const PrivacyPolicy: FC<PrivacyPolicyProps> = ({
   heading,
   subheading,
-  disclaimer,
+  privacyPolicy,
 }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <button className="hover:underline" type="button">
-          Disclaimer
+          Privacy Policy
         </button>
       </DialogTrigger>
       <DialogContent className="max-h-[calc(100vh-2rem)] overflow-scroll lg:max-w-[800px]">
@@ -34,10 +34,10 @@ const Disclaimer: FC<DisclaimerProps> = ({
           <DialogDescription>{subheading}</DialogDescription>
         </DialogHeader>
         <Divider />
-        {disclaimer && <RichText content={disclaimer} />}
+        {privacyPolicy && <RichText content={privacyPolicy} />}
       </DialogContent>
     </Dialog>
   )
 }
 
-export { Disclaimer }
+export { PrivacyPolicy }

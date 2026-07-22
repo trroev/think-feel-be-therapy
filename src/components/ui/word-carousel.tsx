@@ -6,14 +6,12 @@ import Fade from 'embla-carousel-fade'
 import useEmblaCarousel from 'embla-carousel-react'
 import type { FC } from 'react'
 
-interface WordCarouselProps {
+type WordCarouselProps = {
   options: EmblaOptionsType
-  words:
-    | {
-        word?: string | null
-        id?: string | null
-      }[]
-    | null
+  words: Array<{
+    word?: string | null
+    id?: string | null
+  }> | null
 }
 
 const WordCarousel: FC<WordCarouselProps> = ({ options, words }) => {

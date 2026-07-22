@@ -1,16 +1,15 @@
 import type { FC } from 'react'
 import { match, P } from 'ts-pattern'
 import { RichText } from '@/components/rich-text'
+import { Card, CardContent } from '@/components/ui/card'
 import {
-  Card,
-  CardContent,
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  Divider,
-} from '@/components/ui'
+} from '@/components/ui/carousel'
+import { Divider } from '@/components/ui/divider'
 import type { TestimonialsSliderBlock } from '@/types/payload-types'
 
 type TestimonialsSliderProps = TestimonialsSliderBlock

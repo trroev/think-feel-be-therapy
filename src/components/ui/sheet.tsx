@@ -17,9 +17,9 @@ import {
   forwardRef,
 } from 'react'
 
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 
-import { X } from '../svg'
+import { X } from './svg/x'
 
 const Sheet = Root
 
@@ -63,9 +63,8 @@ const sheetVariants = cva(
   }
 )
 
-interface SheetContentProps
-  extends ComponentPropsWithoutRef<typeof Content>,
-    VariantProps<typeof sheetVariants> {}
+type SheetContentProps = ComponentPropsWithoutRef<typeof Content> &
+  VariantProps<typeof sheetVariants>
 
 const SheetContent = forwardRef<
   ComponentRef<typeof Content>,

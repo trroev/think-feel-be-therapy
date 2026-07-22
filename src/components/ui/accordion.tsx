@@ -6,8 +6,8 @@ import {
   type ComponentRef,
   forwardRef,
 } from 'react'
-import { cn } from '@/lib'
-import { ChevronDown } from '../svg'
+import { cn } from '@/utils/cn'
+import { ChevronDown } from './svg/chevron-down'
 
 const AccordionRoot = Root
 

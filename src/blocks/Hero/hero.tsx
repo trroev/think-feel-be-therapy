@@ -1,10 +1,11 @@
 import { Slot } from '@radix-ui/react-slot'
 import Image from 'next/image'
 import type { FC } from 'react'
-import { Divider, WordCarousel } from '@/components/ui'
-import { cn } from '@/lib'
+import { Divider } from '@/components/ui/divider'
+import { WordCarousel } from '@/components/ui/word-carousel'
+import { cn } from '@/utils/cn'
 import type { HeroBlock } from '@/types/payload-types'
-import { getImage } from '@/utils'
+import { getImage } from '@/utils/getImage'
 import { mapBackgroundColor } from '@/utils/mapBackgroundColor'
 
 type Props = HeroBlock

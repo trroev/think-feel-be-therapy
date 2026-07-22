@@ -2,9 +2,9 @@ import { Slot } from '@radix-ui/react-slot'
 import parse from 'html-react-parser'
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 
-interface RichTextProps extends ComponentPropsWithoutRef<'div'> {
+type RichTextProps = ComponentPropsWithoutRef<'div'> & {
   asChild?: boolean
   content?: string
   inline?: boolean

@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { match, P } from 'ts-pattern'
 import { Accordion, type AccordionProps } from '@/components/accordion'
 import { RichText } from '@/components/rich-text'
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 import type { ImageWithTextBlock } from '@/types/payload-types'
 import type { getImage } from '@/utils/getImage'
 

@@ -1,6 +1,6 @@
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 
 const Card = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
   ({ className, ...props }, ref) => (

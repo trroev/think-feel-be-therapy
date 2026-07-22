@@ -4,7 +4,8 @@ import type { FC } from 'react'
 
 import type { Navigation } from '@/types/payload-types'
 
-import { MainNav, MobileNav } from '../navigation'
+import { MainNav } from './navigation/main-nav'
+import { MobileNav } from './navigation/mobile-nav'
 
 type Props = Navigation
 

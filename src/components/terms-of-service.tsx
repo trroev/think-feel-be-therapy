@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { RichText } from '../rich-text'
+import { RichText } from './rich-text'
 import {
   Dialog,
   DialogContent,
@@ -7,10 +7,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Divider,
-} from '../ui'
+} from './ui/dialog'
+import { Divider } from './ui/divider'
 
-interface TermsOfServiceProps {
+type TermsOfServiceProps = {
   heading: string
   subheading?: string
   termsOfService?: string

@@ -4,9 +4,7 @@ import type { FC } from 'react'
 import type { Footer } from '@/types/payload-types'
 import { getImage } from '@/utils/getImage'
 import { getLink } from '@/utils/getLink'
-import { Disclaimer } from './disclaimer'
-import { PrivacyPolicy } from './privacy-policy'
-import { TermsOfService } from './terms-of-service'
+import { LegalDialog } from './legal-dialog'
 import { Divider } from './ui/divider'
 
 type Props = Footer
@@ -69,31 +67,34 @@ const SiteFooter: FC<Props> = ({
           </p>
           <div className="flex items-center space-x-4">
             {termsOfServiceHTML && (
-              <TermsOfService
+              <LegalDialog
+                content={termsOfServiceHTML}
                 heading={termsOfServiceHeading ?? 'Terms of Service'}
                 subheading={
                   termsOfServiceSubheading ??
                   'Last updated: Sep 18, 2023 9:21 PM'
                 }
-                termsOfService={termsOfServiceHTML}
+                triggerLabel="Terms of Service"
               />
             )}
             {privacyPolicyHTML && (
-              <PrivacyPolicy
+              <LegalDialog
+                content={privacyPolicyHTML}
                 heading={privacyPolicyHeading ?? 'Privacy Policy'}
-                privacyPolicy={privacyPolicyHTML}
                 subheading={
                   privacyPolicySubheading ?? 'Last updated: Nov 1, 2023 9:12 PM'
                 }
+                triggerLabel="Privacy Policy"
               />
             )}
             {disclaimerHTML && (
-              <Disclaimer
-                disclaimer={disclaimerHTML}
+              <LegalDialog
+                content={disclaimerHTML}
                 heading={disclaimerHeading ?? 'Disclaimer'}
                 subheading={
                   disclaimerSubheading ?? 'Last updated: Sep 18, 2023 9:24 PM'
                 }
+                triggerLabel="Disclaimer"
               />
             )}
           </div>

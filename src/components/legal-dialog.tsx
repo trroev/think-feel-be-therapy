@@ -10,22 +10,24 @@ import {
 } from './ui/dialog'
 import { Divider } from './ui/divider'
 
-type DisclaimerProps = {
+type LegalDialogProps = {
+  triggerLabel: string
   heading: string
   subheading?: string
-  disclaimer?: string
+  content?: string
 }
 
-const Disclaimer: FC<DisclaimerProps> = ({
+const LegalDialog: FC<LegalDialogProps> = ({
+  triggerLabel,
   heading,
   subheading,
-  disclaimer,
+  content,
 }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <button className="hover:underline" type="button">
-          Disclaimer
+          {triggerLabel}
         </button>
       </DialogTrigger>
       <DialogContent className="max-h-[calc(100vh-2rem)] overflow-scroll lg:max-w-[800px]">
@@ -34,10 +36,10 @@ const Disclaimer: FC<DisclaimerProps> = ({
           <DialogDescription>{subheading}</DialogDescription>
         </DialogHeader>
         <Divider />
-        {disclaimer && <RichText content={disclaimer} />}
+        {content && <RichText content={content} />}
       </DialogContent>
     </Dialog>
   )
 }
 
-export { Disclaimer }
+export { LegalDialog }

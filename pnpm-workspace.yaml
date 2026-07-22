@@ -1,3 +1,4 @@
+# settings-only (no `packages:`) and `allowBuilds` require pnpm 11, pinned in package.json
 allowBuilds:
   '@tailwindcss/oxide': true
   esbuild: false

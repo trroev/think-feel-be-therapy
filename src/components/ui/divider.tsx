@@ -6,7 +6,7 @@ import {
   forwardRef,
 } from 'react'
 
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 
 const Divider = forwardRef<
   ComponentRef<typeof Root>,

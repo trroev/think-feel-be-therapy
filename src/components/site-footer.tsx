@@ -2,12 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
 import type { Footer } from '@/types/payload-types'
-import { getImage } from '@/utils'
+import { getImage } from '@/utils/getImage'
 import { getLink } from '@/utils/getLink'
-import { Disclaimer } from '../disclaimer'
-import { PrivacyPolicy } from '../privacy-policy'
-import { TermsOfService } from '../terms-of-service'
-import { Divider } from '../ui'
+import { Disclaimer } from './disclaimer'
+import { PrivacyPolicy } from './privacy-policy'
+import { TermsOfService } from './terms-of-service'
+import { Divider } from './ui/divider'
 
 type Props = Footer
 

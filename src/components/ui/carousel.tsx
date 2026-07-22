@@ -13,9 +13,10 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { Button } from '@/components/ui'
-import { cn } from '@/lib'
-import { ArrowLeft, ArrowRight } from '../svg'
+import { Button } from './button'
+import { cn } from '@/utils/cn'
+import { ArrowLeft } from './svg/arrow-left'
+import { ArrowRight } from './svg/arrow-right'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>

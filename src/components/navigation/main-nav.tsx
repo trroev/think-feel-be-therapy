@@ -3,10 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { FC } from 'react'
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 import type { Navigation } from '@/types/payload-types'
 import { getLink } from '@/utils/getLink'
-import { Button, Divider } from '../ui'
+import { Button } from '../ui/button'
+import { Divider } from '../ui/divider'
 
 type Props = Navigation
 

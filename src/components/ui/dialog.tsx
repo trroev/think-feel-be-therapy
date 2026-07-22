@@ -15,8 +15,8 @@ import {
   type ComponentRef,
   forwardRef,
 } from 'react'
-import { cn } from '@/lib'
-import { X } from '../svg'
+import { cn } from '@/utils/cn'
+import { X } from './svg/x'
 
 const Dialog = Root
 

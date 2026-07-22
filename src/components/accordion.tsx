@@ -1,20 +1,20 @@
 import type { FC } from 'react'
 
-import { RichText } from '../rich-text'
+import { RichText } from './rich-text'
 import {
   AccordionContent,
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
-} from '../ui'
+} from './ui/accordion'
 
-interface AccordionProps {
+type AccordionProps = {
   asChild?: boolean
-  items: {
+  items: Array<{
     content: string
     heading: string
     id: string
-  }[]
+  }>
   type?: 'single' | 'multiple'
 }
 

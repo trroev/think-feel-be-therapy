@@ -1,7 +1,6 @@
-import { lexicalHTMLField } from '@payloadcms/richtext-lexical'
 import type { Block } from 'payload'
 import { backgroundColorField } from '@/fields/backgroundColor'
-import { richTextField } from '@/fields/richText'
+import { richTextWithHtmlField } from '@/fields/richText'
 
 export const ImageWithText: Block = {
   fields: [
@@ -42,16 +41,12 @@ export const ImageWithText: Block = {
             { label: 'Accordion', value: 'accordion' },
           ],
         },
-        ...richTextField({
+        ...richTextWithHtmlField('richText', {
           richTextOverrides: {
             admin: {
               condition: (_, siblingData) => siblingData.contentType === 'text',
             },
           },
-        }),
-        lexicalHTMLField({
-          htmlFieldName: 'richTextHTML',
-          lexicalFieldName: 'richText',
         }),
         {
           admin: {
@@ -67,15 +62,7 @@ export const ImageWithText: Block = {
               type: 'text',
               required: true,
             },
-            ...richTextField({
-              richTextOverrides: {
-                name: 'accordionContent',
-              },
-            }),
-            lexicalHTMLField({
-              htmlFieldName: 'accordionContentHTML',
-              lexicalFieldName: 'accordionContent',
-            }),
+            ...richTextWithHtmlField('accordionContent'),
           ],
         },
       ],

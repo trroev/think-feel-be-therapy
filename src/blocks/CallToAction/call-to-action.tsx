@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
-import { RichText } from '@/components/rich-text'
+import { isRichTextEmpty, RichText } from '@/components/rich-text'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utils/cn'
 import type { CallToActionBlock } from '@/types/payload-types'
@@ -14,7 +14,6 @@ type Props = CallToActionBlock
 const CallToAction: FC<Props> = ({
   backgroundColor,
   backgroundImage,
-  body,
   bodyHTML,
   heading,
   links,
@@ -23,16 +22,7 @@ const CallToAction: FC<Props> = ({
   const bgColor = mapBackgroundColor(backgroundColor)
   const bgImage = getImage(backgroundImage)
 
-  const hasBody =
-    body &&
-    Array.isArray(body?.root?.children) &&
-    body.root.children.length > 0 &&
-    (
-      body.root.children[0]?.children as {
-        type: string
-        children: { type: string }[]
-      }[]
-    ).length > 0
+  const hasBody = !isRichTextEmpty(bodyHTML)
 
   return (
     <section
@@ -53,7 +43,7 @@ const CallToAction: FC<Props> = ({
               </span>
             )}
           </div>
-          {hasBody && bodyHTML && (
+          {hasBody && (
             <div className="max-w-prose">
               <RichText content={bodyHTML} />
             </div>

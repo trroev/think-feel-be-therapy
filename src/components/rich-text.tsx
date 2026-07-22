@@ -4,10 +4,28 @@ import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 
 import { cn } from '@/utils/cn'
 
-type RichTextProps = ComponentPropsWithoutRef<'div'> & {
+type RichTextProps = Omit<ComponentPropsWithoutRef<'div'>, 'content'> & {
   asChild?: boolean
-  content?: string
+  content?: string | null
   inline?: boolean
+}
+
+// void/embed elements are visible content despite contributing no text
+const MEDIA_TAG = /<(img|hr|iframe|video|audio|embed|object|svg)\b/i
+
+const isRichTextEmpty = (content?: string | null): boolean => {
+  if (!content) {
+    return true
+  }
+  if (MEDIA_TAG.test(content)) {
+    return false
+  }
+  return (
+    content
+      .replace(/<[^>]*>/g, '')
+      .replaceAll('&nbsp;', '')
+      .trim() === ''
+  )
 }
 
 const resolveContent = (value: string, inline: boolean): string => {
@@ -37,4 +55,4 @@ const RichText = forwardRef<HTMLDivElement, RichTextProps>(
 )
 RichText.displayName = 'RichText'
 
-export { RichText, type RichTextProps }
+export { isRichTextEmpty, RichText, type RichTextProps }

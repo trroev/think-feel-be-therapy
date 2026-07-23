@@ -1,5 +1,6 @@
 import type { SelectField } from 'payload'
 import { deepMerge } from 'payload'
+import { BACKGROUND_COLOR_PALETTE } from '@/utils/mapBackgroundColor'
 
 type BackgroundColorField = (overrides?: Partial<SelectField>) => [SelectField]
 
@@ -8,28 +9,9 @@ export const backgroundColorField: BackgroundColorField = (overrides = {}) => {
     {
       name: 'backgroundColor',
       type: 'select',
-      options: [
-        {
-          label: 'Teal',
-          value: 'brand-primary',
-        },
-        {
-          label: 'Green',
-          value: 'brand-secondary',
-        },
-        {
-          label: 'Yellow',
-          value: 'brand-tertiary',
-        },
-        {
-          label: 'Orange',
-          value: 'brand-quaternary',
-        },
-        {
-          label: 'None',
-          value: 'transparent',
-        },
-      ],
+      options: Object.entries(BACKGROUND_COLOR_PALETTE).map(
+        ([value, { label }]) => ({ label, value })
+      ),
     },
     overrides
   )

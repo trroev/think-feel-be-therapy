@@ -75,12 +75,13 @@ export const link: LinkType = ({
     name: 'link',
   }
 
-  const linkTypes: Field[] = [
+  const buildLinkTypeFields = (width?: string): Field[] => [
     {
       name: 'reference',
       type: 'relationship',
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'reference',
+        width,
       },
       label: 'Document to link to',
       relationTo: ['pages'],
@@ -91,6 +92,7 @@ export const link: LinkType = ({
       type: 'text',
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'custom',
+        width,
       },
       label: 'Custom URL',
       required: true,
@@ -98,20 +100,12 @@ export const link: LinkType = ({
   ]
 
   if (disableLabel) {
-    linkResult.fields = [...linkResult.fields, ...linkTypes]
+    linkResult.fields = [...linkResult.fields, ...buildLinkTypeFields()]
   } else {
-    linkTypes.map((linkType) => ({
-      ...linkType,
-      admin: {
-        ...linkType.admin,
-        width: '50%',
-      },
-    }))
-
     linkResult.fields.push({
       type: 'row',
       fields: [
-        ...linkTypes,
+        ...buildLinkTypeFields('50%'),
         {
           name: 'label',
           type: 'text',

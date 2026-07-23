@@ -1,12 +1,11 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import type { FC } from 'react'
+import { CmsLink } from '@/components/cms-link'
 import { isRichTextEmpty, RichText } from '@/components/rich-text'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/utils/cn'
 import type { CallToActionBlock } from '@/types/payload-types'
 import { getImage } from '@/utils/getImage'
-import { getLink } from '@/utils/getLink'
 import { mapBackgroundColor } from '@/utils/mapBackgroundColor'
 
 type Props = CallToActionBlock
@@ -51,21 +50,13 @@ const CallToAction: FC<Props> = ({
         </div>
         {links && links.length > 0 && (
           <div className="flex md:px-12">
-            {links.map(({ id, link }) => {
-              const processedLink = getLink(link)
-              if (!processedLink) {
-                return null
-              }
-              const { href, label, newTab } = processedLink
-
-              return (
-                <Button asChild key={id} variant="secondary">
-                  <Link href={href} target={newTab ? '_blank' : '_self'}>
-                    {label}
-                  </Link>
-                </Button>
-              )
-            })}
+            {links.map(({ id, link }) => (
+              <CmsLink
+                className={buttonVariants({ variant: 'secondary' })}
+                key={id}
+                link={link}
+              />
+            ))}
           </div>
         )}
       </div>

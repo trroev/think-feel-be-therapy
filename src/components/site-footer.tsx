@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import type { FC } from 'react'
 import type { Footer } from '@/types/payload-types'
 import { getImage } from '@/utils/getImage'
-import { getLink } from '@/utils/getLink'
+import { isCmsLinkResolvable } from '@/utils/resolveCmsLink'
+import { CmsLink } from './cms-link'
 import { LegalDialog } from './legal-dialog'
 import { Divider } from './ui/divider'
 
@@ -29,26 +29,21 @@ const SiteFooter: FC<Props> = ({
           {badges &&
             badges.length > 0 &&
             badges.map(({ badgeImage, id, link }) => {
-              const processedLink = link ? getLink(link) : null
               const processedImage = getImage(badgeImage)
 
               if (!processedImage) {
                 return null
               }
 
-              return processedLink ? (
-                <Link
-                  href={processedLink.href}
-                  key={id}
-                  target={processedLink.newTab ? '_blank' : '_self'}
-                >
+              return isCmsLinkResolvable(link) ? (
+                <CmsLink key={id} link={link}>
                   <Image
                     alt={processedImage.alt}
                     height={150}
                     src={processedImage.url}
                     width={150}
                   />
-                </Link>
+                </CmsLink>
               ) : (
                 <Image
                   alt={processedImage.alt}

@@ -2,12 +2,13 @@
 
 import Image from 'next/image'
 import Link, { type LinkProps } from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { type FC, type ReactNode, useState } from 'react'
 import { cn } from '@/utils/cn'
 import type { Navigation } from '@/types/payload-types'
-import { getLink } from '@/utils/getLink'
-import { Button } from '../ui/button'
+import { isCmsLinkResolvable } from '@/utils/resolveCmsLink'
+import { CmsLink } from '../cms-link'
+import { Button, buttonVariants } from '../ui/button'
 import { Divider } from '../ui/divider'
 import {
   Sheet,
@@ -22,9 +23,6 @@ type Props = Navigation
 
 const MobileNav: FC<Props> = ({ cta, links }) => {
   const [open, setOpen] = useState(false)
-  const pathname = usePathname()
-
-  const processedCta = getLink(cta)
 
   return (
     <Sheet onOpenChange={setOpen} open={open}>
@@ -62,40 +60,22 @@ const MobileNav: FC<Props> = ({ cta, links }) => {
           <div className="flex flex-col space-y-4 px-6">
             {links &&
               links.length > 0 &&
-              links.map(({ id, link }) => {
-                const processedLink = getLink(link)
-
-                if (!processedLink) {
-                  return null
-                }
-                const { href, label, newTab } = processedLink
-
-                return (
-                  <MobileLink
-                    className={cn(
-                      pathname === href && 'font-medium underline',
-                      'text-xl hover:underline'
-                    )}
-                    href={href}
-                    key={id}
-                    onOpenChange={setOpen}
-                    target={newTab ? '_blank' : '_self'}
-                  >
-                    {label}
-                  </MobileLink>
-                )
-              })}
-            {processedCta && (
+              links.map(({ id, link }) => (
+                <CmsLink
+                  activeClassName="font-medium underline"
+                  className="text-xl hover:underline"
+                  key={id}
+                  link={link}
+                  onClick={() => setOpen(false)}
+                />
+              ))}
+            {isCmsLinkResolvable(cta) && (
               <>
                 <Divider />
-                <Button asChild variant="secondary">
-                  <Link
-                    href={processedCta.href}
-                    target={processedCta.newTab ? '_blank' : '_self'}
-                  >
-                    {processedCta.label}
-                  </Link>
-                </Button>
+                <CmsLink
+                  className={buttonVariants({ variant: 'secondary' })}
+                  link={cta}
+                />
               </>
             )}
           </div>
@@ -109,7 +89,6 @@ type MobileLinkProps = LinkProps & {
   children: ReactNode
   className?: string
   onOpenChange?: (open: boolean) => void
-  target?: string
 }
 
 const MobileLink = ({
@@ -117,7 +96,6 @@ const MobileLink = ({
   className,
   href,
   onOpenChange,
-  target,
   ...props
 }: MobileLinkProps) => {
   const router = useRouter()
@@ -130,7 +108,6 @@ const MobileLink = ({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      target={target}
       {...props}
     >
       {children}

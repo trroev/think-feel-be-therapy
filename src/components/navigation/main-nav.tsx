@@ -1,60 +1,35 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import type { FC } from 'react'
-import { cn } from '@/utils/cn'
 import type { Navigation } from '@/types/payload-types'
-import { getLink } from '@/utils/getLink'
-import { Button } from '../ui/button'
+import { isCmsLinkResolvable } from '@/utils/resolveCmsLink'
+import { CmsLink } from '../cms-link'
+import { buttonVariants } from '../ui/button'
 import { Divider } from '../ui/divider'
 
 type Props = Navigation
 
 const MainNav: FC<Props> = ({ cta, links }) => {
-  const pathname = usePathname()
-
-  const processedCta = getLink(cta)
-
   return (
     <nav className="hidden md:flex">
       <div className="flex items-center space-x-4">
         {links &&
           links.length > 0 &&
-          links.map(({ id, link }) => {
-            const processedLink = getLink(link)
-
-            if (!processedLink) {
-              return null
-            }
-            const { href, label, newTab } = processedLink
-
-            return (
-              <Link
-                className={cn(
-                  pathname === href && 'font-medium underline',
-                  'hover:underline',
-                  'text-sm lg:text-xl'
-                )}
-                href={href}
-                key={id}
-                target={newTab ? '_blank' : '_self'}
-              >
-                {label}
-              </Link>
-            )
-          })}
-        {processedCta && (
+          links.map(({ id, link }) => (
+            <CmsLink
+              activeClassName="font-medium underline"
+              className="text-sm hover:underline lg:text-xl"
+              key={id}
+              link={link}
+            />
+          ))}
+        {isCmsLinkResolvable(cta) && (
           <>
             <Divider orientation="vertical" />
-            <Button asChild variant="secondary">
-              <Link
-                href={processedCta.href}
-                target={processedCta.newTab ? '_blank' : '_self'}
-              >
-                {processedCta.label}
-              </Link>
-            </Button>
+            <CmsLink
+              className={buttonVariants({ variant: 'secondary' })}
+              link={cta}
+            />
           </>
         )}
       </div>

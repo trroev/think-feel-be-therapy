@@ -1,6 +1,5 @@
-import { lexicalHTMLField } from '@payloadcms/richtext-lexical'
 import type { Block } from 'payload'
-import { richTextField } from '@/fields/richText'
+import { richTextWithHtmlField } from '@/fields/richText'
 
 export const Accordion: Block = {
   fields: [
@@ -13,15 +12,10 @@ export const Accordion: Block = {
           type: 'text',
           required: true,
         },
-        ...richTextField({
+        ...richTextWithHtmlField('content', {
           richTextOverrides: {
-            name: 'content',
             required: true,
           },
-        }),
-        lexicalHTMLField({
-          htmlFieldName: 'contentHTML',
-          lexicalFieldName: 'content',
         }),
       ],
     },

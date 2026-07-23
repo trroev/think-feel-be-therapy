@@ -1,13 +1,13 @@
 import type { FC, ReactNode } from 'react'
-import { match } from 'ts-pattern'
-import { Accordion } from '@/blocks/Accordion/accordion'
+import { match, P } from 'ts-pattern'
 import { CallToAction } from '@/blocks/CallToAction/call-to-action'
 import { ContactForm } from '@/blocks/ContactForm/contact-form'
 import { Hero } from '@/blocks/Hero/hero'
 import { ImageWithText } from '@/blocks/ImageWithText/image-with-text'
 import { PageHeader } from '@/blocks/PageHeader/page-header'
 import { TestimonialsSlider } from '@/blocks/TestimonialsSlider/testimonials-slider'
-import type { Page } from '@/types/payload-types'
+import { Accordion, type AccordionProps } from '@/components/accordion'
+import type { AccordionBlock, Page } from '@/types/payload-types'
 
 type Props = {
   blocks: Page['blocks']
@@ -18,7 +18,7 @@ const RenderBlocks: FC<Props> = ({ blocks }) => {
     return match(block)
       .returnType<ReactNode>()
       .with({ blockType: 'accordion' }, (props) => (
-        <Accordion {...props} key={props.id} />
+        <Accordion items={mapAccordionItems(props.items)} key={props.id} />
       ))
       .with({ blockType: 'cta' }, (props) => (
         <CallToAction {...props} key={props.id} />
@@ -43,3 +43,25 @@ const RenderBlocks: FC<Props> = ({ blocks }) => {
 }
 
 export { RenderBlocks }
+
+function mapAccordionItems(
+  items: AccordionBlock['items']
+): AccordionProps['items'] {
+  return match(items)
+    .with(
+      P.array(
+        P.select({
+          id: P.string,
+          heading: P.string,
+          contentHTML: P.string,
+        })
+      ),
+      (matchedItems) =>
+        matchedItems.map((item) => ({
+          id: item.id,
+          heading: item.heading,
+          content: item.contentHTML,
+        }))
+    )
+    .otherwise(() => [])
+}

@@ -1,11 +1,10 @@
 import type {
-  FeatureProviderServer,
   LexicalEditorProps,
   LexicalRichTextAdapter,
 } from '@payloadcms/richtext-lexical'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, lexicalHTMLField } from '@payloadcms/richtext-lexical'
 import type { SerializedEditorState } from 'lexical'
-import type { RichTextField } from 'payload'
+import type { Field, RichTextField } from 'payload'
 import { deepMerge } from 'payload'
 
 type LexicalRichTextField = RichTextField<
@@ -14,33 +13,33 @@ type LexicalRichTextField = RichTextField<
   LexicalEditorProps
 >
 
-export type RichTextFieldOverrides = {
-  richTextOverrides?: Partial<LexicalRichTextField>
+type RichTextWithHtmlFieldOptions = {
+  richTextOverrides?: Partial<Omit<LexicalRichTextField, 'name'>>
 }
 
-type RichText = (
-  overrides?: RichTextFieldOverrides,
-  additions?: {
-    features?: FeatureProviderServer[]
+export const richTextWithHtmlField = (
+  name: string,
+  options: RichTextWithHtmlFieldOptions = {}
+): [LexicalRichTextField, Field] => {
+  const richText = {
+    ...deepMerge<LexicalRichTextField>(
+      {
+        editor: lexicalEditor({
+          features: ({ defaultFeatures }) => defaultFeatures,
+        }),
+        name,
+        type: 'richText',
+      },
+      options.richTextOverrides ?? {}
+    ),
+    name,
   }
-) => [RichTextField]
 
-export const richTextField: RichText = (overrides = {}, additions = {}) => {
-  const { richTextOverrides = {} } = overrides
-
-  const field = deepMerge<LexicalRichTextField>(
-    {
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
-          ...defaultFeatures,
-          ...(additions.features ?? []),
-        ],
-      }),
-      name: 'richText',
-      type: 'richText',
-    },
-    richTextOverrides
-  )
-
-  return [field]
+  return [
+    richText,
+    lexicalHTMLField({
+      htmlFieldName: `${name}HTML`,
+      lexicalFieldName: name,
+    }),
+  ]
 }

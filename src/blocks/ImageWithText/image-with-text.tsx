@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import type { FC } from 'react'
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 import type { ImageWithTextBlock } from '@/types/payload-types'
 import { getImage } from '@/utils/getImage'
 import { mapBackgroundColor } from '@/utils/mapBackgroundColor'

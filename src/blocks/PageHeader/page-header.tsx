@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { Divider } from '@/components/ui/divider'
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 import type { PageHeaderBlock } from '@/types/payload-types'
 import { mapBackgroundColor } from '@/utils/mapBackgroundColor'
 

@@ -1,8 +1,7 @@
-import { lexicalHTMLField } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
 import { anyone } from '@/access/anyone'
 import { authenticated } from '@/access/authenticated'
-import { richTextField } from '@/fields/richText'
+import { richTextWithHtmlField } from '@/fields/richText'
 
 export const Testimonials: CollectionConfig = {
   access: {
@@ -24,11 +23,7 @@ export const Testimonials: CollectionConfig = {
       name: 'dateRange',
       type: 'text',
     },
-    ...richTextField({ richTextOverrides: { name: 'testimonial' } }),
-    lexicalHTMLField({
-      htmlFieldName: 'testimonialHTML',
-      lexicalFieldName: 'testimonial',
-    }),
+    ...richTextWithHtmlField('testimonial'),
   ],
   slug: 'testimonials',
 }

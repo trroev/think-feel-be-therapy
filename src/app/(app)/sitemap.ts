@@ -1,22 +1,11 @@
-import config from '@payload-config'
 import type { MetadataRoute } from 'next'
-import { getPayload, type PaginatedDocs } from 'payload'
-import type { Page } from '@/types/payload-types'
-import { getServerSideURL } from '@/utils'
+import { getPublishedPages } from '@/queries/pages'
+import { getServerSideURL } from '@/utils/getURL'
+import { isHomeSlug, pageToPath } from '@/utils/pageToPath'
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
-  const payload = await getPayload({ config })
-
   try {
-    const pages: PaginatedDocs<Page> = await payload.find({
-      collection: 'pages',
-      limit: 0,
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-    })
+    const pages = await getPublishedPages()
 
     const url = getServerSideURL()
 
@@ -72,14 +61,14 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     })
 
     // Add dynamic pages from CMS
-    for (const { slug, updatedAt } of pages.docs) {
+    for (const { slug, updatedAt } of pages) {
       // Skip if slug is null/undefined or if it's the home page (handled separately)
-      if (!slug || slug === 'home') {
+      if (!slug || isHomeSlug(slug)) {
         continue
       }
 
       sitemapEntries.push({
-        url: `${url}/${slug}`,
+        url: `${url}${pageToPath(slug)}`,
         lastModified: new Date(updatedAt),
         changeFrequency: getChangeFrequency(slug),
         priority: getPriority(slug),

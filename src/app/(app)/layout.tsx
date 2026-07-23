@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import type { ReactNode } from 'react'
 
-import { cn } from '@/lib'
+import { cn } from '@/utils/cn'
 
 import '@/styles/globals.css'
 

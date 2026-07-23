@@ -1,8 +1,7 @@
-import { lexicalHTMLField } from '@payloadcms/richtext-lexical'
 import type { Block } from 'payload'
 import { backgroundColorField } from '@/fields/backgroundColor'
 import { linkGroup } from '@/fields/linkGroup'
-import { richTextField } from '@/fields/richText'
+import { richTextWithHtmlField } from '@/fields/richText'
 
 export const CallToAction: Block = {
   fields: [
@@ -20,15 +19,7 @@ export const CallToAction: Block = {
       name: 'subheading',
       type: 'text',
     },
-    ...richTextField({
-      richTextOverrides: {
-        name: 'body',
-      },
-    }),
-    lexicalHTMLField({
-      htmlFieldName: 'bodyHTML',
-      lexicalFieldName: 'body',
-    }),
+    ...richTextWithHtmlField('body'),
     linkGroup({
       appearances: false,
       overrides: { maxRows: 2 },

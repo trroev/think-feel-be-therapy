@@ -1,5 +1,6 @@
 import { match, P } from 'ts-pattern'
 import type { Link } from '@/types/payload-types'
+import { pageToPath } from './pageToPath'
 
 export type ResolvedCmsLink = {
   href: string
@@ -22,7 +23,7 @@ export function resolveCmsLink(
         },
       },
       ({ reference: { value }, label, newTab }) => ({
-        href: value.slug === 'home' ? '/' : `/${value.slug}`,
+        href: pageToPath(value.slug),
         label: label ?? value.title,
         newTab: newTab ?? false,
       })
